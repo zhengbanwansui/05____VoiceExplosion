@@ -1,32 +1,20 @@
-/*
- * Copyright 2015 Alibaba Group Holding Limited
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.alibaba.nls.client.example;
 
 import com.alibaba.nls.client.AccessToken;
 
-/**
- * CreateTokenDemo class
- *
- * 根据AccessKeyId和AccessKeySecret生成token
- * @author siwei
- * @date 2018/5/29
- */
 public class CreateTokenDemo {
-    public static void main(String[] args) {
+    public static String getTokenFromCloud(){
+        String akIdd = "LTAIQTaHAkBNH2yt";
+        String akSecretee = "sXF07GtGOZlVLMKLs5wh7EH9T4m5mA";
+        try {
+            AccessToken accessToken = AccessToken.apply(akIdd, akSecretee);
+            return accessToken.getToken();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "获取失败";
+    }
+    /*public static void main(String[] args) {
         if (args.length < 2) {
             System.err.println("CreateTokenDemo need params: <AccessKeyId> <AccessKeySecret>");
             System.exit(-1);
@@ -46,5 +34,5 @@ public class CreateTokenDemo {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }
