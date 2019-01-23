@@ -7,12 +7,11 @@ import org.wltea.analyzer.core.IKSegmenter;
 import org.wltea.analyzer.core.Lexeme;
 
 public class CheckTheSame {
-
+    /*测试代码在这里
     public static void main(String[] args) {
         //分词
         Vector<String> strs1 = participle( "今天你心情怎么样" ) ;
         Vector<String> strs2 = participle( "今天你心情怎么样" ) ;
-
         //根据分词返回相似度
         double same = 0 ;
         try {
@@ -22,7 +21,7 @@ public class CheckTheSame {
         }
         System.out.println( "相似度：" + same );
     }
-
+    */
     public static Vector<String> participle( String str ) {
 
         Vector<String> str1 = new Vector<String>() ;//对输入进行分词

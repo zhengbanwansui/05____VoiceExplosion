@@ -6,9 +6,11 @@ package PPT;
 //textStr代表存储的字符串
 public class PPTString {
     public Boolean bool;
+    public double value;
     public String textStr;
     public PPTString(String textStr){
         bool = false;
         this.textStr = textStr;
+        this.value   = 0;
     }
 }

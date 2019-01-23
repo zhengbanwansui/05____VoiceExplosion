@@ -1,6 +1,9 @@
 package com.alibaba.nls.client.example;
 
+import CheckSame.IKAnalyzerUtil;
+import PPT.ClickEvent;
 import PPT.PPTString;
+import PPT.PPTTextSave;
 import com.alibaba.nls.client.protocol.InputFormatEnum;
 import com.alibaba.nls.client.protocol.NlsClient;
 import com.alibaba.nls.client.protocol.SampleRateEnum;
@@ -13,6 +16,9 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.TargetDataLine;
 import java.util.ArrayList;
+import java.util.Vector;
+
+import static CheckSame.CheckTheSame.participle;
 
 //使用麦克风音频流的实时音频流识别
 public class SpeechTranscriberWithMicrophoneDemo {
@@ -22,7 +28,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
     NlsClient client;
 //#################################################################################################################
     //语音识别调用部分代码
-    public void process(ArrayList<ArrayList<PPTString>> PPTstr) {
+    public void process(PPTTextSave PS) {
         SpeechTranscriber transcriber = null;
         try {
             // Step1 创建实例,建立连接
@@ -49,15 +55,51 @@ public class SpeechTranscriberWithMicrophoneDemo {
             int nByte = 0;
             final int bufSize = 6400;
             byte[] buffer = new byte[bufSize];
-            String oldString = "识别结果NULL";
+            String oldString = "NULL";
+            answerString = "NULL";
+            Vector<String> str1,str2;
+            int page = 1;
+            ArrayList<ArrayList<PPTString>> strList = PS.getArrayListArrayListPPTString();
+            ClickEvent robotA = new ClickEvent();
+            boolean brek = false;
             System.out.println("-------------------------准备完毕，开始识别过程----------------------------------------");
             while ((nByte = targetDataLine.read(buffer, 0, bufSize)) > 0) {
-                // Step4 直接发送麦克风数据流
-                System.out.println("循环一遍" + answerString);
+                //判断是否有新识别出的文字并进行匹配
                 if(oldString != answerString){
                     oldString = answerString;
-                //        PPTstr 和 oldString 进行匹配
+                    str1 = participle(oldString);
+                    //循环匹配此页每段文本
+                    for(int i=0; i<strList.get(page-1).size(); i++){
+                        str2 = participle( strList.get(page-1).get(i).textStr);
+                        double same = 0 ;//根据分词返回相似度
+                        same = IKAnalyzerUtil.getSimilarity( str1 , str2 );
+                        System.out.println( "相似度：" + same );
+                        //相似度高，句子赋值为已匹配状态
+                        if(same > 0.67){
+                            strList.get(page-1).get(i).bool = true;
+                        }
+                    }
+                    //遍历此页，得到整页的匹配是否全部完成，step记录已经匹配了多少段文本
+                    int step = 0;
+                    for(PPTString str : strList.get(page-1)){
+                        if(str.bool){
+                            step++;
+                        }
+                    }
+                    // 每一段文本都匹配完  并且  页数不是最后一页
+                    if     (step == strList.get(page-1).size() && page < strList.size() ){
+                        robotA.PPTControl(1);
+                        page++;
+                    }
+                    // 每一段文本都匹配完  并且  页数是最后一页
+                    else if(step == strList.get(page-1).size() && page == strList.size()){
+                        robotA.PPTControl(1);
+                        brek = true;
+                    }
                 }
+                if(brek)
+                    break;
+                //发送麦克风声音数据buffer
                 transcriber.send(buffer);
             }
             // Step5 通知服务端语音数据发送完毕,等待服务端处理完成
@@ -86,26 +128,25 @@ public class SpeechTranscriberWithMicrophoneDemo {
             @Override
             public void onTranscriptionResultChange(SpeechTranscriberResponse response) {
                 System.out.println(
+                        response.getStatus() +
                         "  【句中】" +
                         "  句子编号: " + response.getTransSentenceIndex() +
                         "  [" + response.getTransSentenceText() + "]"
-                        //        +
-                        //"  已处理的: " + response.getTransSentenceTime()
                 );
+
             }
             // 识别出一句话.服务端会智能断句,当识别到一句话结束时会返回此消息
             @Override
             public void onSentenceEnd(SpeechTranscriberResponse response) {
                 System.out.println(
-                        "  【句末】" +
-                        "  句子编号: " + response.getTransSentenceIndex() +
-                        "  【" + response.getTransSentenceText() + "】"
-                        //        +
-                        //"  总时间: " + response.getTransSentenceTime() +
-                        //"  句子开始时间: " + response.getSentenceBeginTime()
+                    response.getStatus() +
+                    "  【句末】" +
+                    "  句子编号: " + response.getTransSentenceIndex() +
+                    "  【" + response.getTransSentenceText() + "】"
                 );
-                System.out.println("一句话识别完成了！" + response.getTransSentenceText());
-                answerString = response.getTransSentenceText();
+                if(response.getTransSentenceText().length() != 0){
+                    answerString = response.getTransSentenceText();
+                }
             }
             // 识别完毕
             @Override
@@ -114,7 +155,6 @@ public class SpeechTranscriberWithMicrophoneDemo {
                         ", status: " + response.getStatus());
             }
         };
-
         return listener;
     }
 
@@ -122,4 +162,3 @@ public class SpeechTranscriberWithMicrophoneDemo {
         client.shutdown();
     }
 }
-

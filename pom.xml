@@ -8,7 +8,7 @@
     <!--项目名-->
     <artifactId>PPTctrl</artifactId>
     <!--版本号-->
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <!--打包类型-->
     <packaging>jar</packaging>
 
@@ -88,23 +88,6 @@
         </dependency>
     </dependencies>
 
-    <!--<build>-->
-        <!--<plugins>-->
-            <!--<plugin>-->
-                <!--&lt;!&ndash; 指定maven编译的jdk版本,如果不指定,maven3默认用jdk 1.5 maven2默认用jdk1.3 &ndash;&gt;-->
-                <!--<groupId>org.apache.maven.plugins</groupId>-->
-                <!--<artifactId>maven-compiler-plugin</artifactId>-->
-                <!--<version>3.3</version>-->
-                <!--<configuration>-->
-                    <!--<source>${java.version}</source>&lt;!&ndash; 源代码使用的JDK版本 &ndash;&gt;-->
-                    <!--<target>${java.version}</target>&lt;!&ndash; 需要生成的目标class文件的编译版本 &ndash;&gt;-->
-                    <!--<encoding>${project.build.sourceEncoding}</encoding>&lt;!&ndash; 字符集编码 &ndash;&gt;-->
-                <!--</configuration>-->
-            <!--</plugin>-->
-        <!--</plugins>-->
-    <!--</build>-->
-
-
     <build>
         <plugins>
             <!--(start) for package jar with dependencies -->
@@ -135,107 +118,3 @@
         </plugins>
     </build>
 </project>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!--pom4.0的一个新特性，具有根据environment来修改设置的能力-->
-    <!--
-    <profiles>
-        <profile>
-            <id>Demo</id>
-            <activation>
-                <property>
-                    <name>Demo</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <version>1.6.0</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>java</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <mainClass>com.alibaba.nls.client.example.SpeechRecognizerDemo</mainClass>
-                            <cleanupDaemonThreads>false</cleanupDaemonThreads>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        <profile>
-            <id>Token</id>
-            <activation>
-                <property>
-                    <name>Token</name>
-                </property>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>exec-maven-plugin</artifactId>
-                        <version>1.6.0</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>java</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <mainClass>com.alibaba.nls.client.example.CreateTokenDemo</mainClass>
-                            <cleanupDaemonThreads>false</cleanupDaemonThreads>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
--->
