@@ -10,11 +10,12 @@ import com.alibaba.nls.client.protocol.SampleRateEnum;
 import com.alibaba.nls.client.protocol.asr.SpeechTranscriber;
 import com.alibaba.nls.client.protocol.asr.SpeechTranscriberListener;
 import com.alibaba.nls.client.protocol.asr.SpeechTranscriberResponse;
-
+import PPT.ClickEvent;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.TargetDataLine;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -22,11 +23,18 @@ import static CheckSame.CheckTheSame.participle;
 
 //使用麦克风音频流的实时音频流识别
 public class SpeechTranscriberWithMicrophoneDemo {
-    public String answerString;
+
     private String appKey;
-    private String accessToken;
-    NlsClient client;
-//#################################################################################################################
+    private NlsClient client;
+    private ArrayList<ArrayList<PPTString>> strList;    // PPT全部文字集合
+    private String responseString = "NULL";             // 识别结果
+    private int responseIndex = 0;
+    private int oldIndex = 0;
+    private String answerString = "NULL";       // 识别结果[安全过滤]
+    private int page = 1;                       // 当前页数
+    private boolean brek = false;               // 幻灯片匹配结束条件，触发此条件后除了第五法都失效，第五法退回一页后，此条件变成false重启算法流程（未完成此判断过程）
+    private ClickEvent PC = new ClickEvent();   // 定义PPT控制类
+
     //语音识别调用部分代码
     public void process(PPTTextSave PS) {
         SpeechTranscriber transcriber = null;
@@ -55,46 +63,24 @@ public class SpeechTranscriberWithMicrophoneDemo {
             int nByte = 0;
             final int bufSize = 6400;
             byte[] buffer = new byte[bufSize];
-            String oldString = "NULL";
-            answerString = "NULL";
-            Vector<String> str1,str2;
-            int page = 1;
-            ArrayList<ArrayList<PPTString>> strList = PS.getArrayListArrayListPPTString();
-            ClickEvent robotA = new ClickEvent();
-            boolean brek = false;
+            // 幻灯片文字集合
+            strList = PS.getArrayListArrayListPPTString();
             System.out.println("-------------------------准备完毕，开始识别过程----------------------------------------");
             while ((nByte = targetDataLine.read(buffer, 0, bufSize)) > 0) {
-                //判断是否有新识别出的文字并进行匹配
-                if(oldString != answerString){
-                    oldString = answerString;
-                    str1 = participle(oldString);
-                    //循环匹配此页每段文本
-                    for(int i=0; i<strList.get(page-1).size(); i++){
-                        str2 = participle( strList.get(page-1).get(i).textStr);
-                        double same = 0 ;//根据分词返回相似度
-                        same = IKAnalyzerUtil.getSimilarity( str1 , str2 );
-                        System.out.println( "相似度：" + same );
-                        //相似度高，句子赋值为已匹配状态
-                        if(same > 0.67){
-                            strList.get(page-1).get(i).bool = true;
+
+                if(responseIndex > oldIndex){
+                    oldIndex++;
+                    // 炽天覆七重圆环饱和匹配算法启动~~~
+                    boolean r1 = false,r2 = false,r3 = false,r4 = false,r5 = false,r6 = false,r7 = false;
+                    // 提前检测直接指令唤醒算法
+                    r5 = Rule5();
+                    if(!r5){
+                        // 筛选出可用的answerString
+                        r6 = Rule6();
+                        // 如果结果存活到了answerString中，旧模式启动
+                        if(r6){
+                            r1 = Rule1();
                         }
-                    }
-                    //遍历此页，得到整页的匹配是否全部完成，step记录已经匹配了多少段文本
-                    int step = 0;
-                    for(PPTString str : strList.get(page-1)){
-                        if(str.bool){
-                            step++;
-                        }
-                    }
-                    // 每一段文本都匹配完  并且  页数不是最后一页
-                    if     (step == strList.get(page-1).size() && page < strList.size() ){
-                        robotA.PPTControl(1);
-                        page++;
-                    }
-                    // 每一段文本都匹配完  并且  页数是最后一页
-                    else if(step == strList.get(page-1).size() && page == strList.size()){
-                        robotA.PPTControl(1);
-                        brek = true;
                     }
                 }
                 if(brek)
@@ -113,15 +99,13 @@ public class SpeechTranscriberWithMicrophoneDemo {
             }
         }
     }
-//#################################################################################################################
+
     public SpeechTranscriberWithMicrophoneDemo(String appKey, String token) {
         this.appKey = appKey;
-        this.accessToken = token;
         // Step0 创建NlsClient实例,应用全局创建一个即可,默认服务地址为阿里云线上服务地址
-        client = new NlsClient(accessToken);
+        client = new NlsClient(token);
     }
 
-    //get方法 得到实时语音识别监听器方法
     public SpeechTranscriberListener getTranscriberListener() {
         SpeechTranscriberListener listener = new SpeechTranscriberListener() {
             // 识别出中间结果.服务端识别出一个字或词时会返回此消息.仅当setEnableIntermediateResult(true)时,才会有此类消息返回
@@ -144,9 +128,9 @@ public class SpeechTranscriberWithMicrophoneDemo {
                     "  句子编号: " + response.getTransSentenceIndex() +
                     "  【" + response.getTransSentenceText() + "】"
                 );
-                if(response.getTransSentenceText().length() != 0){
-                    answerString = response.getTransSentenceText();
-                }
+                // 接收到识别结果后保存到类变量responseString中由算法继续处理，此处不筛查
+                responseString = response.getTransSentenceText();
+                responseIndex  = response.getTransSentenceIndex();
             }
             // 识别完毕
             @Override
@@ -160,5 +144,125 @@ public class SpeechTranscriberWithMicrophoneDemo {
 
     public void shutdown() {
         client.shutdown();
+    }
+
+    // 旧匹配模式
+    // 无需判断是否有新识别出的文字因为在调用此函数的时候就确定了是有新的文字了
+    // 旧模式移植(OK 精确度卡 0.98)
+    // 还差: ???
+    private boolean Rule1(){
+        boolean rule1Worked = false;
+        Vector<String> str1,str2;           // 第一法两个Vector字符串
+        str1 = participle(answerString);
+        double same = 0 ;                   //根据分词返回相似度
+        try{
+            //循环匹配此页每段文本
+            for(int i=0; i<strList.get(page-1).size(); i++) {
+                str2 = participle( strList.get(page-1).get(i).textStr);
+                same = IKAnalyzerUtil.getSimilarity( str1 , str2 );
+                System.out.println( "相似度：" + same );
+                //相似度高，句子赋值为已匹配状态
+                if(same > 0.98){
+                    strList.get(page-1).get(i).bool = true;
+                }
+            }
+            //遍历此页，得到整页的匹配是否全部完成，step记录已经匹配了多少段文本
+            int step = 0;
+            for(PPTString str : strList.get(page-1)){
+                if(str.bool){
+                    step++;
+                }
+            }
+            // 每一段文本都匹配完  并且  页数不是最后一页
+            if     (step == strList.get(page-1).size() && page <  strList.size()){
+                PC.PPTControl(1);
+                page++;
+            }
+            // 每一段文本都匹配完  并且  页数是最后一页
+            else if(step == strList.get(page-1).size() && page == strList.size()){
+                PC.PPTControl(1);
+                brek = true;
+            }
+            rule1Worked = true;
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        return rule1Worked;
+    }
+
+    // 关键词匹配模式
+    // 还差: 细化具体实现过程
+    private void Rule2(){
+
+    }
+
+    // 末端创新型匹配
+    // 还差: 末端定位需要获取文本框位置
+    private void Rule3(){
+
+    }
+
+    // NLP语意提取匹配
+    // 还差: 核心知识
+    private void Rule4(){
+
+    }
+
+    // 词库关键词提醒匹配
+    // 还差：再来点关键词，添加了一部分了
+    private boolean Rule5(){
+        boolean rule5Worked = false;
+        if(responseString.equals("下一页。") || responseString.equals("下页") || responseString.equals("翻篇儿")  || responseString.equals("翻页") || responseString.equals("翻页儿。") ){
+            PC.PPTControl(1);
+            System.out.println("------Rule5翻页------");
+            //此页设为全部已读，翻页
+            for(PPTString temp_str : strList.get(page-1)){
+                temp_str.bool = true;
+            }
+            page++;
+            if(page > strList.size()){
+                brek = true;
+            }
+            rule5Worked = true;
+        }
+        else if( (responseString.equals("上一页") && page > 1) || (responseString.equals("上页") && page > 1) ){
+            PC.PPTControl(2);
+            System.out.println("------Rule5上一页------");
+            ////此页设为全部已读，退回上页，上页设为全部已读
+            for(PPTString temp_str : strList.get(page-1)){
+                temp_str.bool = false;
+            }
+            page--;
+            for(PPTString temp_str : strList.get(page-1)){
+                temp_str.bool = false;
+            }
+            rule5Worked = true;
+        }
+        return rule5Worked;
+    }
+
+    // 长度分类定制匹配方案
+    // responseString文本筛查 PS文本筛查
+    // 文本长度定制方案暂时不做，比较难弄
+    // 识别结果筛查（OK）原文文本数字标号文本01 02这种（OK）
+    // 还差：？？？
+    private boolean Rule6(){
+        boolean rule6Worked = false;
+        if(responseString.length() == 0){
+            // 空字符识别结果，拒绝赋值给answerString
+        }else if(responseString.length() == 1){
+            // 单字符识别结果，匹配作用极小，拒绝赋值给answerString
+        }else{
+            // 识别结果经过筛查可以认为是有效的识别结果
+            answerString = responseString;
+            rule6Worked = true;
+        }
+        return rule6Worked;
+    }
+
+    // 其他方案集成区
+    // 还差: 可行的方案
+    private void Rule7(){
+
     }
 }
