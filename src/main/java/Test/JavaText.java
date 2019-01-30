@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class JavaText {
     public static void main(String[] args) {
         //first step is getText.
-        String FilePath = "C:\\Users\\14419\\Desktop\\ppt.pptx";
+        String FilePath = "C:\\Users\\14419\\Desktop\\ppt.ppt";
         PPTTextSave PS = new PPTgetText().getPPTandPPTX(FilePath);
         PS.Rule6extra();
         //测试输出
