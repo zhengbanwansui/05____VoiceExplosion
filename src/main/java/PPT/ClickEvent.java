@@ -15,7 +15,7 @@ public class ClickEvent {
                 unlimitedBladeWorld.keyPress(KeyEvent.VK_LEFT);
             }
         }catch(Exception e){
-
+            System.out.println(e);
         }
     }
 

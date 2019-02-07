@@ -16,6 +16,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.TargetDataLine;
 import java.awt.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -26,7 +27,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
 
     private String appKey;
     private NlsClient client;
-    private ArrayList<ArrayList<PPTString>> strList;    // PPT全部文字集合
+    private PPTTextSave PS;
     private String responseString = "NULL";             // 识别结果
     private int responseIndex = 0;
     private int oldIndex = 0;
@@ -36,7 +37,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
     private ClickEvent PC = new ClickEvent();   // 定义PPT控制类
 
     //语音识别调用部分代码
-    public void process(PPTTextSave PS) {
+    public void process() {
         SpeechTranscriber transcriber = null;
         try {
             // Step1 创建实例,建立连接
@@ -63,8 +64,6 @@ public class SpeechTranscriberWithMicrophoneDemo {
             int nByte = 0;
             final int bufSize = 6400;
             byte[] buffer = new byte[bufSize];
-            // 幻灯片文字集合
-            strList = PS.getArrayListArrayListPPTString();
             System.out.println("-------------------------准备完毕，开始识别过程----------------------------------------");
             while ((nByte = targetDataLine.read(buffer, 0, bufSize)) > 0) {
 
@@ -100,7 +99,8 @@ public class SpeechTranscriberWithMicrophoneDemo {
         }
     }
 
-    public SpeechTranscriberWithMicrophoneDemo(String appKey, String token) {
+    public SpeechTranscriberWithMicrophoneDemo(String appKey, String token, PPTTextSave temp_PPTTextSave) {
+        PS = temp_PPTTextSave;
         this.appKey = appKey;
         // Step0 创建NlsClient实例,应用全局创建一个即可,默认服务地址为阿里云线上服务地址
         client = new NlsClient(token);
@@ -146,11 +146,13 @@ public class SpeechTranscriberWithMicrophoneDemo {
         client.shutdown();
     }
 
-    // 旧匹配模式
-    // 无需判断是否有新识别出的文字因为在调用此函数的时候就确定了是有新的文字了
-    // 旧模式移植(OK 精确度卡 0.98)
-    // 还差: ???
-    private boolean Rule1(){
+    // FINISH    旧匹配模式
+    private boolean Rule1()//----------------------------------------------Rule1------------------------------
+    {
+        ArrayList<ArrayList<PPTString>> strList;
+        strList = PS.getArrayListArrayListPPTString();
+        // 无需判断是否有新识别出的文字因为在调用此函数的时候就确定了是有新的文字了
+        // 精确度卡 0.98
         boolean rule1Worked = false;
         Vector<String> str1,str2;           // 第一法两个Vector字符串
         str1 = participle(answerString);
@@ -190,27 +192,31 @@ public class SpeechTranscriberWithMicrophoneDemo {
         return rule1Worked;
     }
 
-    // 关键词匹配模式
-    // 还差: 细化具体实现过程
-    private void Rule2(){
+    // UN FINISH 关键词匹配模式
+    private void Rule2()//-------------------------------------------------Rule2------------------------------
+    {
 
     }
 
-    // 末端创新型匹配
-    // 还差: 末端定位需要获取文本框位置
-    private void Rule3(){
+    // UN FINISH 末端匹配
+    private void Rule3()//-------------------------------------------------Rule3------------------------------
+    {
+        // value = 999的文本框是末端
 
     }
 
-    // NLP语意提取匹配
-    // 还差: 核心知识
-    private void Rule4(){
+    // UN FINISH NLP语意提取匹配
+    private void Rule4()//-------------------------------------------------Rule4------------------------------
+    {
 
     }
 
-    // 词库关键词提醒匹配
-    // 还差：再来点关键词，添加了一部分了
-    private boolean Rule5(){
+    // FINISH    语音唤醒匹配
+    private boolean Rule5()//----------------------------------------------Rule5------------------------------
+    {
+        // 再来点关键词
+        ArrayList<ArrayList<PPTString>> strList;
+        strList = PS.getArrayListArrayListPPTString();
         boolean rule5Worked = false;
         if(responseString.equals("下一页。") || responseString.equals("下页") || responseString.equals("翻篇儿")  || responseString.equals("翻页") || responseString.equals("翻页儿。") ){
             PC.PPTControl(1);
@@ -241,12 +247,10 @@ public class SpeechTranscriberWithMicrophoneDemo {
         return rule5Worked;
     }
 
-    // 长度分类定制匹配方案
-    // responseString文本筛查 PS文本筛查
-    // 文本长度定制方案暂时不做，比较难弄
-    // 识别结果筛查（OK）原文文本数字标号文本01 02这种（OK）
-    // 还差：？？？
-    private boolean Rule6(){
+    // FINISH    识别文本筛查, 幻灯片文本筛查
+    private boolean Rule6()//----------------------------------------------Rule6------------------------------
+    {
+        // 文本长度定制方案暂时不做，比较难弄
         boolean rule6Worked = false;
         if(responseString.length() == 0){
             // 空字符识别结果，拒绝赋值给answerString
@@ -260,9 +264,9 @@ public class SpeechTranscriberWithMicrophoneDemo {
         return rule6Worked;
     }
 
-    // 其他方案集成区
-    // 还差: 可行的方案
-    private void Rule7(){
+    // UN FINISH 其他方案
+    private void Rule7()//-------------------------------------------------Rule7------------------------------
+    {
 
     }
 }

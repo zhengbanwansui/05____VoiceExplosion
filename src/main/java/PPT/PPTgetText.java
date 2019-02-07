@@ -16,7 +16,8 @@ import org.openxmlformats.schemas.presentationml.x2006.main.CTShape;
 import org.openxmlformats.schemas.presentationml.x2006.main.CTSlide;
 
 public class PPTgetText {
-    //PPT getText
+
+    // PPT getText
     public PPTTextSave GPPT(String filePath){
         System.out.println("采用了PPTgetText方法");
         //创建PPTTextSave对象
@@ -55,23 +56,30 @@ public class PPTgetText {
             // 遍历每一张幻灯片
             for (HSLFSlide slide : ppt.getSlides()) {
                 PS.addPage();
-                System.out.println("NumOfPage : " + ++page_i);
+                page_i++;
                 for (HSLFShape sh : slide.getShapes()) {
+                    // 后添加的文本框能识别
                     if (sh instanceof HSLFTextBox) {
                         String temp_str = ((HSLFTextBox) sh).getText();
                         java.awt.geom.Rectangle2D anchor = sh.getAnchor();
-                        //
-                        //System.out.println("Text:" + temp_str + " X:" + anchor.getX() + " Y:" + anchor.getY());
+                        System.out.println("work with TextBox x 1");
                         if(temp_str.length() != 0) {
                             PS.add(page_i, temp_str, (int) anchor.getX(), (int) anchor.getY(), (int) anchor.getWidth(), (int) anchor.getHeight());
                         }
-                        //
                     } else if (sh instanceof Line) {
                         // work with Line
+                        System.out.println("work with Line x 1");
                     } else if (sh instanceof HSLFAutoShape) {
                         // work with AutoShape
+                        System.out.println("work with AutoShape x 1");
+                        String temp_str = ((HSLFAutoShape) sh).getText();
+                        java.awt.geom.Rectangle2D anchor = sh.getAnchor();
+                        if(temp_str.length() != 0) {
+                            PS.add(page_i, temp_str, (int) anchor.getX(), (int) anchor.getY(), (int) anchor.getWidth(), (int) anchor.getHeight());
+                        }
                     } else if (sh instanceof HSLFPictureShape) {
                         // work with Picture
+                        System.out.println("work with Picture x 1");
                     }
                 }
             }
@@ -81,7 +89,7 @@ public class PPTgetText {
         return PS;
     }
 
-    //PPTX getText
+    // PPTX getText
     public PPTTextSave GPPTX(String filePath){
         System.out.println("采用了PPTXgetText方法");
         //创建PPTTextSave对象
@@ -136,7 +144,7 @@ public class PPTgetText {
             // 遍历每一张幻灯片
             for (XSLFSlide slide : ppt.getSlides()) {
                 PS.addPage();
-                System.out.println("NumOfPage : " + ++page_i);
+                page_i++;
                 for (XSLFShape sh : slide.getShapes()) {
                     if (sh instanceof XSLFTextShape) {
                         java.awt.geom.Rectangle2D anchor = ((PlaceableShape)sh).getAnchor();
@@ -167,4 +175,5 @@ public class PPTgetText {
         }
         return PS;
     }
+
 }
