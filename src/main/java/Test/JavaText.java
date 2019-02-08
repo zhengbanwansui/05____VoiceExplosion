@@ -22,10 +22,10 @@ public class JavaText {
         PS.removeNoUsingText();
         // PPT文字处理，末端位置的排序工作，末端文本的value赋值为999
         PS.textSortByLast();
-        // PPT文字处理, 末端文字集合, 处理完保存到PS的lastSentence中
-        PS.cutLastSentence();
         // PPT文字处理, 切词标注词性
         PS.cutText();
+        // PPT文字处理, 末端词语集合, 处理完保存到PS的last中
+        PS.saveLast();
 
 
         System.out.println("-----------------------------------原文测试输出-----------------------------------");
@@ -38,9 +38,7 @@ public class JavaText {
             }
         }
         System.out.println("-----------------------------------末端测试输出-----------------------------------");
-        for(String str : PS.lastSentence){
-            System.out.println(str);
-        }
+        System.out.println(PS.last);
         System.out.println("-----------------------------------测试输出完毕-----------------------------------");
 
 

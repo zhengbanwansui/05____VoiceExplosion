@@ -202,6 +202,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
     private void Rule3()//-------------------------------------------------Rule3------------------------------
     {
         // value = 999的文本框是末端
+        // 要定义一个可以随时调用的变量来存储每页的末端的几个词语
 
     }
 

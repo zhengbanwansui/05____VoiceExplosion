@@ -8,7 +8,7 @@ public class PPTTextSave {
     // 每页文本的List,这是一个双层的list，类似二元数组，基础类型是PPTString类型
     // 每个PPTString对象，代表一个文本框的全部信息
     private ArrayList<ArrayList<PPTString>> PPTStr;
-    public ArrayList<String> lastSentence = new ArrayList<String>();
+    public ArrayList<ArrayList<String>> last = new ArrayList<>();
 
     // 构造函数
     public PPTTextSave(){
@@ -60,7 +60,7 @@ public class PPTTextSave {
         System.out.println("输出某一页全部文本的全部信息");
     }
 
-    // 原文处理，去杂项文本
+    // PPT文字处理，去杂项文本
     public void removeNoUsingText(){
         // 循环检测已获取到的文字是不是有问题，把不方便匹配的文字条目都删掉
         for(int i=0; i<PPTStr.size(); i++){
@@ -82,7 +82,7 @@ public class PPTTextSave {
         }
     }
 
-    // 原文处理，末端位置的排序工作，末端文本的value赋值为999，意思是最后面的号
+    // PPT文字处理，末端位置的排序工作，末端文本的value赋值为999，意思是最后面的号
     public void textSortByLast(){
         // 第几个文本
         int ans_j;
@@ -108,15 +108,34 @@ public class PPTTextSave {
 
     }
 
-    // 原文处理，末端位置句子截取, 处理完保存到lastSentence中
-    public void cutLastSentence(){
+    // PPT文字处理, 末端词语集合, 处理完保存到PS的last (ArrayList<ArrayList<String>> last)
+    public void saveLast(){
 
         for(int i=0; i<PPTStr.size(); i++){
 
             for(int j=0; j<PPTStr.get(i).size(); j++){
 
                 if(PPTStr.get(i).get(j).value == 999){
-                    lastSentence.add(PPTStr.get(i).get(j).textStr);
+                    // 如果这个文本框是最后一个文本框则存储其中的每个末端词语
+                    PPTString box = PPTStr.get(i).get(j);
+                    last.add(new ArrayList<String>());
+                    // 接下来遍历box中的词语
+                    int size = box.cutedStr.size();
+                    // 取一个
+                    if(size == 1){
+                        last.get(i).add( box.cutedStr.get(size-1) );
+                    }
+                    // 取两个
+                    else if(size == 2){
+                        last.get(i).add( box.cutedStr.get(size-2) );
+                        last.get(i).add( box.cutedStr.get(size-1) );
+                    }
+                    // 取三个
+                    else if(size > 2){
+                        last.get(i).add( box.cutedStr.get(size-3) );
+                        last.get(i).add( box.cutedStr.get(size-2) );
+                        last.get(i).add( box.cutedStr.get(size-1) );
+                    }
                 }
             }
         }

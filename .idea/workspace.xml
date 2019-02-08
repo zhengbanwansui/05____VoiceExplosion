@@ -7,28 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f1b2de11-10ed-4a24-90bb-99f87a40ff1f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Test/NatureDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CheckSame/RegularExpression.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PPT/ClickEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PPT/ClickEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PPT/PPTString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PPT/PPTString.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/PPT/PPTTextSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PPT/PPTTextSave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PPT/PPTgetText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PPT/PPTgetText.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Test/JavaText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Test/JavaText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Test/NatureDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Test/NatureDemo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CheckSame/RegularExpression.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/PPT/ClickEvent.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/PPT/PPTString.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/PPT/PPTTextSave.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/PPT/PPTgetText.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Test/JavaText.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/alibaba/nls/client/example/CreateTokenDemo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,11 +26,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Test/JavaText.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+            <state relative-caret-position="413">
+              <caret line="40" column="36" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/PPT/PPTTextSave.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="494">
+              <caret line="140" column="9" lean-forward="true" selection-start-line="140" selection-start-column="9" selection-end-line="140" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#add#1;class#PPTTextSave#0" />
+                <element signature="method#get#0;class#PPTTextSave#0" />
+                <element signature="method#show#0;class#PPTTextSave#0" />
+                <element signature="method#textSortByLast#0;class#PPTTextSave#0" />
+                <element signature="method#cutText#0;class#PPTTextSave#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -85,7 +89,6 @@
         <option value="$PROJECT_DIR$/src/main/java/JavaText.java" />
         <option value="$PROJECT_DIR$/src/main/java/Test.java" />
         <option value="$PROJECT_DIR$/src/main/java/PPT/PPTgetText.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.java" />
         <option value="$PROJECT_DIR$/src/main/java/ansj/domain/Result.java" />
         <option value="$PROJECT_DIR$/src/main/java/Test/NLPtest.java" />
         <option value="$PROJECT_DIR$/src/main/java/ansj/app/keyword/KeyWordComputer.java" />
@@ -93,12 +96,13 @@
         <option value="$PROJECT_DIR$/src/main/java/org/ansj/domain/Result.java" />
         <option value="$PROJECT_DIR$/src/main/java/domain/Result.java" />
         <option value="$PROJECT_DIR$/../ansj_seg/src/main/java/org/ansj/recognition/impl/BookRecognition.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Test/NatureDemo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/PPT/PPTTextSave.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/PPT/ClickEvent.java" />
         <option value="$PROJECT_DIR$/src/main/java/PPT/PPTString.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Test/NatureDemo.java" />
         <option value="$PROJECT_DIR$/src/main/java/Test/JavaText.java" />
+        <option value="$PROJECT_DIR$/src/main/java/PPT/PPTTextSave.java" />
       </list>
     </option>
   </component>
@@ -169,6 +173,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="example" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="05____voice__Explosion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="05____voice__Explosion" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="PPT" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -183,13 +195,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SearchEverywhereHistoryKey" value="maven&#9;FILE&#9;jar://C:/Windows (E)/IntelliJ IDEA Community Edition 2018.2.5/plugins/maven/lib/maven.jar!/schemas/maven-4.0.0.xsd&#10;maven &#9;ACTION&#9;ActivateMavenProjectsToolWindow&#10;maven p&#9;ACTION&#9;ActivateMavenProjectsToolWindow&#10;maven P&#9;ACTION&#9;ActivateMavenProjectsToolWindow" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549532476201" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549601613489" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Git/bin/git.exe" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -337,8 +349,8 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.55314535" visible="true" weight="0.22068231" />
-      <window_info id="Maven" order="1" sideWeight="0.44685465" side_tool="true" visible="true" weight="0.22068231" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.54989153" visible="true" weight="0.22068231" />
+      <window_info id="Maven" order="1" sideWeight="0.45010847" side_tool="true" visible="true" weight="0.22068231" />
       <window_info id="Structure" order="2" sideWeight="0.5010846" side_tool="true" weight="0.26599148" />
       <window_info id="Image Layers" order="3" />
       <window_info id="Designer" order="4" />
@@ -347,7 +359,7 @@
       <window_info id="Favorites" order="7" sideWeight="0.5010846" side_tool="true" weight="0.26599148" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3275488" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.71800435" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.8253796" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -366,6 +378,36 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Maven Projects" order="8" weight="0.32995737" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.55097616" visible="true" weight="0.22068231" />
+      <window_info id="Maven" order="1" sideWeight="0.44902387" side_tool="true" visible="true" weight="0.22068231" />
+      <window_info id="Structure" order="2" sideWeight="0.5010846" side_tool="true" weight="0.26599148" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Designer" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info id="Favorites" order="7" sideWeight="0.5010846" side_tool="true" weight="0.26599148" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3275488" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.8253796" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32969216" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" weight="0.32969216" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3286991" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.22776572" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24945295" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" x="0" y="0" width="434" height="856" id="Documentation" order="6" side_tool="true" weight="0.32995737" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" weight="0.32995737" />
+    </layout-to-restore>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -459,38 +501,10 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/org/ansj/recognition/arrimpl/PersonRecognition.java" />
     <entry file="file://$PROJECT_DIR$/../ansj_seg/src/main/java/org/ansj/recognition/impl/BookRecognition.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/domain/Result.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/NatureDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/readme.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/PPT/PPTTextSave.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1917">
-          <caret line="125" column="26" lean-forward="true" selection-start-line="125" selection-start-column="26" selection-end-line="125" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#328#336#0" expanded="true" />
-            <element signature="method#add#1;class#PPTTextSave#0" />
-            <element signature="method#get#0;class#PPTTextSave#0" />
-            <element signature="method#show#0;class#PPTTextSave#0" />
-            <element signature="method#textSortByLast#0;class#PPTTextSave#0" />
-            <element signature="method#cutLastSentence#0;class#PPTTextSave#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.txt" />
     <entry file="file://$PROJECT_DIR$/src/main/java/PPT/PPTgetText.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2943">
@@ -512,25 +526,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-829">
-          <caret line="18" column="31" selection-start-line="18" selection-start-column="31" selection-end-line="18" selection-end-column="31" />
-          <folding>
-            <element signature="method#process#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-            <element signature="method#SpeechTranscriberWithMicrophoneDemo#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-            <element signature="method#getTranscriberListener#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-            <element signature="method#Rule1#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-            <element signature="method#Rule2#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-            <element signature="method#Rule3#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-            <element signature="method#Rule4#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-            <element signature="method#Rule5#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-            <element signature="method#Rule6#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-            <element signature="method#Rule7#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/PPT/PPTString.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -541,20 +536,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Test/JavaText.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="35" column="46" lean-forward="true" selection-start-line="35" selection-start-column="46" selection-end-line="35" selection-end-column="46" />
+        <state relative-caret-position="818">
+          <caret line="135" lean-forward="true" selection-start-line="135" selection-end-line="135" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="926">
+          <caret line="205" selection-start-line="205" selection-end-line="205" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#process#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
+            <element signature="method#SpeechTranscriberWithMicrophoneDemo#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
+            <element signature="method#getTranscriberListener#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
+            <element signature="method#Rule1#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
+            <element signature="method#Rule2#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
+            <element signature="method#Rule4#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
+            <element signature="method#Rule5#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
+            <element signature="method#Rule6#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
+            <element signature="method#Rule7#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/NatureDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="21" column="106" lean-forward="true" selection-start-line="21" selection-start-column="106" selection-end-line="21" selection-end-column="106" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Test/JavaText.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+        <state relative-caret-position="413">
+          <caret line="40" column="36" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/PPT/PPTTextSave.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="140" column="9" lean-forward="true" selection-start-line="140" selection-start-column="9" selection-end-line="140" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#add#1;class#PPTTextSave#0" />
+            <element signature="method#get#0;class#PPTTextSave#0" />
+            <element signature="method#show#0;class#PPTTextSave#0" />
+            <element signature="method#textSortByLast#0;class#PPTTextSave#0" />
+            <element signature="method#cutText#0;class#PPTTextSave#0" />
+          </folding>
         </state>
       </provider>
     </entry>
