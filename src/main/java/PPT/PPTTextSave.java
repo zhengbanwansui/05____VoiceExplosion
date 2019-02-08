@@ -73,11 +73,21 @@ public class PPTTextSave {
                 x.textStr = x.textStr.replaceAll("\\s*", "");
                 x.textStr = x.textStr.replaceAll("[a-zA-Z]","");
                 x.textStr = x.textStr.replaceAll("[0-9]","");
-                x.textStr = x.textStr.replaceAll("\\pS*$|\\pP*$","");
+                //x.textStr = x.textStr.replaceAll("\\pS*$|\\pP*$","");
+                x.textStr = x.textStr.replaceAll("\\pS|\\pP","");
                 if(x.textStr.length() == 0){
                     it.remove();
                 }
                 // 去掉空文本
+            }
+        }
+    }
+
+    // PPT文字处理, 分词标注词性
+    public void cutText(){
+        for(ArrayList<PPTString> AP : PPTStr){
+            for(PPTString str : AP){
+                str.cutStrAndArr();
             }
         }
     }
@@ -137,15 +147,6 @@ public class PPTTextSave {
                         last.get(i).add( box.cutedStr.get(size-1) );
                     }
                 }
-            }
-        }
-    }
-
-    // PPT文字处理, 分词标注词性
-    public void cutText(){
-        for(ArrayList<PPTString> AP : PPTStr){
-            for(PPTString str : AP){
-                str.cutStrAndArr();
             }
         }
     }

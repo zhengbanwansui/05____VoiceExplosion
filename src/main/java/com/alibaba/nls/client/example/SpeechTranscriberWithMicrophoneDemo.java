@@ -25,6 +25,7 @@ import static CheckSame.CheckTheSame.participle;
 //使用麦克风音频流的实时音频流识别
 public class SpeechTranscriberWithMicrophoneDemo {
 
+    private boolean exit = false;
     private String appKey;
     private NlsClient client;
     private PPTTextSave PS;
@@ -67,23 +68,40 @@ public class SpeechTranscriberWithMicrophoneDemo {
             System.out.println("-------------------------准备完毕，开始识别过程----------------------------------------");
             while ((nByte = targetDataLine.read(buffer, 0, bufSize)) > 0) {
 
-                if(responseIndex > oldIndex){
+                if(responseIndex > oldIndex) {
                     oldIndex++;
                     // 炽天覆七重圆环饱和匹配算法启动~~~
-                    boolean r1 = false,r2 = false,r3 = false,r4 = false,r5 = false,r6 = false,r7 = false;
-                    // 提前检测直接指令唤醒算法
+                    boolean r1 = false, r2 = false, r3 = false, r4 = false, r5 = false, r6 = false, r7 = false;
+                    // 指令唤醒算法, 最大优先级
                     r5 = Rule5();
-                    if(!r5){
-                        // 筛选出可用的answerString
+                    // 播放到最后黑屏的时候
+                    if(page > PS.getArrayListArrayListPPTString().size()){
+                        brek = true;
+                    }else{
+                        brek = false;
+                    }
+                    // 未触发唤醒, 未播放完, 未遇到空页
+                    if(!r5 && !brek && PS.getArrayListArrayListPPTString().get(page-1).size() != 0){
+                        // 执行responseString简单过滤器
                         r6 = Rule6();
-                        // 如果结果存活到了answerString中，旧模式启动
+                        // 如果responseString存活到了answerString中，PPT文本与识别文本进一步匹配模式启动
                         if(r6){
+                            // 末端匹配
+                            r3 = Rule3();
+                            if(brek){
+                                continue;
+                            }
+                            // 旧模式匹配
                             r1 = Rule1();
+                            if(brek){
+                                continue;
+                            }
                         }
                     }
                 }
-                if(brek)
+                if(exit){
                     break;
+                }
                 //发送麦克风声音数据buffer
                 transcriber.send(buffer);
             }
@@ -146,17 +164,32 @@ public class SpeechTranscriberWithMicrophoneDemo {
         client.shutdown();
     }
 
+    // 翻页函数 会对PS内文本进行初始化, 推进页面播放进程, 将本页设为已读, 进入下一页内容
+    private void nextPage(){
+        // 末页将不会继续翻页了, 防止bug
+        if(page <= PS.getArrayListArrayListPPTString().size()){
+            ArrayList<PPTString> AP = PS.getArrayListArrayListPPTString().get(page-1);
+            for(PPTString str : AP){
+                str.bool = true;
+            }
+            PC.PPTControl(1);
+            page++;
+        }
+        if(page > PS.getArrayListArrayListPPTString().size()) {
+            brek = true;
+        }
+    }
+
     // FINISH    旧匹配模式
     private boolean Rule1()//----------------------------------------------Rule1------------------------------
     {
-        ArrayList<ArrayList<PPTString>> strList;
-        strList = PS.getArrayListArrayListPPTString();
-        // 无需判断是否有新识别出的文字因为在调用此函数的时候就确定了是有新的文字了
+        // 无需判断是否有新识别出的文字因为在调用此函数的时候就确定了是有新的文字了!!!
         // 精确度卡 0.98
         boolean rule1Worked = false;
-        Vector<String> str1,str2;           // 第一法两个Vector字符串
-        str1 = participle(answerString);
-        double same = 0 ;                   //根据分词返回相似度
+        ArrayList<ArrayList<PPTString>> strList = PS.getArrayListArrayListPPTString();
+        Vector<String> str1 = participle(answerString);
+        Vector<String> str2;
+        double same = 0;
         try{
             //循环匹配此页每段文本
             for(int i=0; i<strList.get(page-1).size(); i++) {
@@ -175,15 +208,8 @@ public class SpeechTranscriberWithMicrophoneDemo {
                     step++;
                 }
             }
-            // 每一段文本都匹配完  并且  页数不是最后一页
-            if     (step == strList.get(page-1).size() && page <  strList.size()){
-                PC.PPTControl(1);
-                page++;
-            }
-            // 每一段文本都匹配完  并且  页数是最后一页
-            else if(step == strList.get(page-1).size() && page == strList.size()){
-                PC.PPTControl(1);
-                brek = true;
+            if(step == strList.get(page-1).size()){
+                nextPage();
             }
             rule1Worked = true;
         }catch(Exception e){
@@ -199,11 +225,24 @@ public class SpeechTranscriberWithMicrophoneDemo {
     }
 
     // UN FINISH 末端匹配
-    private void Rule3()//-------------------------------------------------Rule3------------------------------
+    private boolean Rule3()//-------------------------------------------------Rule3------------------------------
     {
-        // value = 999的文本框是末端
-        // 要定义一个可以随时调用的变量来存储每页的末端的几个词语
-
+        // PS.last是每页匹配用的词语库
+        // 处理answerString
+        String str = answerString;
+        // 看str里面含不含PS.last里的词语
+        int size = PS.last.get(page-1).size();
+        boolean temp_bool = true;
+        for(int i=0; i<size; i++){
+            // 有一个关键字没有就赋值false
+            if( !str.contains(PS.last.get(page-1).get(i)) ){
+                temp_bool = false;
+            }
+        }
+        if(temp_bool){
+            nextPage();
+        }
+        return true;
     }
 
     // UN FINISH NLP语意提取匹配
@@ -219,25 +258,20 @@ public class SpeechTranscriberWithMicrophoneDemo {
         ArrayList<ArrayList<PPTString>> strList;
         strList = PS.getArrayListArrayListPPTString();
         boolean rule5Worked = false;
-        if(responseString.equals("下一页。") || responseString.equals("下页") || responseString.equals("翻篇儿")  || responseString.equals("翻页") || responseString.equals("翻页儿。") ){
-            PC.PPTControl(1);
-            System.out.println("------Rule5翻页------");
+        if(responseString.equals("下一页。") || responseString.equals("下页") || responseString.equals("翻篇儿")  || responseString.equals("翻篇")  || responseString.equals("翻页") || responseString.equals("翻页儿。") || responseString.equals("下雨") || responseString.equals("下一个") ){
+            System.out.println("------Rule5唤醒下一页------");
             //此页设为全部已读，翻页
-            for(PPTString temp_str : strList.get(page-1)){
-                temp_str.bool = true;
-            }
-            page++;
-            if(page > strList.size()){
-                brek = true;
-            }
+            nextPage();
             rule5Worked = true;
         }
-        else if( (responseString.equals("上一页") && page > 1) || (responseString.equals("上页") && page > 1) ){
+        else if( (responseString.equals("上一页") && page >= 2) || (responseString.equals("上页") && page > 1) ){
             PC.PPTControl(2);
-            System.out.println("------Rule5上一页------");
+            System.out.println("------Rule5唤醒上一页------");
             ////此页设为全部已读，退回上页，上页设为全部已读
-            for(PPTString temp_str : strList.get(page-1)){
-                temp_str.bool = false;
+            if(page <= PS.getArrayListArrayListPPTString().size()){
+                for(PPTString temp_str : strList.get(page-1)){
+                    temp_str.bool = false;
+                }
             }
             page--;
             for(PPTString temp_str : strList.get(page-1)){
@@ -245,10 +279,13 @@ public class SpeechTranscriberWithMicrophoneDemo {
             }
             rule5Worked = true;
         }
+        else if( responseString.equals("结束进程") ){
+            exit = true;
+        }
         return rule5Worked;
     }
 
-    // FINISH    识别文本筛查, 幻灯片文本筛查
+    // FINISH    responseString筛查, 很简单的过滤工作哦
     private boolean Rule6()//----------------------------------------------Rule6------------------------------
     {
         // 文本长度定制方案暂时不做，比较难弄
@@ -256,7 +293,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
         if(responseString.length() == 0){
             // 空字符识别结果，拒绝赋值给answerString
         }else if(responseString.length() == 1){
-            // 单字符识别结果，匹配作用极小，拒绝赋值给answerString
+            // 单字符识别结果，匹配作用小，拒绝赋值给answerString
         }else{
             // 识别结果经过筛查可以认为是有效的识别结果
             answerString = responseString;

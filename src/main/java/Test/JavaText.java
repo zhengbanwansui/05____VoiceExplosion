@@ -16,14 +16,14 @@ public class JavaText {
         // 不限制PPT文件大小
         ZipSecureFile.setMinInflateRatio(-1);
         // 获取PPT文字
-        String FilePath = "C:\\Users\\14419\\Desktop\\答辩PPT.ppt";
+        String FilePath = "C:\\答辩PPT.ppt";
         PPTTextSave PS = new PPTgetText().getPPTandPPTX(FilePath);
         // PPT文字处理，去杂项文本
         PS.removeNoUsingText();
-        // PPT文字处理，末端位置的排序工作，末端文本的value赋值为999
-        PS.textSortByLast();
         // PPT文字处理, 切词标注词性
         PS.cutText();
+        // PPT文字处理，末端位置的排序工作，末端文本的value赋值为999
+        PS.textSortByLast();
         // PPT文字处理, 末端词语集合, 处理完保存到PS的last中
         PS.saveLast();
 
