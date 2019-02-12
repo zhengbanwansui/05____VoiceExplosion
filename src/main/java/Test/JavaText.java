@@ -3,20 +3,34 @@ package Test;
 import PPT.PPTString;
 import PPT.PPTTextSave;
 import PPT.PPTgetText;
+import Windows.Win;
 import com.alibaba.nls.client.example.CreateTokenDemo;
 import com.alibaba.nls.client.example.SpeechTranscriberWithMicrophoneDemo;
 import org.apache.poi.openxml4j.util.ZipSecureFile;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class JavaText {
 
     public static void main(String[] args) {
+        // 创建可视化窗口Win
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Win win = new Win();
+        win.setVisible(true);
 
+        while(win.filePath.equals("NULL")){
+            // 延迟50ms, 防止资源占用过高
+            try { Thread.sleep(50); } catch (InterruptedException e) { e.printStackTrace(); }
+        }
+        String FilePath = win.filePath;
         // 不限制PPT文件大小
         ZipSecureFile.setMinInflateRatio(-1);
         // 获取PPT文字
-        String FilePath = "C:\\答辩PPT.ppt";
         PPTTextSave PS = new PPTgetText().getPPTandPPTX(FilePath);
         // PPT文字处理, 去杂项文本(中文三个字以上的保留)
         PS.removeNoUsingText();
