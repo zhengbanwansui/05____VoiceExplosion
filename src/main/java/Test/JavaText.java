@@ -18,9 +18,9 @@ public class JavaText {
         // 获取PPT文字
         String FilePath = "C:\\答辩PPT.ppt";
         PPTTextSave PS = new PPTgetText().getPPTandPPTX(FilePath);
-        // PPT文字处理，去杂项文本
+        // PPT文字处理, 去杂项文本(中文三个字以上的保留)
         PS.removeNoUsingText();
-        // PPT文字处理, 切词标注词性
+        // PPT文字处理, 切词标注词性, 去人名, 去特殊符号
         PS.cutText();
         // PPT文字处理，末端位置的排序工作，末端文本的value赋值为999
         PS.textSortByLast();
@@ -35,6 +35,15 @@ public class JavaText {
             System.out.println("【 第" + ++i + "页 】");
             for(PPTString temp_str : strList){
                 System.out.println("["+temp_str.textStr+"]");
+            }
+        }
+        System.out.println("-----------------------------------切词测试输出-----------------------------------");
+        i = 0;
+        for(ArrayList<PPTString> strList : PPTstr){
+            System.out.println("【 第" + ++i + "页 】");
+            for(PPTString temp_str : strList){
+                System.out.println("["+temp_str.cutedStr+"]");
+                System.out.println("["+temp_str.cutedArr+"]");
             }
         }
         System.out.println("-----------------------------------末端测试输出-----------------------------------");

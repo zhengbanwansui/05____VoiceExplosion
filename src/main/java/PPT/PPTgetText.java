@@ -17,33 +17,6 @@ import org.openxmlformats.schemas.presentationml.x2006.main.CTSlide;
 
 public class PPTgetText {
 
-    // PPT getText
-    public PPTTextSave GPPT(String filePath){
-        System.out.println("采用了PPTgetText方法");
-        //创建PPTTextSave对象
-        PPTTextSave PS = new PPTTextSave();
-        try{
-            //创建ppt对象
-            FileInputStream in = new FileInputStream(filePath);
-            HSLFSlideShow pptObject = new HSLFSlideShow(in);
-            //遍历幻灯片
-            int i = 0;
-            for (HSLFSlide slide : pptObject.getSlides()) {
-                i++;
-                PS.addPage();
-                //遍历一张幻灯片内的所有段落文字 slide.getTextParagraphs()
-                for(List<HSLFTextParagraph> ParaList : slide.getTextParagraphs()){
-                    PS.add(i,ParaList.get(0).toString());
-                }
-                PS.show(i);
-            }
-            in.close();
-        }catch(Exception e){
-            System.out.println("zjx异常：" + e);
-        }
-        return PS;
-    }
-
     //PPT testing ^_^
     public PPTTextSave GPPT(String filePath,int temp_no_use_int){
         System.out.println("采用了PPTgetText方法");
@@ -89,51 +62,6 @@ public class PPTgetText {
         return PS;
     }
 
-    // PPTX getText
-    public PPTTextSave GPPTX(String filePath){
-        System.out.println("采用了PPTXgetText方法");
-        //创建PPTTextSave对象
-        PPTTextSave PS = new PPTTextSave();
-        try{
-            FileInputStream is = new FileInputStream(filePath);
-            //创建pptXML对象
-            XMLSlideShow pptxObject = new XMLSlideShow(is);
-            //得到每个Slide幻灯片页
-            List<XSLFSlide> slides = pptxObject.getSlides();
-            //遍历每张幻灯片
-            int whichSlide = 0;
-            for(XSLFSlide slide : slides){
-                System.out.println("PageNum:"+  ++whichSlide);
-                PS.addPage();
-                CTSlide rawSlide = slide.getXmlObject();
-                CTGroupShape gs = rawSlide.getCSld().getSpTree();
-                CTShape[] shapes = gs.getSpArray();
-                //得到了shapes遍历shape
-                for(CTShape shape:shapes){
-                    CTTextBody tb = shape.getTxBody();
-                    if(null==tb){
-                        continue;
-                    }
-                    CTTextParagraph[] paras = tb.getPArray();
-                    for(CTTextParagraph textParagraph:paras){
-                        CTRegularTextRun[] textRuns = textParagraph.getRArray();
-                        StringBuffer sb = new StringBuffer();
-                        for(CTRegularTextRun textRun:textRuns){
-                            sb.append(textRun.getT());
-                        }
-                        if(sb.toString().length() != 0)
-                            PS.add(whichSlide,sb.toString());
-                        sb.delete(0,sb.length());
-                    }
-                }
-            }
-            is.close();
-        }catch(Exception e){
-            System.out.println("zjx异常：" + e);
-        }
-        return PS;
-    }
-
     //PPTX testing ^_^
     public PPTTextSave GPPTX(String filePath,int temp_no_use_int){
         PPTTextSave PS = new PPTTextSave();
@@ -175,5 +103,4 @@ public class PPTgetText {
         }
         return PS;
     }
-
 }

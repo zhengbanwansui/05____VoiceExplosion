@@ -70,12 +70,14 @@ public class PPTTextSave {
                 PPTString x = it.next();
                 // 去掉 空格、回车、英文
                 // 去掉句尾的标点
-                x.textStr = x.textStr.replaceAll("\\s*", "");
+                // 现在只剩下中文了... ...
+                x.textStr = x.textStr.replaceAll("[^\\u4e00-\\u9fa5]", "");
+                /*x.textStr = x.textStr.replaceAll("\\s*", "");
                 x.textStr = x.textStr.replaceAll("[a-zA-Z]","");
                 x.textStr = x.textStr.replaceAll("[0-9]","");
                 //x.textStr = x.textStr.replaceAll("\\pS*$|\\pP*$","");
-                x.textStr = x.textStr.replaceAll("\\pS|\\pP","");
-                if(x.textStr.length() == 0){
+                x.textStr = x.textStr.replaceAll("\\pS|\\pP","");*/
+                if(x.textStr.length() <= 2){
                     it.remove();
                 }
                 // 去掉空文本
@@ -90,6 +92,21 @@ public class PPTTextSave {
                 str.cutStrAndArr();
             }
         }
+        // 删除null词性的和nr人名词性的词
+        /*for(ArrayList<PPTString> AP : PPTStr){
+            for(PPTString str : AP){
+                Iterator<String> it = str.cutedArr.iterator();
+                Iterator<String> is = str.cutedStr.iterator();
+                while(it.hasNext()){
+                    String x = it.next();
+                    is.next();
+                    if( x.equals("nr") || x.equals("null") ){
+                        it.remove();
+                        is.remove();
+                    }
+                }
+            }
+        }*/
     }
 
     // PPT文字处理，末端位置的排序工作，末端文本的value赋值为999，意思是最后面的号
@@ -106,7 +123,8 @@ public class PPTTextSave {
             for(int j=0; j<PPTStr.get(i).size(); j++){
                 PPTString textBox = PPTStr.get(i).get(j);
                 // 找出最后一个文本框
-                long distance = (960-textBox.vert1) * (960-textBox.vert1) + (540-textBox.vert2) * (540-textBox.vert2);
+                // 960 x 540 是画布大小
+                long distance = (960-textBox.vert1) * (960-textBox.vert1) + (640-textBox.vert2) * (640-textBox.vert2);
                 if(distance < lowest){
                     ans_j = j;
                     lowest = distance;
