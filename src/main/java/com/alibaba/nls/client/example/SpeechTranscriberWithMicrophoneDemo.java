@@ -4,6 +4,7 @@ import CheckSame.IKAnalyzerUtil;
 import PPT.ClickEvent;
 import PPT.PPTString;
 import PPT.PPTTextSave;
+import Windows.Win;
 import com.alibaba.nls.client.protocol.InputFormatEnum;
 import com.alibaba.nls.client.protocol.NlsClient;
 import com.alibaba.nls.client.protocol.SampleRateEnum;
@@ -38,7 +39,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
     private ClickEvent PC = new ClickEvent();   // 定义PPT控制类
 
     //语音识别调用部分代码
-    public void process() {
+    public void process(Win win) {
         SpeechTranscriber transcriber = null;
         try {
             // Step1 创建实例,建立连接
@@ -66,6 +67,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
             final int bufSize = 6400;
             byte[] buffer = new byte[bufSize];
             System.out.println("-------------------------准备完毕，开始识别过程----------------------------------------");
+            win.Log("<<< 准备完毕，开始识别过程, 请播放幻灯片");
             while ((nByte = targetDataLine.read(buffer, 0, bufSize)) > 0) {
 
                 if(responseIndex > oldIndex) {

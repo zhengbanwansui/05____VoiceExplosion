@@ -16,7 +16,8 @@ public class Win extends JFrame{
 
     public String filePath = "NULL";
     private JPanel jp1;
-    private JLabel jl1,jl2,jl3,jl4;
+    private JLabel jl1,jl2,jl3;
+    private JTextArea ja1;
 
     public Win()
     {
@@ -27,10 +28,10 @@ public class Win extends JFrame{
             e.getStackTrace();
         }
         initInside();
-        setSize(400,300);
+        setSize(600,700);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocation(400,300);
+        setLocation(600,200);
         setTitle("基于语音识别的PPT控制系统");
         drag();
     }
@@ -39,18 +40,20 @@ public class Win extends JFrame{
         jp1 = new JPanel();
         jp1.setBackground(Color.CYAN);
         jl1 = new JLabel("将文件拖拽到下方框内即可");// 上
-        jl2 = new JLabel(" ");// 下
-        jl3 = new JLabel(" ");// 左
-        jl4 = new JLabel(" ");// 右
         jl1.setFont(new Font("宋体",1,24));
+        jl2 = new JLabel(" ");// 左
+        jl3 = new JLabel(" ");// 右
+        ja1 = new JTextArea(20,4);// 下
+        ja1.setLineWrap(true);
+        jl2.setSize(50,50);
         jl3.setSize(50,50);
-        jl4.setSize(50,50);
         setLayout(new BorderLayout(130,50));
         this.add(jl1,BorderLayout.NORTH);
         this.add(jp1,BorderLayout.CENTER);
-        this.add(jl2,BorderLayout.SOUTH);
-        this.add(jl3,BorderLayout.WEST);
-        this.add(jl4,BorderLayout.EAST);
+        this.add(jl2,BorderLayout.WEST);
+        this.add(jl3,BorderLayout.EAST);
+        this.add(new JScrollPane(ja1),BorderLayout.SOUTH);
+
     }
 
     private void drag(){
@@ -71,7 +74,7 @@ public class Win extends JFrame{
                             temp+=file.getAbsolutePath();
                             if(temp.endsWith(".ppt") || temp.endsWith(".pptx")){
                                 JOptionPane.showMessageDialog(null, "读取文件完成");
-                                jl2.setText("读取PPT : " + temp);
+                                ja1.setText(">>> 读取PPT : " + temp + " 中... ... \n请稍后 ... ...");
                                 filePath = temp;
                             }
                             dtde.dropComplete(true);
@@ -84,5 +87,9 @@ public class Win extends JFrame{
                 }catch(Exception e){e.printStackTrace();}
             }
         });
+    }
+
+    public void Log(String str){
+        ja1.setText(ja1.getText() + "\n" + str);
     }
 }

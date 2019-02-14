@@ -41,14 +41,17 @@ public class JavaText {
         // PPT文字处理, 末端词语集合, 处理完保存到PS的last中
         PS.saveLast();
 
-
+        win.Log(">>> PPT处理完成");
+        win.Log(">>> 测试PPT文字内容");
         System.out.println("-----------------------------------原文测试输出-----------------------------------");
         ArrayList<ArrayList<PPTString>> PPTstr = PS.getArrayListArrayListPPTString();
         int i = 0;
         for(ArrayList<PPTString> strList : PPTstr){
             System.out.println("【 第" + ++i + "页 】");
+            win.Log("【 第" + i + "页 】");
             for(PPTString temp_str : strList){
                 System.out.println("["+temp_str.textStr+"]");
+                win.Log("["+temp_str.textStr+"]");
             }
         }
         System.out.println("-----------------------------------切词测试输出-----------------------------------");
@@ -64,11 +67,11 @@ public class JavaText {
         System.out.println(PS.last);
         System.out.println("-----------------------------------测试输出完毕-----------------------------------");
 
-
+        win.Log(">>> 初始化语音识别系统中 ... ...");
         String appKey = "wpkf6dIwcNpFWhqh";
         String token  = CreateTokenDemo.getTokenFromCloud();
         SpeechTranscriberWithMicrophoneDemo saber = new SpeechTranscriberWithMicrophoneDemo(appKey, token, PS);
-        saber.process();
+        saber.process(win);
         saber.shutdown();
     }
 }
