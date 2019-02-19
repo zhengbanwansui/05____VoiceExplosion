@@ -21,7 +21,6 @@ public class JavaText {
             e.printStackTrace();
         }
         Win win = new Win();
-        win.setVisible(true);
 
         while(win.filePath.equals("NULL")){
             // 延迟50ms, 防止资源占用过高
