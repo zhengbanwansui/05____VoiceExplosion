@@ -97,7 +97,7 @@
         <!--资源文件引用-->
         <resources>
             <resource>
-                <directory>src/main/resource</directory>
+                <directory>src/main/resources</directory>
                 <includes>
                     <include>**/*.png</include>
                     <include>**/*.txt</include>

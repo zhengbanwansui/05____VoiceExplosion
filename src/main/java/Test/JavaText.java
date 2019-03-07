@@ -14,35 +14,36 @@ import java.util.ArrayList;
 public class JavaText {
 
     public static void main(String[] args) {
-        // 创建可视化窗口Win
+        System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼创建可视窗口▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
         } catch (Exception e) {
             e.printStackTrace();
         }
         Win win = new Win();
-
+        System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼等待传入文件▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         while(win.filePath.equals("NULL")){
             // 延迟50ms, 防止资源占用过高
             try { Thread.sleep(50); } catch (InterruptedException e) { e.printStackTrace(); }
         }
+        System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼获取PPT文字▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         String FilePath = win.filePath;
         // 不限制PPT文件大小
         ZipSecureFile.setMinInflateRatio(-1);
         // 获取PPT文字
         PPTTextSave PS = new PPTgetText().getPPTandPPTX(FilePath);
-        // PPT文字处理, 去杂项文本(中文三个字以上的保留)
+        System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼PPT文字处理▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
+        // PPT文字处理, 去杂项文本(大于等于两个字的保留)
         PS.removeNoUsingText();
-        // PPT文字处理, 切词标注词性, 去人名, 去特殊符号
+        // PPT文字处理, NLP 切词标注词性, 去人名, 去特殊符号 + 提取关键词
         PS.cutText();
         // PPT文字处理，末端位置的排序工作，末端文本的value赋值为999
         PS.textSortByLast();
         // PPT文字处理, 末端词语集合, 处理完保存到PS的last中
         PS.saveLast();
-
         win.Log(">>> PPT处理完成");
         win.Log(">>> 测试PPT文字内容");
-        System.out.println("-----------------------------------原文测试输出-----------------------------------");
+        System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼文字测试输出▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         ArrayList<ArrayList<PPTString>> PPTstr = PS.getArrayListArrayListPPTString();
         int i = 0;
         for(ArrayList<PPTString> strList : PPTstr){
@@ -53,7 +54,7 @@ public class JavaText {
                 win.Log("["+temp_str.textStr+"]");
             }
         }
-        System.out.println("-----------------------------------切词测试输出-----------------------------------");
+        System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼切词测试输出▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         i = 0;
         for(ArrayList<PPTString> strList : PPTstr){
             System.out.println("【 第" + ++i + "页 】");
@@ -62,9 +63,9 @@ public class JavaText {
                 System.out.println("["+temp_str.cutedArr+"]");
             }
         }
-        System.out.println("-----------------------------------末端测试输出-----------------------------------");
+        System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼末端测试输出▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         System.out.println(PS.last);
-        System.out.println("-----------------------------------测试输出完毕-----------------------------------");
+        System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼测试输出完毕▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
 
         win.Log(">>> 初始化语音识别系统中 ... ...");
         String appKey = "wpkf6dIwcNpFWhqh";

@@ -1,7 +1,9 @@
 package Windows;
 
 public class FilePath {
+
     String s1;
+
     public FilePath(){
         // 获取jar包目录 / class文件目录
         s1 = this.getClass().getProtectionDomain().getCodeSource().getLocation().getPath();

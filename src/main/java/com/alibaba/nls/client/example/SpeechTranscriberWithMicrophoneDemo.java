@@ -1,9 +1,7 @@
 package com.alibaba.nls.client.example;
 
 import CheckSame.IKAnalyzerUtil;
-import PPT.ClickEvent;
-import PPT.PPTString;
-import PPT.PPTTextSave;
+import PPT.*;
 import Windows.Win;
 import com.alibaba.nls.client.protocol.InputFormatEnum;
 import com.alibaba.nls.client.protocol.NlsClient;
@@ -66,7 +64,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
             int nByte = 0;
             final int bufSize = 6400;
             byte[] buffer = new byte[bufSize];
-            System.out.println("-------------------------准备完毕，开始识别过程----------------------------------------");
+            System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼准备完毕，开始识别过程▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
             win.Log("<<< 准备完毕，开始识别过程, 请播放幻灯片");
             while ((nByte = targetDataLine.read(buffer, 0, bufSize)) > 0) {
 
@@ -74,9 +72,9 @@ public class SpeechTranscriberWithMicrophoneDemo {
                     oldIndex++;
                     // 炽天覆七重圆环饱和匹配算法启动~~~
                     boolean r1 = false, r2 = false, r3 = false, r4 = false, r5 = false, r6 = false, r7 = false;
-                    // 指令唤醒算法, 最大优先级
+                    // 指令唤醒
                     r5 = Rule5();
-                    // 播放到最后黑屏的时候
+                    // 播放到最后黑屏的时候, 只启动指令唤醒
                     if(page > PS.getArrayListArrayListPPTString().size()){
                         brek = true;
                     }else{
@@ -90,12 +88,17 @@ public class SpeechTranscriberWithMicrophoneDemo {
                         if(r6){
                             // 末端匹配
                             r3 = Rule3();
-                            if(brek){
+                            if(r3){
                                 continue;
                             }
                             // 旧模式匹配
                             r1 = Rule1();
-                            if(brek){
+                            if(r1){
+                                continue;
+                            }
+                            // 关键词匹配
+                            r2 = Rule2();
+                            if(r2){
                                 continue;
                             }
                         }
@@ -187,13 +190,14 @@ public class SpeechTranscriberWithMicrophoneDemo {
     {
         // 无需判断是否有新识别出的文字因为在调用此函数的时候就确定了是有新的文字了!!!
         // 精确度卡 0.98
+        // Rule1作用:
         boolean rule1Worked = false;
         ArrayList<ArrayList<PPTString>> strList = PS.getArrayListArrayListPPTString();
         Vector<String> str1 = participle(answerString);
         Vector<String> str2;
         double same = 0;
         try{
-            //循环匹配此页每段文本
+            //循环匹配此页每段文本把匹配上的文本赋值为true
             for(int i=0; i<strList.get(page-1).size(); i++) {
                 str2 = participle( strList.get(page-1).get(i).textStr);
                 same = IKAnalyzerUtil.getSimilarity( str1 , str2 );
@@ -212,8 +216,8 @@ public class SpeechTranscriberWithMicrophoneDemo {
             }
             if(step == strList.get(page-1).size()){
                 nextPage();
+                rule1Worked = true;
             }
-            rule1Worked = true;
         }catch(Exception e){
             System.out.println(e);
         }
@@ -221,13 +225,51 @@ public class SpeechTranscriberWithMicrophoneDemo {
     }
 
     // UN FINISH 关键词匹配模式
-    private void Rule2()//-------------------------------------------------Rule2------------------------------
+    private boolean Rule2()//----------------------------------------------Rule2------------------------------
     {
+        // 针对每个文本框提取关键词
+        // 关键词提取后
+        boolean rule2Worked = false;
+        ArrayList<ArrayList<PPTString>> strList = PS.getArrayListArrayListPPTString();
+        // 查找answerString中有没有每个文本框的关键词
 
+        // 遍历所有PPTString
+        for(PPTString str : strList.get(page)){
+            // 遍历str的每一个keyword
+            for(KeyString ks : str.cutedKeyWords){
+                if (answerString.contains(ks.str)) {
+                    ks.bool = true;
+                }
+            }
+            // 文本框全部keyword提到, 算这个文本框读完了
+            int referok = 0;
+            for(KeyString ks : str.cutedKeyWords){
+                if (ks.bool = true) {
+                    referok++;
+                }
+            }
+            if (referok == str.cutedKeyWords.size()) {
+                str.bool = true;
+            }
+        }
+
+        //遍历此页，得到整页的匹配是否全部完成，step记录已经匹配了多少段文本
+        int step = 0;
+        for(PPTString str : strList.get(page-1)){
+            if(str.bool){
+                step++;
+            }
+        }
+        if(step == strList.get(page-1).size()){
+            nextPage();
+            rule2Worked = true;
+        }
+
+        return rule2Worked;
     }
 
-    // UN FINISH 末端匹配
-    private boolean Rule3()//-------------------------------------------------Rule3------------------------------
+    // FINISH    末端匹配
+    private boolean Rule3()//----------------------------------------------Rule3------------------------------
     {
         // PS.last是每页匹配用的词语库
         // 处理answerString
@@ -243,8 +285,10 @@ public class SpeechTranscriberWithMicrophoneDemo {
         }
         if(temp_bool){
             nextPage();
+            return true;
+        }else{
+            return false;
         }
-        return true;
     }
 
     // UN FINISH NLP语意提取匹配
@@ -290,15 +334,15 @@ public class SpeechTranscriberWithMicrophoneDemo {
     // FINISH    responseString筛查, 很简单的过滤工作哦
     private boolean Rule6()//----------------------------------------------Rule6------------------------------
     {
-        // 文本长度定制方案暂时不做，比较难弄
         boolean rule6Worked = false;
-        if(responseString.length() == 0){
+        // 语音识别字符串正则过滤
+        String temp_responseString = responseString.replaceAll("[^\\u4e00-\\u9fa5：；，。！？]","");
+        if(temp_responseString.length() < 2){
             // 空字符识别结果，拒绝赋值给answerString
-        }else if(responseString.length() == 1){
             // 单字符识别结果，匹配作用小，拒绝赋值给answerString
         }else{
             // 识别结果经过筛查可以认为是有效的识别结果
-            answerString = responseString;
+            answerString = temp_responseString;
             rule6Worked = true;
         }
         return rule6Worked;

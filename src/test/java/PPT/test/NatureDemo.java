@@ -1,4 +1,4 @@
-package Test;
+package PPT.test;
 
 import org.ansj.domain.Result;
 import org.ansj.recognition.impl.NatureRecognition;
@@ -8,7 +8,7 @@ import java.io.IOException;
 
 /**
  * 词性标注
- * 
+ *
  * @author ansj
  * 
  */

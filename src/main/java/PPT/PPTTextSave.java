@@ -62,25 +62,18 @@ public class PPTTextSave {
 
     // PPT文字处理，去杂项文本
     public void removeNoUsingText(){
-        // 循环检测已获取到的文字是不是有问题，把不方便匹配的文字条目都删掉
+        // 循环检测, 只留下中文和部分标点
         for(int i=0; i<PPTStr.size(); i++){
             PPTStr.get(i);
             Iterator<PPTString> it = PPTStr.get(i).iterator();
             while(it.hasNext()){
                 PPTString x = it.next();
-                // 去掉 空格、回车、英文
-                // 去掉句尾的标点
-                // 现在只剩下中文了... ...
-                x.textStr = x.textStr.replaceAll("[^\\u4e00-\\u9fa5]", "");
-                /*x.textStr = x.textStr.replaceAll("\\s*", "");
-                x.textStr = x.textStr.replaceAll("[a-zA-Z]","");
-                x.textStr = x.textStr.replaceAll("[0-9]","");
-                //x.textStr = x.textStr.replaceAll("\\pS*$|\\pP*$","");
-                x.textStr = x.textStr.replaceAll("\\pS|\\pP","");*/
-                if(x.textStr.length() <= 2){
+                // 筛选出中文和标点   "\\s*" "[a-zA-Z]" "[0-9]" "\\pS*$|\\pP*$" "\\pS|\\pP"
+                x.textStr = x.textStr.replaceAll("[^\\u4e00-\\u9fa5：；，。！？]", "");
+                // 去掉太短的文本
+                if(x.textStr.length() < 2){
                     it.remove();
                 }
-                // 去掉空文本
             }
         }
     }
@@ -89,24 +82,10 @@ public class PPTTextSave {
     public void cutText(){
         for(ArrayList<PPTString> AP : PPTStr){
             for(PPTString str : AP){
+                // 这个函数是每个文本框对象的方法
                 str.cutStrAndArr();
             }
         }
-        // 删除null词性的和nr人名词性的词
-        /*for(ArrayList<PPTString> AP : PPTStr){
-            for(PPTString str : AP){
-                Iterator<String> it = str.cutedArr.iterator();
-                Iterator<String> is = str.cutedStr.iterator();
-                while(it.hasNext()){
-                    String x = it.next();
-                    is.next();
-                    if( x.equals("nr") || x.equals("null") ){
-                        it.remove();
-                        is.remove();
-                    }
-                }
-            }
-        }*/
     }
 
     // PPT文字处理，末端位置的排序工作，末端文本的value赋值为999，意思是最后面的号

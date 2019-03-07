@@ -18,7 +18,7 @@ import org.openxmlformats.schemas.presentationml.x2006.main.CTSlide;
 public class PPTgetText {
 
     //PPT testing ^_^
-    public PPTTextSave GPPT(String filePath,int temp_no_use_int){
+    public PPTTextSave GPPT(String filePath){
         System.out.println("采用了PPTgetText方法");
         //创建PPTTextSave对象
         PPTTextSave PS = new PPTTextSave();
@@ -63,7 +63,7 @@ public class PPTgetText {
     }
 
     //PPTX testing ^_^
-    public PPTTextSave GPPTX(String filePath,int temp_no_use_int){
+    public PPTTextSave GPPTX(String filePath){
         PPTTextSave PS = new PPTTextSave();
         try{
             XMLSlideShow ppt = new XMLSlideShow(new FileInputStream(filePath));
@@ -96,10 +96,10 @@ public class PPTgetText {
     public PPTTextSave getPPTandPPTX(String FilePath){
         PPTTextSave PS = new PPTTextSave();
         if(FilePath.charAt(FilePath.length()-1) == 't' || FilePath.charAt(FilePath.length()-1) == 'T'){
-            PS = GPPT(FilePath,312445342);
+            PS = GPPT(FilePath);
         }
         else if(FilePath.charAt(FilePath.length()-1) == 'x' || FilePath.charAt(FilePath.length()-1) == 'X'){
-            PS = GPPTX(FilePath,543452432);
+            PS = GPPTX(FilePath);
         }
         return PS;
     }
