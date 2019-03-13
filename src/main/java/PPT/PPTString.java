@@ -72,9 +72,26 @@ public class PPTString {
         }
         // 提取关键词
         // 提取textStr为cutedKeyWords
-        KeyWordComputer kwc = new KeyWordComputer(11);
-        String str = this.textStr;
-        Collection<Keyword> keyresult = kwc.computeArticleTfidf(str);
+        // 根据textStr的length决定提取多少个关键词
+        // 因为之前的PPT去杂项文本已经将少于两个中文字的文本框去掉了, 所以每个PPTString对象内均有至少两个字的文本
+        int nKeyword = 0;
+        if(textStr.length() > 0 && textStr.length() <= 4) {
+            nKeyword = 1;
+        }else if(textStr.length() >= 5 && textStr.length() <= 6) {
+            nKeyword = 2;
+        }else if(textStr.length() >= 7 && textStr.length() <= 12) {
+            nKeyword = 3;
+        }else if(textStr.length() >= 13 && textStr.length() <= 20) {
+            nKeyword = 4;
+        }else if(textStr.length() >= 21 && textStr.length() <= 40) {
+            nKeyword = 5;
+        }else if(textStr.length() >= 41 && textStr.length() <= 100) {
+            nKeyword = 5;
+        }else if(textStr.length() >= 101) {
+            nKeyword = 5;
+        }
+        KeyWordComputer KWC = new KeyWordComputer(nKeyword);
+        Collection<Keyword> keyresult = KWC.computeArticleTfidf(textStr);
         Iterator t = keyresult.iterator();
         while(t.hasNext()){
             Keyword kw = (Keyword)t.next();

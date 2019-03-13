@@ -67,43 +67,49 @@ public class SpeechTranscriberWithMicrophoneDemo {
             System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼准备完毕，开始识别过程▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
             win.Log("<<< 准备完毕，开始识别过程, 请播放幻灯片");
             while ((nByte = targetDataLine.read(buffer, 0, bufSize)) > 0) {
-
+                //语音识别出结果后|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
                 if(responseIndex > oldIndex) {
                     oldIndex++;
-                    // 炽天覆七重圆环饱和匹配算法启动~~~
                     boolean r1 = false, r2 = false, r3 = false, r4 = false, r5 = false, r6 = false, r7 = false;
-                    // 指令唤醒
+                    // 指令唤醒算法
                     r5 = Rule5();
-                    // 播放到最后黑屏的时候, 只启动指令唤醒
+                    if(r5){
+                        System.out.println("指令唤醒翻页");
+                        continue;
+                    }
+                    // 播放到最后黑屏的时候brek为真
                     if(page > PS.getArrayListArrayListPPTString().size()){
                         brek = true;
                     }else{
                         brek = false;
                     }
-                    // 未触发唤醒, 未播放完, 未遇到空页
-                    if(!r5 && !brek && PS.getArrayListArrayListPPTString().get(page-1).size() != 0){
-                        // 执行responseString简单过滤器
+                    // 未播放到最后黑屏的时候, 未遇到空页
+                    if(!brek && PS.getArrayListArrayListPPTString().get(page-1).size() != 0){
+                        // 语音过滤算法
                         r6 = Rule6();
-                        // 如果responseString存活到了answerString中，PPT文本与识别文本进一步匹配模式启动
                         if(r6){
-                            // 末端匹配
+                            // 末端匹配算法
                             r3 = Rule3();
                             if(r3){
+                                System.out.println("末端匹配翻页");
                                 continue;
                             }
-                            // 旧模式匹配
+                            // 精准匹配算法
                             r1 = Rule1();
                             if(r1){
+                                System.out.println("精准匹配翻页");
                                 continue;
                             }
-                            // 关键词匹配
+                            // 关键词匹配算法
                             r2 = Rule2();
                             if(r2){
+                                System.out.println("关键词匹配翻页");
                                 continue;
                             }
                         }
                     }
                 }
+                //语音识别出结果后|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
                 if(exit){
                     break;
                 }
@@ -185,6 +191,24 @@ public class SpeechTranscriberWithMicrophoneDemo {
         }
     }
 
+    // [zjxDebug]
+    private void zjxDebug(Win win,String logHead){
+        StringBuffer sb = new StringBuffer();
+        sb.append(logHead);
+        sb.append("|||--此时页数: ");
+        sb.append(page);
+        sb.append(" 此页每个文本框的配准进度:");
+        System.out.print(logHead + "|||--此时页数: " + page + " 此页每个文本框的配准进度:");
+        for(PPTString str : PS.getArrayListArrayListPPTString().get(page-1) ){
+            sb.append(str.bool);
+            sb.append(" ");
+            System.out.print(str.bool + " ");
+        }
+        sb.append("--|||");
+        System.out.println("--|||");
+        win.Log(sb.toString());
+    }
+
     // FINISH    旧匹配模式
     private boolean Rule1()//----------------------------------------------Rule1------------------------------
     {
@@ -231,8 +255,8 @@ public class SpeechTranscriberWithMicrophoneDemo {
         // 关键词提取后
         boolean rule2Worked = false;
         ArrayList<ArrayList<PPTString>> strList = PS.getArrayListArrayListPPTString();
-        // 查找answerString中有没有每个文本框的关键词
-
+        //|||||||关键词核心代码|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+        // 查找answerString中有没有每个文本框的关键词->
         // 遍历所有PPTString
         for(PPTString str : strList.get(page)){
             // 遍历str的每一个keyword
@@ -252,8 +276,9 @@ public class SpeechTranscriberWithMicrophoneDemo {
                 str.bool = true;
             }
         }
-
-        //遍历此页，得到整页的匹配是否全部完成，step记录已经匹配了多少段文本
+        //|||||||关键词核心代码|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+        // 翻页条件
+        // 遍历此页，得到整页的匹配是否全部完成，step记录已经匹配了多少段文本
         int step = 0;
         for(PPTString str : strList.get(page-1)){
             if(str.bool){
@@ -305,14 +330,12 @@ public class SpeechTranscriberWithMicrophoneDemo {
         strList = PS.getArrayListArrayListPPTString();
         boolean rule5Worked = false;
         if(responseString.equals("下一页。") || responseString.equals("下页") || responseString.equals("翻篇儿")  || responseString.equals("翻篇")  || responseString.equals("翻页") || responseString.equals("翻页儿。") || responseString.equals("下雨") || responseString.equals("下一个") ){
-            System.out.println("------Rule5唤醒下一页------");
             //此页设为全部已读，翻页
             nextPage();
             rule5Worked = true;
         }
         else if( (responseString.equals("上一页") && page >= 2) || (responseString.equals("上页") && page > 1) ){
             PC.PPTControl(2);
-            System.out.println("------Rule5唤醒上一页------");
             ////此页设为全部已读，退回上页，上页设为全部已读
             if(page <= PS.getArrayListArrayListPPTString().size()){
                 for(PPTString temp_str : strList.get(page-1)){

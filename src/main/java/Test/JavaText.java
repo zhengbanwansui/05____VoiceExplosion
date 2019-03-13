@@ -1,5 +1,6 @@
 package Test;
 
+import PPT.KeyString;
 import PPT.PPTString;
 import PPT.PPTTextSave;
 import PPT.PPTgetText;
@@ -62,6 +63,17 @@ public class JavaText {
                 System.out.println("["+temp_str.cutedStr+"]");
                 System.out.println("["+temp_str.cutedArr+"]");
             }
+        }
+        System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼关键词测试输出▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
+        i = 0;
+        for(ArrayList<PPTString> slideTxts : PS.getArrayListArrayListPPTString()){
+            System.out.print("++++++++这是第" + ++i + "页的关键词+++++++++\n");
+            for(PPTString str : slideTxts){
+                for(KeyString ks : str.cutedKeyWords){
+                     System.out.print("(" + ks.str + ")");
+                 }
+                System.out.print("\n");
+             }
         }
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼末端测试输出▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         System.out.println(PS.last);
