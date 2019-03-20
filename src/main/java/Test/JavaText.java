@@ -78,11 +78,11 @@ public class JavaText {
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼末端测试输出▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         System.out.println(PS.last);
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼测试输出完毕▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
-
         win.Log(">>> 初始化语音识别系统中 ... ...");
         String appKey = "wpkf6dIwcNpFWhqh";
         String token  = CreateTokenDemo.getTokenFromCloud();
         SpeechTranscriberWithMicrophoneDemo saber = new SpeechTranscriberWithMicrophoneDemo(appKey, token, PS);
+        // 开始运行主循环
         saber.process(win);
         saber.shutdown();
     }
