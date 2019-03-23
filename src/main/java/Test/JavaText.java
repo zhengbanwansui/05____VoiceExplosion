@@ -67,7 +67,7 @@ public class JavaText {
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼关键词测试输出▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         i = 0;
         for(ArrayList<PPTString> slideTxts : PS.getArrayListArrayListPPTString()){
-            System.out.print("++++++++这是第" + ++i + "页的关键词+++++++++\n");
+            System.out.print("第" + ++i + "页的关键词是\n");
             for(PPTString str : slideTxts){
                 for(KeyString ks : str.cutedKeyWords){
                      System.out.print("(" + ks.str + ")");
@@ -76,7 +76,11 @@ public class JavaText {
              }
         }
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼末端测试输出▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
-        System.out.println(PS.last);
+        //System.out.println(PS.last);
+        i = 0;
+        for (ArrayList<String> ArrayListString : PS.last) {
+            System.out.println("第" + ++i + "页的末端词语是 : " + ArrayListString);
+        }
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼测试输出完毕▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         win.Log(">>> 初始化语音识别系统中 ... ...");
         String appKey = "wpkf6dIwcNpFWhqh";

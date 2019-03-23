@@ -72,30 +72,48 @@ public class SpeechTranscriberWithMicrophoneDemo {
             win.Log(">>> 程序初始化完毕，开始语音识别, 请播放幻灯片开始演讲--");
             while ((nByte = targetDataLine.read(buffer, 0, bufSize)) > 0) {
                 //语音识别出结果后|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-                if(responseIndex > oldIndex) {
+                if (responseIndex > oldIndex) {
                     oldIndex++;
                     boolean rExactMat, rKeyMat, rLastMat, rAwake, rResCut;
                     // 指令唤醒算法
                     rAwake = ruleAwake();
-                    if(rAwake){System.out.println("第" + (page-1) + "页 " + "指令唤醒翻页");continue; }
+                    if (rAwake) {
+                        System.out.println("指令唤醒翻页了 " + "现在是第" + page + "页 ");
+                        continue;
+                    }
                     // 播放到最后黑屏的时候brek为真
-                    if(page > PS.getArrayListArrayListPPTString().size()){ blackBreak = true; }else{ blackBreak = false; }
+                    if (page > PS.getArrayListArrayListPPTString().size()){
+                        blackBreak = true;
+                    } else {
+                        blackBreak = false;
+                    }
                     // 未播放到最后黑屏的时候进行匹配算法
-                    if(!blackBreak){
+                    if (!blackBreak) {
                         // 空页不匹配
-                        if(PS.getArrayListArrayListPPTString().get(page-1).size() == 0){ continue; }
+                        if (PS.getArrayListArrayListPPTString().get(page-1).size() == 0){
+                            continue;
+                        }
                         // 语音过滤算法
                         rResCut = ruleResponseCut();
-                        if(rResCut){
+                        if (rResCut) {
                             // 末端匹配算法
                             rLastMat = ruleLastMatch();
-                            if(rLastMat)  { System.out.println("第" + (page-1) + "页 " + "末端匹配翻页  ");continue; }
+                            if (rLastMat) {
+                                System.out.println("末端匹配翻页了 " + "现在是第" + page + "页");
+                                continue;
+                            }
                             // 精准匹配算法
                             rExactMat = ruleExactMatch();
-                            if(rExactMat) { System.out.println("第" + (page-1) + "页 " + "精准匹配翻页  ");continue; }
+                            if (rExactMat) {
+                                System.out.println("精准匹配翻页了 " + "现在是第" + page + "页");
+                                continue;
+                            }
                             // 关键词匹配算法
                             rKeyMat = ruleKeyMatch();
-                            if(rKeyMat)   { System.out.println("第" + (page-1) + "页 " + "关键词匹配翻页");continue; }
+                            if (rKeyMat) {
+                                System.out.println("关键词匹配翻页了 " + "现在是第" + page + "页");
+                                continue;
+                            }
                         }
                     }
                 }
@@ -139,12 +157,12 @@ public class SpeechTranscriberWithMicrophoneDemo {
             // 识别出中间结果.服务端识别出一个字或词时会返回此消息.仅当setEnableIntermediateResult(true)时,才会有此类消息返回
             @Override
             public void onTranscriptionResultChange(SpeechTranscriberResponse response) {
-                System.out.println(
+                /*System.out.println(
                         response.getStatus() +
                         "  【句中】" +
                         "  句子编号: " + response.getTransSentenceIndex() +
                         "  [" + response.getTransSentenceText() + "]"
-                );
+                );*/
 
             }
             // 识别出一句话.服务端会智能断句,当识别到一句话结束时会返回此消息
@@ -235,7 +253,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
                     step++;
                 }
             }
-            System.out.println("@@@step is "+ step + "@@@");
+            System.out.println("@@@step is "+ step+"/"+strList.get(page-1).size() + "@@@ in page "+page);
             if(step == strList.get(page-1).size()){
                 nextPage();
                 rule1Worked = true;
@@ -282,7 +300,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
                 step++;
             }
         }
-        System.out.println("@@@step is "+ step + "@@@");
+        System.out.println("@@@step is "+ step+"/"+strList.get(page-1).size() + "@@@ in page "+page);
         if(step == strList.get(page-1).size()){
             nextPage();
             ruleKeyMatched = true;
@@ -298,21 +316,47 @@ public class SpeechTranscriberWithMicrophoneDemo {
     private boolean ruleLastMatch()
     {
         // PS.last是每页匹配用的词语库
-        // 看answerString里面含不含PS.last里的词语
-        int size = PS.last.get(page-1).size();
-        boolean temp_bool = true;
-        for(int i=0; i<size; i++){
+        // 看answerString里面有多少个匹配上PS.last里的词语
+        int maxMatchNum = PS.last.get(page-1).size();
+        int matchedNum = 0;
+        for (int i = 0; i < maxMatchNum; i++) {
             // 有一个关键字没有就赋值false
-            if( !answerString.contains(PS.last.get(page-1).get(i)) ){
-                temp_bool = false;
+            if (answerString.contains(PS.last.get(page-1).get(i))){
+                matchedNum++;
             }
         }
-        if(temp_bool){
-            nextPage();
-            return true;
-        }else{
-            return false;
+        switch (maxMatchNum) {
+            case 1:
+                if (matchedNum == 1) {
+                    nextPage();
+                    return true;
+                }
+                break;
+            case 2:
+                if (matchedNum >= 2) {
+                    nextPage();
+                    return true;
+                }
+                break;
+            case 3:
+                if (matchedNum >= 2) {
+                    nextPage();
+                    return true;
+                }
+                break;
+            case 4:
+                if (matchedNum >= 3) {
+                    nextPage();
+                    return true;
+                }
+                break;
+            default:
+                if (matchedNum >= 4) {
+                    nextPage();
+                    return true;
+                }
         }
+        return false;
     }
 
     /**
