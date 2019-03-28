@@ -18,7 +18,7 @@ import org.openxmlformats.schemas.presentationml.x2006.main.CTSlide;
 public class PPTgetText {
 
     //PPT testing ^_^
-    public PPTTextSave GPPT(String filePath){
+    public PPTTextSave GPPT(String filePath) {
         System.out.println("采用了PPTgetText方法");
         //创建PPTTextSave对象
         PPTTextSave PS = new PPTTextSave();
@@ -56,14 +56,14 @@ public class PPTgetText {
                     }
                 }
             }
-        }catch(Exception e){
+        } catch(Exception e) {
             System.out.println("zjx：NewGetText异常" + e);
         }
         return PS;
     }
 
     //PPTX testing ^_^
-    public PPTTextSave GPPTX(String filePath){
+    public PPTTextSave GPPTX(String filePath) {
         PPTTextSave PS = new PPTTextSave();
         try{
             XMLSlideShow ppt = new XMLSlideShow(new FileInputStream(filePath));
@@ -92,8 +92,40 @@ public class PPTgetText {
         return PS;
     }
 
+    //PPTX testing ^_^
+    public PPTTextSave GPPTX2(String filePath) {
+        PPTTextSave PS = new PPTTextSave();
+        try{
+            XMLSlideShow ppt = new XMLSlideShow(new FileInputStream(filePath));
+            // get slides
+            int page_i = 0;
+            // 遍历每一张幻灯片
+            for (XSLFSlide slide : ppt.getSlides()) {
+                PS.addPage();
+                page_i++;
+                for (XSLFShape sh : slide.getShapes()) {
+                    if (sh instanceof XSLFTextShape) {
+                        java.awt.geom.Rectangle2D anchor = ((PlaceableShape)sh).getAnchor();
+                        String temp_str = ((XSLFTextShape) sh).getText();
+                        //System.out.println("Text:" + temp_str + " X:" + anchor.getX() + " Y:" + anchor.getY());
+                        if(temp_str.length() != 0){
+                            PS.add(page_i,temp_str,(int)anchor.getX(),(int)anchor.getY(),(int)anchor.getWidth(),(int)anchor.getHeight());
+                        }
+                    } else if (sh instanceof XSLFConnectorShape) {
+                        // 获取到一个ConnectorShape
+                    } else if (sh instanceof XSLFPictureShape) {
+                        // 获取到一个PictureShape
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("zjx：NewGetText异常" + e);
+        }
+        return PS;
+    }
+
     //类型判断给出对应函数
-    public PPTTextSave getPPTandPPTX(String FilePath){
+    public PPTTextSave getPPTandPPTX(String FilePath) {
         PPTTextSave PS = new PPTTextSave();
         if(FilePath.charAt(FilePath.length()-1) == 't' || FilePath.charAt(FilePath.length()-1) == 'T'){
             PS = GPPT(FilePath);

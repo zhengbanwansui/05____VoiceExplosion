@@ -13,6 +13,8 @@ public class ClickEvent {
             }
             else if(value == 2){
                 unlimitedBladeWorld.keyPress(KeyEvent.VK_LEFT);
+                Thread.sleep(200);
+                unlimitedBladeWorld.keyPress(KeyEvent.VK_LEFT);
             }
         }catch(Exception e){
             System.out.println(e);

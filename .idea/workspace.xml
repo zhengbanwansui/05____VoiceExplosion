@@ -1,23 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/pom.xml" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/PPT/PPTTextSave.java" line="81" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="f1b2de11-10ed-4a24-90bb-99f87a40ff1f" name="Default Changelist" comment="">
+    <list default="true" id="e8a2f7bd-0c9d-4585-b509-cf3f9c454a96" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/PPT/test/PPTgetTextTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/PPT/PPTTextSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PPT/PPTTextSave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Test/JavaText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Test/JavaText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/CreateTokenDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/CreateTokenDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/PPTctrl-1.2.2-jar-with-dependencies.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/PPT/PPTTextSave.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/PPT/PPTTextSave.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Test/JavaText.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Test/JavaText.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/alibaba/nls/client/example/CreateTokenDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/alibaba/nls/client/example/CreateTokenDemo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/PPT/ClickEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PPT/ClickEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/PPT/PPTgetText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PPT/PPTgetText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/regexp/RegExp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/右下.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/PPT/test/NatureDemo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/PPT/test/PPTStringTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/PPT/test/nlp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/regexp/test/RegExpTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/05____voice__Explosion.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PPT/ClickEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/PPT/ClickEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PPT/PPTgetText.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/PPT/PPTgetText.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/regexp/RegExp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/右下.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/META-INF/05____voice__Explosion.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/PPT/test/NatureDemo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/PPT/test/PPTStringTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/PPT/test/nlp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/regexp/test/RegExpTest.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,27 +38,25 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FavoritesManager">
-    <favorites_list name="阿里云语音识别Demo" />
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="791">
-              <caret line="357" column="9" selection-start-line="357" selection-start-column="9" selection-end-line="357" selection-end-column="9" />
+            <state relative-caret-position="9612">
+              <caret line="377" column="20" selection-start-line="377" selection-start-column="20" selection-end-line="377" selection-end-column="20" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#SpeechTranscriberWithMicrophoneDemo#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-                <element signature="method#getTranscriberListener#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-                <element signature="method#nextPage#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-                <element signature="method#zjxDebug#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-                <element signature="method#ruleExactMatch#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-                <element signature="method#ruleKeyMatch#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-                <element signature="method#ruleAwake#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
                 <element signature="method#ruleResponseCut#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/PPT/ClickEvent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -54,75 +64,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-19">
-              <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-              <folding>
-                <element signature="n#properties#0;n#project#0;n#!!top" />
-                <element signature="n#dependencies#0;n#project#0;n#!!top" />
-              </folding>
+            <state relative-caret-position="270">
+              <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/readme.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/PPT/TextPPTTextSave.java" />
-        <option value="$PROJECT_DIR$/src/main/java/PPT/PPTXgetText.java" />
-        <option value="$PROJECT_DIR$/src/main/java/PPT/InputStream.java" />
-        <option value="$PROJECT_DIR$/src/main/java/PPT/lalala.java" />
-        <option value="$PROJECT_DIR$/src/main/java/PPT/PPTgetTextX.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/lalala.java" />
-        <option value="$PROJECT_DIR$/src/main/java/正则表达式/com/ikanalyer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/正则表达式/IKAnalyzerUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/正则表达式/CheckTheSame.java" />
-        <option value="$PROJECT_DIR$/src/main/java/正则表达式/RegularExpression.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CheckSame/RegularExpression.java" />
-        <option value="$PROJECT_DIR$/src/main/java/CheckSame/CheckTheSame.java" />
-        <option value="$PROJECT_DIR$/src/main/java/RhoAias.java" />
-        <option value="$PROJECT_DIR$/src/main/java/JavaText.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Test.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ansj/domain/Result.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Test/NLPtest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ansj/app/keyword/KeyWordComputer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/ansj/recognition/arrimpl/PersonRecognition.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/ansj/domain/Result.java" />
-        <option value="$PROJECT_DIR$/src/main/java/domain/Result.java" />
-        <option value="$PROJECT_DIR$/../ansj_seg/src/main/java/org/ansj/recognition/impl/BookRecognition.java" />
-        <option value="$PROJECT_DIR$/src/main/java/PPT/ClickEvent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Windows/BGJTextArea.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Windows/BGJPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Windows/MVJPanel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Windows/Win.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Windows/FilePath.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Test/NatureDemo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/PPT/PPTgetText.java" />
-        <option value="$PROJECT_DIR$/src/test/java/nlp.java" />
-        <option value="$PROJECT_DIR$/src/test/java/PPT/test/nlp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/PPT/KeyString.java" />
-        <option value="$PROJECT_DIR$/src/test/java/PPT/test/PPTStringTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/regexp/test/RegExpTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/regexp/RegExp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/PPT/PPTString.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Test/JavaText.java" />
-        <option value="$PROJECT_DIR$/src/main/java/PPT/PPTTextSave.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/CreateTokenDemo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/PPT/ClickEvent.java" />
       </list>
     </option>
   </component>
@@ -150,132 +107,63 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="183" />
-    <option name="y" value="95" />
-    <option name="width" value="1608" />
-    <option name="height" value="832" />
+    <option name="x" value="260" />
+    <option name="y" value="20" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="05____voice__Explosion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PPTctrl" type="b2602c69:ProjectViewProjectNode" />
               <item name="05____voice__Explosion" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="05____voice__Explosion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="05____voice__Explosion" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="05____voice__Explosion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PPTctrl" type="b2602c69:ProjectViewProjectNode" />
               <item name="05____voice__Explosion" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="05____voice__Explosion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PPTctrl" type="b2602c69:ProjectViewProjectNode" />
               <item name="05____voice__Explosion" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="05____voice__Explosion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PPTctrl" type="b2602c69:ProjectViewProjectNode" />
               <item name="05____voice__Explosion" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="CheckSame" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="05____voice__Explosion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PPTctrl" type="b2602c69:ProjectViewProjectNode" />
               <item name="05____voice__Explosion" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="example" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="05____voice__Explosion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="05____voice__Explosion" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="PPT" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="05____voice__Explosion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="05____voice__Explosion" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="regexp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="05____voice__Explosion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="05____voice__Explosion" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="05____voice__Explosion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="05____voice__Explosion" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Windows" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="05____voice__Explosion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="05____voice__Explosion" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="maven&#9;FILE&#9;jar://C:/Windows (E)/IntelliJ IDEA Community Edition 2018.2.5/plugins/maven/lib/maven.jar!/schemas/maven-4.0.0.xsd&#10;maven &#9;ACTION&#9;ActivateMavenProjectsToolWindow&#10;maven p&#9;ACTION&#9;ActivateMavenProjectsToolWindow&#10;maven P&#9;ACTION&#9;ActivateMavenProjectsToolWindow" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553257655881" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Git/bin/git.exe" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553701706174" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="PPT" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Windows (E)\编程累死人\Git仓库\05____voice__Explosion\src\main\java" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="Test" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Windows (E)\编程累死人\Git仓库\05____voice__Explosion\src\main\resources" />
-      <recent name="C:\Windows (E)\编程累死人\Git仓库\05____voice__Explosion\src" />
-      <recent name="C:\Windows (E)\编程累死人\Git仓库\05____voice__Explosion\src\main\java\Windows" />
-    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -289,20 +177,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.JavaText">
+  <component name="RunManager">
     <configuration name="JavaText" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Test.JavaText" />
-      <module name="05____voice__Explosion" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PPTStringTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="PPT.test.PPTStringTest" />
-      <module name="05____voice__Explosion" />
+      <module name="PPTctrl" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="PPT.test.*" />
+          <option name="PATTERN" value="Test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -310,65 +191,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegExpTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="regexp.test.RegExpTest" />
-      <module name="05____voice__Explosion" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="regexp.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="nlp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="PPT.test.nlp" />
-      <module name="05____voice__Explosion" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PPTctrl [compile]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="compile" />
-              </list>
-            </option>
-            <option name="pomFileName" value="pom.xml" />
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Application.JavaText" />
-      <item itemvalue="Application.PPTStringTest" />
-      <item itemvalue="Application.RegExpTest" />
-      <item itemvalue="Application.nlp" />
-      <item itemvalue="Maven.PPTctrl [compile]" />
-    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.JavaText" />
-        <item itemvalue="Application.RegExpTest" />
-        <item itemvalue="Application.PPTStringTest" />
-        <item itemvalue="Application.nlp" />
-        <item itemvalue="Maven.PPTctrl [compile]" />
       </list>
     </recent_temporary>
   </component>
@@ -377,527 +202,98 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f1b2de11-10ed-4a24-90bb-99f87a40ff1f" name="Default Changelist" comment="" />
-      <created>1547275134891</created>
+      <changelist id="e8a2f7bd-0c9d-4585-b509-cf3f9c454a96" name="Default Changelist" comment="" />
+      <created>1553701427169</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1547275134891</updated>
+      <updated>1553701427169</updated>
+      <workItem from="1553701429484" duration="465000" />
+      <workItem from="1553775160535" duration="1456000" />
+      <workItem from="1553777967700" duration="10000" />
     </task>
     <servers />
   </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1931000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.56073755" visible="true" weight="0.20788912" />
-      <window_info active="true" id="Maven" order="1" sideWeight="0.43926248" side_tool="true" visible="true" weight="0.20788912" />
-      <window_info id="Structure" order="2" sideWeight="0.5010846" side_tool="true" weight="0.26599148" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="Designer" order="4" />
-      <window_info id="UI Designer" order="5" />
-      <window_info id="Capture Tool" order="6" />
-      <window_info id="Favorites" order="7" sideWeight="0.5010846" side_tool="true" weight="0.26599148" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2553305" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3275488" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4989059" weight="0.8318872" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.35357916" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.5520607" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32968238" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32968238" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5010941" side_tool="true" weight="0.86856514" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3286991" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.22776572" />
-      <window_info anchor="bottom" id="Statistic" order="11" weight="0.329718" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.329718" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.24945295" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" x="0" y="0" width="434" height="856" id="Documentation" order="6" side_tool="true" weight="0.32995737" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Maven Projects" order="8" weight="0.32995737" />
+      <window_info anchor="right" id="Maven" order="6" weight="0.32995737" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout>
   </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/text/JTextComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-122587">
-          <caret line="302" column="16" lean-forward="true" selection-start-line="302" selection-start-column="16" selection-end-line="302" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/JTextArea.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="126" column="34" selection-start-line="126" selection-start-column="34" selection-end-line="126" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/plaf/ComponentUI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="155" column="16" selection-start-line="155" selection-start-column="16" selection-end-line="155" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/JComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="782" column="42" lean-forward="true" selection-start-line="782" selection-start-column="42" selection-end-line="782" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Windows/BGJTextArea.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/awt/event/ActionListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="49" column="47" lean-forward="true" selection-start-line="49" selection-start-column="4" selection-end-line="49" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/JButton.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-414">
-          <caret line="89" column="11" selection-start-line="89" selection-start-column="11" selection-end-line="89" selection-end-column="11" />
-          <folding>
-            <element signature="e#2398#2399#0" expanded="true" />
-            <element signature="e#2430#2431#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/javax/swing/Icon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="24" column="19" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/Collection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="188" column="27" lean-forward="true" selection-start-line="144" selection-end-line="603" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/util/Iterator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="69" column="6" selection-start-line="69" selection-start-column="6" selection-end-line="69" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/ansj/ansj_seg/5.1.1/ansj_seg-5.1.1-sources.jar!/org/ansj/app/keyword/Keyword.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="2" column="42" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/PPT/KeyString.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="2" column="24" lean-forward="true" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/PPT/test/NatureDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/PPT/test/nlp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/nls/nls-sdk-long-asr/2.0.3/nls-sdk-long-asr-2.0.3-sources.jar!/com/alibaba/nls/client/protocol/asr/SpeechTranscriber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3348">
-          <caret line="47" column="13" selection-start-line="47" selection-start-column="13" selection-end-line="47" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/PPT/test/PPTStringTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Windows/FilePath.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Windows/BGJPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#paintComponent#0;class#BGJPanel#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Windows/MVJPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="31" lean-forward="true" selection-start-line="2" selection-end-line="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/out.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/small.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/右下.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/PPT/ClickEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/icon.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/menu.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/out.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/右下.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/small.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/menu.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/regexp/test.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/regexp/test/RegExpTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
-          <folding>
-            <element signature="e#114#115#0" expanded="true" />
-            <element signature="e#135#136#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/regexp/RegExp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="5" column="49" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Windows/Win.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="128" column="1" lean-forward="true" selection-start-line="128" selection-start-column="1" selection-end-line="128" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#drag#0;class#Win#0" />
-            <element signature="method#Log#0;class#Win#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/PPT/PPTString.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="32" column="13" lean-forward="true" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/icon.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-classic/1.0.13/logback-classic-1.0.13-sources.jar!/ch/qos/logback/classic/util/LoggerNameUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-classic/1.0.13/logback-classic-1.0.13-sources.jar!/ch/qos/logback/classic/Logger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="136" selection-start-line="136" selection-end-line="136" />
-          <folding>
-            <element signature="e#4072#4073#0" expanded="true" />
-            <element signature="e#4093#4094#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-classic/1.0.13/logback-classic-1.0.13-sources.jar!/ch/qos/logback/classic/LoggerContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="140" selection-start-line="140" selection-end-line="140" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/Class.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="642" selection-start-line="642" selection-end-line="642" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-classic/1.0.13/logback-classic-1.0.13-sources.jar!/ch/qos/logback/classic/util/ContextSelectorStaticBinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="103" selection-start-line="103" selection-end-line="103" />
-          <folding>
-            <element signature="e#3813#3814#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-classic/1.0.13/logback-classic-1.0.13-sources.jar!/ch/qos/logback/classic/selector/DefaultContextSelector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="e#914#915#0" expanded="true" />
-            <element signature="e#966#967#0" expanded="true" />
-            <element signature="e#1003#1004#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.5/slf4j-api-1.7.5-sources.jar!/org/slf4j/LoggerFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="269" selection-start-line="269" selection-end-line="269" />
-          <folding>
-            <element signature="e#10895#10896#0" expanded="true" />
-            <element signature="e#10938#10939#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/ch/qos/logback/logback-classic/1.0.13/logback-classic-1.0.13-sources.jar!/org/slf4j/impl/StaticLoggerBinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="110" selection-start-line="110" selection-end-line="110" />
-          <folding>
-            <element signature="e#2239#2240#0" expanded="true" />
-            <element signature="e#2265#2266#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/nls/nls-sdk-common/2.0.3/nls-sdk-common-2.0.3-sources.jar!/com/alibaba/nls/client/protocol/SpeechReqProtocol.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="35" column="32" lean-forward="true" selection-start-line="35" selection-start-column="32" selection-end-line="35" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/PPT/PPTgetText.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-303">
-          <caret line="39" column="30" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/CreateTokenDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/regexp/RegExp.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/右下.png" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Test/JavaText.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1169">
-          <caret line="86" column="60" lean-forward="true" selection-start-line="86" selection-start-column="60" selection-end-line="86" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-1491">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/PPT/PPTTextSave.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7">
-          <caret line="132" column="45" lean-forward="true" selection-start-line="132" selection-start-column="45" selection-end-line="132" selection-end-column="45" />
+        <state relative-caret-position="9612">
+          <caret line="377" column="20" selection-start-line="377" selection-start-column="20" selection-end-line="377" selection-end-column="20" />
           <folding>
-            <element signature="method#addPage#0;class#PPTTextSave#0" />
-            <element signature="method#add#0;class#PPTTextSave#0" />
-            <element signature="method#add#1;class#PPTTextSave#0" />
-            <element signature="method#removeNoUsingText#0;class#PPTTextSave#0" />
-            <element signature="method#cutText#0;class#PPTTextSave#0" />
-            <element signature="method#textSortByLast#0;class#PPTTextSave#0" />
+            <element signature="method#ruleResponseCut#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-19">
-          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-          <folding>
-            <element signature="n#properties#0;n#project#0;n#!!top" />
-            <element signature="n#dependencies#0;n#project#0;n#!!top" />
-          </folding>
+        <state relative-caret-position="270">
+          <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/PPT/ClickEvent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="791">
-          <caret line="357" column="9" selection-start-line="357" selection-start-column="9" selection-end-line="357" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#SpeechTranscriberWithMicrophoneDemo#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-            <element signature="method#getTranscriberListener#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-            <element signature="method#nextPage#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-            <element signature="method#zjxDebug#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-            <element signature="method#ruleExactMatch#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-            <element signature="method#ruleKeyMatch#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-            <element signature="method#ruleAwake#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-            <element signature="method#ruleResponseCut#0;class#SpeechTranscriberWithMicrophoneDemo#0" />
-          </folding>
+        <state relative-caret-position="378">
+          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
         </state>
       </provider>
     </entry>
   </component>
   <component name="masterDetails">
     <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>05____voice__Explosion</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
       <state key="ProjectJDKs.UI">
         <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Maven: ch.qos.logback:logback-classic:1.0.13</last-edited>
+          <last-edited>1.8_JDK</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
