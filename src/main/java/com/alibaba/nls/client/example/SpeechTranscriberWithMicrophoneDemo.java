@@ -215,16 +215,6 @@ public class SpeechTranscriberWithMicrophoneDemo {
     }
 
     /**
-     * 在窗口中输出内容
-     * @param win 窗口对象的阴影
-     * @param tempStr 输出的文字的字符串变量
-     */
-    private void zjxDebug(Win win,String tempStr){
-
-        win.Log(tempStr);
-    }
-
-    /**
      * 精准匹配算法
      * @return
      */
@@ -369,25 +359,60 @@ public class SpeechTranscriberWithMicrophoneDemo {
         ArrayList<ArrayList<PPTString>> strList;
         strList = PS.getArrayListArrayListPPTString();
         boolean rule5Worked = false;
-        if(responseString.equals("下一页。") || responseString.equals("下页") || responseString.equals("翻篇儿")  || responseString.equals("翻篇")  || responseString.equals("翻页") || responseString.equals("翻页儿。") || responseString.equals("下雨") || responseString.equals("下一个") ){
-            //此页设为全部已读，翻页
-            nextPage();
-            rule5Worked = true;
-        }
-        else if( (responseString.equals("上一页") && page >= 2) || (responseString.equals("上页") && page > 1) ){
-            PC.PPTControl(2);
-            ////此页设为全部已读，退回上页，上页设为全部已读
-            if(page <= PS.getArrayListArrayListPPTString().size()){
+        String managedResponseString = responseString.replaceAll("[。，！？：；]","");
+        switch (managedResponseString) {
+            case "下一页":
+            case "下页":
+            case "翻篇":
+            case "翻篇儿":
+            case "翻页":
+            case "翻页儿":
+            case "翻到下一页":
+                nextPage();
+                rule5Worked = true;
+                break;
+            case "上一页":
+            case "上页":
+            case "返回上一页":
+            case "翻回上一页":
+            case "翻到上一页":
+                PC.PPTControl(2);
+                ////此页设为全部未读，退回上页，上页设为全部已读
+                if(page <= PS.getArrayListArrayListPPTString().size()){
+                    for(PPTString temp_str : strList.get(page-1)){
+                        temp_str.bool = false;
+                    }
+                }
+                page--;
                 for(PPTString temp_str : strList.get(page-1)){
                     temp_str.bool = false;
                 }
-            }
-            page--;
-            for(PPTString temp_str : strList.get(page-1)){
-                temp_str.bool = false;
-            }
-            rule5Worked = true;
+                rule5Worked = true;
+                break;
+            default:
         }
+//        if (responseString.equals("下一页。") || responseString.equals("下页")
+//                || responseString.equals("翻篇")  || responseString.equals("翻篇儿")
+//                || responseString.equals("翻页") || responseString.equals("翻页儿。")) {
+//            //此页设为全部已读，翻页
+//            nextPage();
+//            rule5Worked = true;
+//        }
+//        else if( (responseString.equals("上一页") && page >= 2)
+//                || (responseString.equals("上页") && page > 1) ){
+//            PC.PPTControl(2);
+//            ////此页设为全部已读，退回上页，上页设为全部已读
+//            if(page <= PS.getArrayListArrayListPPTString().size()){
+//                for(PPTString temp_str : strList.get(page-1)){
+//                    temp_str.bool = false;
+//                }
+//            }
+//            page--;
+//            for(PPTString temp_str : strList.get(page-1)){
+//                temp_str.bool = false;
+//            }
+//            rule5Worked = true;
+//        }
         return rule5Worked;
     }
 
