@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class PPTgetTextTest {
     public static void main(String[] args) {
         PPTgetText PG = new PPTgetText();
-        PPTTextSave PS = PG.GPPTX2("C:\\Users\\14419\\Desktop\\无法提取的内容.pptx");
+        PPTTextSave PS = PG.GPPTX("C:\\Users\\14419\\Desktop\\无法提取的内容.pptx");
 
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼文字测试输出▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         ArrayList<ArrayList<PPTString>> PPTstr = PS.getArrayListArrayListPPTString();

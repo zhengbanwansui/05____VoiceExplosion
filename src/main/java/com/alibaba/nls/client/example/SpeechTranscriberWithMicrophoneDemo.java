@@ -69,9 +69,9 @@ public class SpeechTranscriberWithMicrophoneDemo {
             final int bufSize = 6400;
             byte[] buffer = new byte[bufSize];
             System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼准备完毕，开始识别过程▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
-            win.Log(">>> 程序初始化完毕，开始语音识别, 请播放幻灯片开始演讲--");
+            win.changeTipImage("circleFinish.png");
             while ((nByte = targetDataLine.read(buffer, 0, bufSize)) > 0) {
-                //语音识别出结果后|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+                //语音识别出结果后|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
                 if (responseIndex > oldIndex) {
                     oldIndex++;
                     boolean rExactMat, rKeyMat, rLastMat, rAwake, rResCut;
@@ -117,7 +117,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
                         }
                     }
                 }
-                //语音识别出结果后|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+                //语音识别出结果后|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
                 //发送麦克风声音数据buffer
                 transcriber.send(buffer);
@@ -192,7 +192,9 @@ public class SpeechTranscriberWithMicrophoneDemo {
      * 终止语音识别
      */
     public void shutdown() {
+
         client.shutdown();
+
     }
 
     /**
@@ -200,7 +202,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
      * 如果在1-n页内, 此页全部设置为已读, page+1, 调用翻页函数
      * 末页将不会继续翻页了, 防止bug
      */
-    private void nextPage(){
+    private void nextPage() {
         if(page <= PS.getArrayListArrayListPPTString().size()){
             ArrayList<PPTString> AP = PS.getArrayListArrayListPPTString().get(page-1);
             for(PPTString str : AP){
@@ -215,11 +217,61 @@ public class SpeechTranscriberWithMicrophoneDemo {
     }
 
     /**
+     * 回页函数
+     * 此页设为全部未读, 退回上页, 上页设为全部未读
+     */
+    private void lastPage() {
+        ArrayList<ArrayList<PPTString>> strList = PS.getArrayListArrayListPPTString();
+        PC.PPTControl(2);
+        if(page <= PS.getArrayListArrayListPPTString().size()){
+            for(PPTString temp_str : strList.get(page-1)){
+                temp_str.bool = false;
+            }
+        }
+        page--;
+        for(PPTString temp_str : strList.get(page-1)){
+            temp_str.bool = false;
+        }
+    }
+
+    /**
+     * 语音唤醒匹配算法
+     * @return
+     */
+    private boolean ruleAwake() {
+        boolean rule5Worked = false;
+        String managedResponseString = responseString.replaceAll("[。，！？：；]","");
+        switch (managedResponseString) {
+            case "下一页":
+            case "下页":
+            case "翻篇":
+            case "翻篇儿":
+            case "翻页":
+            case "翻页儿":
+            case "翻到下一页":
+                nextPage();
+                rule5Worked = true;
+                break;
+            case "上一页":
+            case "上页":
+            case "返回上一页":
+            case "翻回上一页":
+            case "翻到上一页":
+                if(page != 1) {
+                    lastPage();
+                    rule5Worked = true;
+                }
+                break;
+            default:
+        }
+        return rule5Worked;
+    }
+
+    /**
      * 精准匹配算法
      * @return
      */
-    private boolean ruleExactMatch()
-    {
+    private boolean ruleExactMatch() {
         boolean rule1Worked = false;
         ArrayList<ArrayList<PPTString>> strList = PS.getArrayListArrayListPPTString();
         Vector<String> str1 = participle(answerString);
@@ -258,8 +310,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
      * 关键词匹配算法
      * @return
      */
-    private boolean ruleKeyMatch()
-    {
+    private boolean ruleKeyMatch() {
         boolean ruleKeyMatched = false;
         ArrayList<ArrayList<PPTString>> strList = PS.getArrayListArrayListPPTString();
         // 查找answerString中有没有每个文本框的关键词->
@@ -303,8 +354,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
      * 末端匹配算法
      * @return
      */
-    private boolean ruleLastMatch()
-    {
+    private boolean ruleLastMatch() {
         // PS.last是每页匹配用的词语库
         // 看answerString里面有多少个匹配上PS.last里的词语
         int maxMatchNum = PS.last.get(page-1).size();
@@ -350,78 +400,10 @@ public class SpeechTranscriberWithMicrophoneDemo {
     }
 
     /**
-     * 语音唤醒匹配算法
-     * @return
-     */
-    private boolean ruleAwake()
-    {
-        // 再来点关键词
-        ArrayList<ArrayList<PPTString>> strList;
-        strList = PS.getArrayListArrayListPPTString();
-        boolean rule5Worked = false;
-        String managedResponseString = responseString.replaceAll("[。，！？：；]","");
-        switch (managedResponseString) {
-            case "下一页":
-            case "下页":
-            case "翻篇":
-            case "翻篇儿":
-            case "翻页":
-            case "翻页儿":
-            case "翻到下一页":
-                nextPage();
-                rule5Worked = true;
-                break;
-            case "上一页":
-            case "上页":
-            case "返回上一页":
-            case "翻回上一页":
-            case "翻到上一页":
-                PC.PPTControl(2);
-                ////此页设为全部未读，退回上页，上页设为全部已读
-                if(page <= PS.getArrayListArrayListPPTString().size()){
-                    for(PPTString temp_str : strList.get(page-1)){
-                        temp_str.bool = false;
-                    }
-                }
-                page--;
-                for(PPTString temp_str : strList.get(page-1)){
-                    temp_str.bool = false;
-                }
-                rule5Worked = true;
-                break;
-            default:
-        }
-//        if (responseString.equals("下一页。") || responseString.equals("下页")
-//                || responseString.equals("翻篇")  || responseString.equals("翻篇儿")
-//                || responseString.equals("翻页") || responseString.equals("翻页儿。")) {
-//            //此页设为全部已读，翻页
-//            nextPage();
-//            rule5Worked = true;
-//        }
-//        else if( (responseString.equals("上一页") && page >= 2)
-//                || (responseString.equals("上页") && page > 1) ){
-//            PC.PPTControl(2);
-//            ////此页设为全部已读，退回上页，上页设为全部已读
-//            if(page <= PS.getArrayListArrayListPPTString().size()){
-//                for(PPTString temp_str : strList.get(page-1)){
-//                    temp_str.bool = false;
-//                }
-//            }
-//            page--;
-//            for(PPTString temp_str : strList.get(page-1)){
-//                temp_str.bool = false;
-//            }
-//            rule5Worked = true;
-//        }
-        return rule5Worked;
-    }
-
-    /**
      * 识别文本过滤responseString筛查
      * @return
      */
-    private boolean ruleResponseCut()
-    {
+    private boolean ruleResponseCut() {
         boolean rule6Worked = false;
         // 语音识别字符串正则过滤
         String temp_responseString = responseString.replaceAll("[^\\u4e00-\\u9fa5：；，。！？]","");

@@ -27,6 +27,7 @@ public class JavaText {
             // 延迟50ms, 防止资源占用过高
             try { Thread.sleep(50); } catch (InterruptedException e) { e.printStackTrace(); }
         }
+        win.changeTipImage("circleWait.png");
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼获取PPT文字▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         String FilePath = win.filePath;
         // 不限制PPT文件大小
@@ -42,17 +43,13 @@ public class JavaText {
         PS.textSortByLast();
         // PPT文字处理, 末端词语集合, 处理完保存到PS的last中
         PS.saveLast();
-        win.Log(">>> PPT处理完成");
-        win.Log(">>> 测试PPT文字内容");
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼文字测试输出▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         ArrayList<ArrayList<PPTString>> PPTstr = PS.getArrayListArrayListPPTString();
         int i = 0;
         for(ArrayList<PPTString> strList : PPTstr){
             System.out.println("【 第" + ++i + "页 】");
-            win.Log("【 第" + i + "页 】");
             for(PPTString temp_str : strList){
                 System.out.println("["+temp_str.textStr+"]");
-                win.Log("["+temp_str.textStr+"]");
             }
         }
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼切词测试输出▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
@@ -66,23 +63,21 @@ public class JavaText {
         }
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼关键词测试输出▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         i = 0;
-        for(ArrayList<PPTString> slideTxts : PS.getArrayListArrayListPPTString()){
+        for(ArrayList<PPTString> slideTxts : PS.getArrayListArrayListPPTString()) {
             System.out.print("第" + ++i + "页的关键词是\n");
-            for(PPTString str : slideTxts){
-                for(KeyString ks : str.cutedKeyWords){
+            for(PPTString str : slideTxts) {
+                for(KeyString ks : str.cutedKeyWords) {
                      System.out.print("(" + ks.str + ")");
                  }
                 System.out.print("\n");
              }
         }
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼末端测试输出▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
-        //System.out.println(PS.last);
         i = 0;
         for (ArrayList<String> ArrayListString : PS.last) {
             System.out.println("第" + ++i + "页的末端词语是 : " + ArrayListString);
         }
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼测试输出完毕▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
-        win.Log(">>> 初始化语音识别系统中 ... ...");
         String appKey = "wpkf6dIwcNpFWhqh";
         String token  = CreateTokenDemo.getTokenFromCloud();
         SpeechTranscriberWithMicrophoneDemo saber = new SpeechTranscriberWithMicrophoneDemo(appKey, token, PS);

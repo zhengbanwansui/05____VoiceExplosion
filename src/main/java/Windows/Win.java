@@ -13,19 +13,17 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.imageio.ImageIO;
 
-public class Win extends JFrame implements ActionListener {
+public class Win extends BGJFrame implements ActionListener {
 
     public String filePath = "NULL";
-    private BGJPanel rootPanel;
-    private JPanel jp1;
-    private MVJPanel jpTop;
-    private JTextArea ja1;
+    private BGJPanel pptTargetPlace;
     private JButton small,out;
 
-    public Win()
-    {
-        // 去掉上面的窗口栏
-        this.setUndecorated(true);
+    public Win() {
+        setUndecorated(true);
+        setBackground(new Color(0, 0, 0, 0));
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(400,200,651,495);
         try{
             Image icon_img = ImageIO.read(this.getClass().getResource("..\\icon.png"));
             this.setIconImage(icon_img);
@@ -33,52 +31,43 @@ public class Win extends JFrame implements ActionListener {
             e.getStackTrace();
         }
         initInside();
-        setSize(1000,600);
-        //this.setResizable(false);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocation(400,200);
-        setTitle("基于语音识别的PPT控制系统");
         drag();
-        this.setVisible(true);
-
+        setVisible(true);
     }
 
-    private void initInside(){
-        // 背景 插入this中作为根容器 绝对布局
-        rootPanel = new BGJPanel();
-        this.add(rootPanel);
+    private void initInside() {
+        setLayout(null);
+        BGJPanel rootPanel = new BGJPanel("inside.png");
+        rootPanel.setBounds(94,96,551,384);
         rootPanel.setLayout(null);
-        // 透明顶栏需要实现自定义的拖拽移动最小化和关闭功能
-        jpTop = new MVJPanel();
-        jpTop.setDragable(this);
-        jpTop.setBounds(0,0,1000,100);
-        jpTop.setOpaque(false);
-        jpTop.setLayout(null);
-        // 左下透明栏drag函数触发拖拽功能
-        jp1 = new JPanel();
-        jp1.setOpaque(false);
-        jp1.setBounds(0, 100, 300, 500);
-        // 右下log文本栏
-        ja1 = new JTextArea();
-        ja1.setLineWrap(true);
-        ja1.setText(">>> 此处输出Log信息");
-        // 滚动条容器
-        JScrollPane ja1roll = new JScrollPane(ja1);
-        ja1roll.setBounds(350, 150, 600, 400);
-        small = new JButton(new ImageIcon(new FilePath().filePath("small.png")));
-        out   = new JButton(new ImageIcon(new FilePath().filePath("out.png")));
-        small.setBounds(955,2,20,20);
-        out  .setBounds(978,2,20,20);
+        rootPanel.setBackground(Color.BLUE);
+        small = new JButton();
+        small.setBounds(551-45,5,20,20);
         small.addActionListener(this);
-        out  .addActionListener(this);
-        jpTop.add(small);
-        jpTop.add(out);
-        rootPanel.add(jp1);
-        rootPanel.add(ja1roll);
-        rootPanel.add(jpTop);
+        small.setIcon(new ImageIcon(new FilePath().filePath("small.png")));
+        small.setPressedIcon(new ImageIcon(new FilePath().filePath("smallPressed.png")));
+        out = new JButton();
+        out.setBounds(551-22,5,20,20);
+        out.addActionListener(this);
+        out.setIcon(new ImageIcon(new FilePath().filePath("out.png")));
+        out.setPressedIcon(new ImageIcon(new FilePath().filePath("outPressed.png")));
+        MVJPanel dragArea = new MVJPanel();
+        dragArea.setDragable(this);
+        dragArea.setBounds(0,0,551,100);
+        dragArea.setLayout(null);
+        dragArea.setOpaque(false);
+        pptTargetPlace = new BGJPanel("circle.png");
+        pptTargetPlace.setBounds(0, 219, 161, 165);
+        pptTargetPlace.setOpaque(false);
+        getContentPane().add(rootPanel);
+        rootPanel.add(pptTargetPlace);
+        rootPanel.add(dragArea);
+        dragArea.add(small);
+        dragArea.add(out);
     }
+
     @Override
-    public void actionPerformed(ActionEvent e){
+    public void actionPerformed(ActionEvent e) {
         if(e.getSource() == small){
             this.setExtendedState(ICONIFIED);
         }
@@ -87,9 +76,15 @@ public class Win extends JFrame implements ActionListener {
         }
     }
 
-    // jp1是拖拽目标区域
-    private void drag(){
-        new DropTarget(jp1,DnDConstants.ACTION_COPY_OR_MOVE,new DropTargetAdapter()
+    public void changeTipImage(String changeToImageFileName) {
+
+        pptTargetPlace.changeImage(changeToImageFileName);
+        this.getRootPane().updateUI();
+
+    }
+
+    private void drag() {
+        new DropTarget(pptTargetPlace,DnDConstants.ACTION_COPY_OR_MOVE,new DropTargetAdapter()
         {
             public void drop(DropTargetDropEvent dtde)
             {
@@ -106,7 +101,7 @@ public class Win extends JFrame implements ActionListener {
                             temp+=file.getAbsolutePath();
                             if(temp.endsWith(".ppt") || temp.endsWith(".pptx")){
                                 JOptionPane.showMessageDialog(null, "读取文件完成");
-                                ja1.setText(">>> 读取PPT : " + temp + " 中... ... \n请稍后 ... ...");
+                                System.out.println("读取PPT : " + temp + " 中... ... ");
                                 filePath = temp;
                             }
                             dtde.dropComplete(true);
@@ -121,9 +116,4 @@ public class Win extends JFrame implements ActionListener {
         });
     }
 
-    public void Log(String str){
-
-        ja1.setText(str + "\n\n" + ja1.getText());
-
-    }
 }
