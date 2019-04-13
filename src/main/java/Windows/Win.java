@@ -13,7 +13,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.imageio.ImageIO;
 
-public class Win extends BGJFrame implements ActionListener {
+public class Win extends JFrame implements ActionListener {
 
     public String filePath = "NULL";
     private BGJPanel pptTargetPlace;
@@ -21,9 +21,8 @@ public class Win extends BGJFrame implements ActionListener {
 
     public Win() {
         setUndecorated(true);
-        setBackground(new Color(0, 0, 0, 0));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(400,200,651,495);
+        setBounds(100,100,1600,900);
         try{
             Image icon_img = ImageIO.read(this.getClass().getResource("..\\icon.png"));
             this.setIconImage(icon_img);
@@ -37,27 +36,27 @@ public class Win extends BGJFrame implements ActionListener {
 
     private void initInside() {
         setLayout(null);
-        BGJPanel rootPanel = new BGJPanel("inside.png");
-        rootPanel.setBounds(94,96,551,384);
+        BGJPanel rootPanel = new BGJPanel("menu.png");
+        rootPanel.setBounds(0,0,1600,900);
         rootPanel.setLayout(null);
         rootPanel.setBackground(Color.BLUE);
         small = new JButton();
-        small.setBounds(551-45,5,20,20);
+        small.setBounds(1600-72,6,30,30);
         small.addActionListener(this);
         small.setIcon(new ImageIcon(new FilePath().filePath("small.png")));
         small.setPressedIcon(new ImageIcon(new FilePath().filePath("smallPressed.png")));
         out = new JButton();
-        out.setBounds(551-22,5,20,20);
+        out.setBounds(1600-37, 6,30,30);
         out.addActionListener(this);
         out.setIcon(new ImageIcon(new FilePath().filePath("out.png")));
         out.setPressedIcon(new ImageIcon(new FilePath().filePath("outPressed.png")));
         MVJPanel dragArea = new MVJPanel();
         dragArea.setDragable(this);
-        dragArea.setBounds(0,0,551,100);
+        dragArea.setBounds(0,0,1600,100);
         dragArea.setLayout(null);
         dragArea.setOpaque(false);
         pptTargetPlace = new BGJPanel("circle.png");
-        pptTargetPlace.setBounds(0, 219, 161, 165);
+        pptTargetPlace.setBounds(0, 400, 160, 160);
         pptTargetPlace.setOpaque(false);
         getContentPane().add(rootPanel);
         rootPanel.add(pptTargetPlace);
