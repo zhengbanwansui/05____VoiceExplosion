@@ -68,17 +68,21 @@ public class SpeechTranscriberWithMicrophoneDemo {
             int nByte = 0;
             final int bufSize = 6400;
             byte[] buffer = new byte[bufSize];
+            win.changeDragArea(2);
             System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼准备完毕，开始识别过程▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
-            win.changeTipImage("circleFinish.png");
             while ((nByte = targetDataLine.read(buffer, 0, bufSize)) > 0) {
                 //语音识别出结果后|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
                 if (responseIndex > oldIndex) {
+                    win.appendVoiceRecognizeRecord(responseString);
                     oldIndex++;
-                    boolean rExactMat, rKeyMat, rLastMat, rAwake, rResCut;
+                    boolean rExactMat = false, rKeyMat = false, rLastMat = false, rAwake = false, rResCut = false;
                     // 指令唤醒算法
-                    rAwake = ruleAwake();
+                    if (win.compareInt[0] == 1) {
+                        rAwake = ruleAwake(win);
+                    }
                     if (rAwake) {
                         System.out.println("指令唤醒翻页了 " + "现在是第" + page + "页 ");
+                        winUpdatePageAndCom(win);
                         continue;
                     }
                     // 播放到最后黑屏的时候brek为真
@@ -91,29 +95,43 @@ public class SpeechTranscriberWithMicrophoneDemo {
                     if (!blackBreak) {
                         // 空页不匹配
                         if (PS.getArrayListArrayListPPTString().get(page-1).size() == 0){
+                            winUpdatePageAndCom(win);
                             continue;
                         }
                         // 语音过滤算法
                         rResCut = ruleResponseCut();
                         if (rResCut) {
                             // 末端匹配算法
-                            rLastMat = ruleLastMatch();
+                            if (win.compareInt[3] == 1) {
+                                rLastMat = ruleLastMatch();
+                            }
                             if (rLastMat) {
                                 System.out.println("末端匹配翻页了 " + "现在是第" + page + "页");
+                                winUpdatePageAndCom(win);
                                 continue;
                             }
+                            winUpdatePageAndCom(win);
                             // 精准匹配算法
-                            rExactMat = ruleExactMatch();
+                            if (win.compareInt[1] == 1) {
+                                rExactMat = ruleExactMatch();
+                            }
                             if (rExactMat) {
                                 System.out.println("精准匹配翻页了 " + "现在是第" + page + "页");
+                                winUpdatePageAndCom(win);
                                 continue;
                             }
+                            winUpdatePageAndCom(win);
                             // 关键词匹配算法
-                            rKeyMat = ruleKeyMatch();
+                            if (win.compareInt[2] == 1) {
+                                rKeyMat = ruleKeyMatch();
+                            }
+                            winUpdatePageAndCom(win);
                             if (rKeyMat) {
                                 System.out.println("关键词匹配翻页了 " + "现在是第" + page + "页");
+                                winUpdatePageAndCom(win);
                                 continue;
                             }
+                            winUpdatePageAndCom(win);
                         }
                     }
                 }
@@ -235,36 +253,70 @@ public class SpeechTranscriberWithMicrophoneDemo {
     }
 
     /**
+     * 当前页数
+     * 算出有多少框配准了
+     * 算出一共多少框
+     */
+    private void winUpdatePageAndCom(Win win) {
+        int maxNum = PS.getArrayListArrayListPPTString().get(page-1).size();
+        int finishNum = 0;
+        for(PPTString pptString : PS.getArrayListArrayListPPTString().get(page-1)){
+            if(pptString.bool) {
+                finishNum++;
+            }
+        }
+        win.changePageAndCom(page, maxNum, finishNum);
+    }
+
+    /**
      * 语音唤醒匹配算法
      * @return
      */
-    private boolean ruleAwake() {
+    private boolean ruleAwake(Win win) {
         boolean rule5Worked = false;
         String managedResponseString = responseString.replaceAll("[。，！？：；]","");
-        switch (managedResponseString) {
-            case "下一页":
-            case "下页":
-            case "翻篇":
-            case "翻篇儿":
-            case "翻页":
-            case "翻页儿":
-            case "翻到下一页":
+        for (String nextString : win.getOrderNextString()) {
+            if (managedResponseString.equals(nextString)) {
                 nextPage();
                 rule5Worked = true;
                 break;
-            case "上一页":
-            case "上页":
-            case "返回上一页":
-            case "翻回上一页":
-            case "翻到上一页":
+            }
+        }
+        for (String lastString : win.getOrderLastString()) {
+            if (managedResponseString.equals(lastString)) {
                 if(page != 1) {
                     lastPage();
                     rule5Worked = true;
                 }
                 break;
-            default:
+            }
         }
         return rule5Worked;
+
+//        switch (managedResponseString) {
+//            case "下一页":
+//            case "下页":
+//            case "翻篇":
+//            case "翻篇儿":
+//            case "翻页":
+//            case "翻页儿":
+//            case "翻到下一页":
+//                nextPage();
+//                rule5Worked = true;
+//                break;
+//            case "上一页":
+//            case "上页":
+//            case "返回上一页":
+//            case "翻回上一页":
+//            case "翻到上一页":
+//                if(page != 1) {
+//                    lastPage();
+//                    rule5Worked = true;
+//                }
+//                break;
+//            default:
+//        }
+
     }
 
     /**

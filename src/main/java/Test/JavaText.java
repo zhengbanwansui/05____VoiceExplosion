@@ -16,18 +16,18 @@ public class JavaText {
 
     public static void main(String[] args) {
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼创建可视窗口▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
+        Win win = new Win();
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Win win = new Win();
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼等待传入文件▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         while(win.filePath.equals("NULL")){
             // 延迟50ms, 防止资源占用过高
             try { Thread.sleep(50); } catch (InterruptedException e) { e.printStackTrace(); }
         }
-        win.changeTipImage("circleWait.png");
+        win.changeDragArea(1);
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼获取PPT文字▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         String FilePath = win.filePath;
         // 不限制PPT文件大小
