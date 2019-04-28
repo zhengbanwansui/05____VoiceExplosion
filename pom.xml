@@ -14,7 +14,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.6</java.version>
+<!--        <java.version>1.6</java.version>-->
         <sdk.version>2.0.3</sdk.version>
     </properties>
 
@@ -99,11 +99,8 @@
             <resource>
                 <directory>src/main/resources</directory>
                 <includes>
-                    <include>**/*.png</include>
-                    <include>**/*.txt</include>
-                    <include>**/*.xml</include>
+                    <include>**/*.*</include>
                 </includes>
-                <filtering>false</filtering>
             </resource>
         </resources>
 
@@ -143,5 +140,7 @@
                 </configuration>
             </plugin>
         </plugins>
+
     </build>
+
 </project>
