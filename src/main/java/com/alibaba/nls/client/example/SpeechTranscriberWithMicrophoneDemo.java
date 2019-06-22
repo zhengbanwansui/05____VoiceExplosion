@@ -1,28 +1,27 @@
 package com.alibaba.nls.client.example;
 
-import CheckSame.IKAnalyzerUtil;
-import PPT.*;
-import Windows.Win;
+import checkSame.IKAnalyzerUtil;
+import music.MusicPlay;
+import ppt.*;
+import windows.Win;
 import com.alibaba.nls.client.protocol.InputFormatEnum;
 import com.alibaba.nls.client.protocol.NlsClient;
 import com.alibaba.nls.client.protocol.SampleRateEnum;
 import com.alibaba.nls.client.protocol.asr.SpeechTranscriber;
 import com.alibaba.nls.client.protocol.asr.SpeechTranscriberListener;
 import com.alibaba.nls.client.protocol.asr.SpeechTranscriberResponse;
-import PPT.ClickEvent;
+import ppt.ClickEvent;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.TargetDataLine;
-import java.awt.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Vector;
 
-import static CheckSame.CheckTheSame.participle;
+import static checkSame.CheckTheSame.participle;
 
 /**
- * 阿里云 - 使用麦克风音频流的实时音频流识别
+ * 阿里云: 使用麦克风音频流的实时音频流识别
  */
 public class SpeechTranscriberWithMicrophoneDemo {
 
@@ -36,6 +35,67 @@ public class SpeechTranscriberWithMicrophoneDemo {
     private int page = 1;                       // 当前页数
     private boolean blackBreak = false;               // 幻灯片匹配结束条件，触发此条件后除了第五法都失效，第五法退回一页后，此条件变成false重启算法流程（未完成此判断过程）
     private ClickEvent PC = new ClickEvent();   // 定义PPT控制类
+
+    /**
+     * 构造函数
+     * @param appKey 应用id
+     * @param token 验证许可
+     * @param temp_PPTTextSave PPT文字存储对象被传入, 在本类中的识别函数里用到
+     */
+    public SpeechTranscriberWithMicrophoneDemo(String appKey, String token, PPTTextSave temp_PPTTextSave) {
+        PS = temp_PPTTextSave;
+        this.appKey = appKey;
+        // Step0 创建NlsClient实例,应用全局创建一个即可,默认服务地址为阿里云线上服务地址
+        client = new NlsClient(token);
+    }
+
+    /**
+     * 侦听云服务器返回语音识别结果的函数, 在收到结果后
+     * responseString被赋值 responseIndex被赋值 用于判断是否接受到了云语音识别的结果
+     * @return
+     */
+    public SpeechTranscriberListener getTranscriberListener() {
+        SpeechTranscriberListener listener = new SpeechTranscriberListener() {
+            // 识别出中间结果.服务端识别出一个字或词时会返回此消息.仅当setEnableIntermediateResult(true)时,才会有此类消息返回
+            @Override
+            public void onTranscriptionResultChange(SpeechTranscriberResponse response) {
+                /*System.out.println(
+                        response.getStatus() +
+                        "  【句中】" +
+                        "  句子编号: " + response.getTransSentenceIndex() +
+                        "  [" + response.getTransSentenceText() + "]"
+                );*/
+
+            }
+            // 识别出一句话.服务端会智能断句,当识别到一句话结束时会返回此消息
+            @Override
+            public void onSentenceEnd(SpeechTranscriberResponse response) {
+                System.out.println(
+                        response.getStatus() +
+                                "  【句末】" +
+                                "  句子编号: " + response.getTransSentenceIndex() +
+                                "  【" + response.getTransSentenceText() + "】"
+                );
+                // 接收到识别结果后保存到类变量responseString中由算法继续处理，此处不筛查
+                responseString = response.getTransSentenceText();
+                responseIndex  = response.getTransSentenceIndex();
+            }
+            // 识别完毕
+            @Override
+            public void onTranscriptionComplete(SpeechTranscriberResponse response) {
+                System.out.println("name: " + response.getName() +
+                        ", status: " + response.getStatus());
+            }
+        };
+        return listener;
+    }
+
+    /**终止语音识别*/
+    public void shutdown() {
+
+        client.shutdown();
+
+    }
 
     /**
      * 语音识别的主进程, 在识别出结果后进行配准
@@ -76,7 +136,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
                     win.appendVoiceRecognizeRecord(responseString);
                     oldIndex++;
                     boolean rExactMat = false, rKeyMat = false, rLastMat = false, rAwake = false, rResCut = false;
-                    // 指令唤醒算法
+                    // 指令唤醒算法+
                     if (win.compareInt[0] == 1) {
                         rAwake = ruleAwake(win);
                     }
@@ -152,74 +212,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
         }
     }
 
-    /**
-     * 构造函数
-     * @param appKey 应用id
-     * @param token 验证许可
-     * @param temp_PPTTextSave PPT文字存储对象被传入, 在本类中的识别函数里用到
-     */
-    public SpeechTranscriberWithMicrophoneDemo(String appKey, String token, PPTTextSave temp_PPTTextSave) {
-        PS = temp_PPTTextSave;
-        this.appKey = appKey;
-        // Step0 创建NlsClient实例,应用全局创建一个即可,默认服务地址为阿里云线上服务地址
-        client = new NlsClient(token);
-    }
-
-    /**
-     * 侦听云服务器返回语音识别结果的函数, 在收到结果后
-     * responseString被赋值 responseIndex被赋值 用于判断是否接受到了云语音识别的结果
-     * @return
-     */
-    public SpeechTranscriberListener getTranscriberListener() {
-        SpeechTranscriberListener listener = new SpeechTranscriberListener() {
-            // 识别出中间结果.服务端识别出一个字或词时会返回此消息.仅当setEnableIntermediateResult(true)时,才会有此类消息返回
-            @Override
-            public void onTranscriptionResultChange(SpeechTranscriberResponse response) {
-                /*System.out.println(
-                        response.getStatus() +
-                        "  【句中】" +
-                        "  句子编号: " + response.getTransSentenceIndex() +
-                        "  [" + response.getTransSentenceText() + "]"
-                );*/
-
-            }
-            // 识别出一句话.服务端会智能断句,当识别到一句话结束时会返回此消息
-            @Override
-            public void onSentenceEnd(SpeechTranscriberResponse response) {
-                System.out.println(
-                    response.getStatus() +
-                    "  【句末】" +
-                    "  句子编号: " + response.getTransSentenceIndex() +
-                    "  【" + response.getTransSentenceText() + "】"
-                );
-                // 接收到识别结果后保存到类变量responseString中由算法继续处理，此处不筛查
-                responseString = response.getTransSentenceText();
-                responseIndex  = response.getTransSentenceIndex();
-            }
-            // 识别完毕
-            @Override
-            public void onTranscriptionComplete(SpeechTranscriberResponse response) {
-                System.out.println("name: " + response.getName() +
-                        ", status: " + response.getStatus());
-            }
-        };
-        return listener;
-    }
-
-    /**
-     * 终止语音识别
-     */
-    public void shutdown() {
-
-        client.shutdown();
-
-    }
-
-    /**
-     * 翻页函数
-     * 如果在1-n页内, 此页全部设置为已读, page+1, 调用翻页函数
-     * 末页将不会继续翻页了, 防止bug
-     */
+    /**翻页函数 如果在1-n页内, 此页全部设置为已读, page+1, 调用翻页函数 末页将不会继续翻页*/
     private void nextPage() {
         if(page <= PS.getArrayListArrayListPPTString().size()){
             ArrayList<PPTString> AP = PS.getArrayListArrayListPPTString().get(page-1);
@@ -227,6 +220,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
                 str.bool = true;
             }
             PC.PPTControl(1);
+            MusicPlay.tipNext();
             page++;
         }
         else if(page >  PS.getArrayListArrayListPPTString().size()){
@@ -234,13 +228,11 @@ public class SpeechTranscriberWithMicrophoneDemo {
         }
     }
 
-    /**
-     * 回页函数
-     * 此页设为全部未读, 退回上页, 上页设为全部未读
-     */
+    /**回页函数 此页设为全部未读, 退回上页, 上页设为全部未读*/
     private void lastPage() {
         ArrayList<ArrayList<PPTString>> strList = PS.getArrayListArrayListPPTString();
         PC.PPTControl(2);
+        MusicPlay.tipLast();
         if(page <= PS.getArrayListArrayListPPTString().size()){
             for(PPTString temp_str : strList.get(page-1)){
                 temp_str.bool = false;
@@ -253,25 +245,23 @@ public class SpeechTranscriberWithMicrophoneDemo {
     }
 
     /**
-     * 当前页数
-     * 算出有多少框配准了
-     * 算出一共多少框
+     * 界面更新: 页数和配准率
+     * 计算已配准文本框数量和文本框总数量
      */
     private void winUpdatePageAndCom(Win win) {
-        int maxNum = PS.getArrayListArrayListPPTString().get(page-1).size();
-        int finishNum = 0;
-        for(PPTString pptString : PS.getArrayListArrayListPPTString().get(page-1)){
-            if(pptString.bool) {
-                finishNum++;
+        if (page-1 < PS.getArrayListArrayListPPTString().size()) {
+            int maxNum = PS.getArrayListArrayListPPTString().get(page-1).size();
+            int finishNum = 0;
+            for(PPTString pptString : PS.getArrayListArrayListPPTString().get(page-1)){
+                if(pptString.bool) {
+                    finishNum++;
+                }
             }
+            win.changePageAndCom(page, maxNum, finishNum);
         }
-        win.changePageAndCom(page, maxNum, finishNum);
     }
 
-    /**
-     * 语音唤醒匹配算法
-     * @return
-     */
+    /**语音唤醒匹配算法*/
     private boolean ruleAwake(Win win) {
         boolean rule5Worked = false;
         String managedResponseString = responseString.replaceAll("[。，！？：；]","");
@@ -319,10 +309,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
 
     }
 
-    /**
-     * 精准匹配算法
-     * @return
-     */
+    /**精准匹配算法*/
     private boolean ruleExactMatch() {
         boolean rule1Worked = false;
         ArrayList<ArrayList<PPTString>> strList = PS.getArrayListArrayListPPTString();
@@ -358,10 +345,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
         return rule1Worked;
     }
 
-    /**
-     * 关键词匹配算法
-     * @return
-     */
+    /**关键词匹配算法*/
     private boolean ruleKeyMatch() {
         boolean ruleKeyMatched = false;
         ArrayList<ArrayList<PPTString>> strList = PS.getArrayListArrayListPPTString();
@@ -402,10 +386,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
         return ruleKeyMatched;
     }
 
-    /**
-     * 末端匹配算法
-     * @return
-     */
+    /**末端匹配算法*/
     private boolean ruleLastMatch() {
         // PS.last是每页匹配用的词语库
         // 看answerString里面有多少个匹配上PS.last里的词语
@@ -451,10 +432,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
         return false;
     }
 
-    /**
-     * 识别文本过滤responseString筛查
-     * @return
-     */
+    /**识别文本过滤responseString筛查*/
     private boolean ruleResponseCut() {
         boolean rule6Worked = false;
         // 语音识别字符串正则过滤

@@ -2,6 +2,9 @@ package com.alibaba.nls.client.example;
 
 import com.alibaba.nls.client.AccessToken;
 
+/**
+ * 阿里云: 创建token
+ */
 public class CreateTokenDemo {
     public static String getTokenFromCloud(){
         String akId = "LTAIQTaHAkBNH2yt";
