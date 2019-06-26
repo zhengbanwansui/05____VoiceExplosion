@@ -26,6 +26,7 @@ import static checkSame.CheckTheSame.participle;
 public class SpeechTranscriberWithMicrophoneDemo {
 
     private String appKey;
+    private float sampleRate = 16000.0F;
     private NlsClient client;
     private PPTTextSave PS;
     private String responseString = "NULL";             // 识别结果
@@ -42,7 +43,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
      * @param token 验证许可
      * @param temp_PPTTextSave PPT文字存储对象被传入, 在本类中的识别函数里用到
      */
-    public SpeechTranscriberWithMicrophoneDemo(String appKey, String token, PPTTextSave temp_PPTTextSave) {
+    public SpeechTranscriberWithMicrophoneDemo(String appKey, String token, PPTTextSave temp_PPTTextSave, float sampleRate) {
         PS = temp_PPTTextSave;
         this.appKey = appKey;
         // Step0 创建NlsClient实例,应用全局创建一个即可,默认服务地址为阿里云线上服务地址
@@ -120,7 +121,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
             // Step2 此方法将以上参数设置序列化为json发送给服务端,并等待服务端确认
             transcriber.start();
             // Step3 读取麦克风数据
-            AudioFormat audioFormat = new AudioFormat(16000.0F, 16, 1, true, false);
+            AudioFormat audioFormat = new AudioFormat(sampleRate, 16, 1, true, false);
             DataLine.Info info = new DataLine.Info(TargetDataLine.class, audioFormat);
             TargetDataLine targetDataLine = (TargetDataLine)AudioSystem.getLine(info);
             targetDataLine.open(audioFormat);
@@ -214,13 +215,13 @@ public class SpeechTranscriberWithMicrophoneDemo {
 
     /**翻页函数 如果在1-n页内, 此页全部设置为已读, page+1, 调用翻页函数 末页将不会继续翻页*/
     private void nextPage() {
+        MusicPlay.tipNext();
         if(page <= PS.getArrayListArrayListPPTString().size()){
             ArrayList<PPTString> AP = PS.getArrayListArrayListPPTString().get(page-1);
             for(PPTString str : AP){
                 str.bool = true;
             }
             PC.PPTControl(1);
-            MusicPlay.tipNext();
             page++;
         }
         else if(page >  PS.getArrayListArrayListPPTString().size()){
@@ -230,9 +231,9 @@ public class SpeechTranscriberWithMicrophoneDemo {
 
     /**回页函数 此页设为全部未读, 退回上页, 上页设为全部未读*/
     private void lastPage() {
+        MusicPlay.tipLast();
         ArrayList<ArrayList<PPTString>> strList = PS.getArrayListArrayListPPTString();
         PC.PPTControl(2);
-        MusicPlay.tipLast();
         if(page <= PS.getArrayListArrayListPPTString().size()){
             for(PPTString temp_str : strList.get(page-1)){
                 temp_str.bool = false;

@@ -24,13 +24,13 @@ public class CheckTheSame {
 
     public static Vector<String> participle( String str ) {
 
-        Vector<String> str1 = new Vector<String>() ;//对输入进行分词
+        Vector<String> str1 = new Vector<>() ;//对输入进行分词
 
         try {
 
             StringReader reader = new StringReader( str );
             IKSegmenter ik = new IKSegmenter(reader,false);//当为true时，分词器进行智能切分
-            Lexeme lexeme = null ;
+            Lexeme lexeme;
 
             while( ( lexeme = ik.next() ) != null ) {
                 str1.add( lexeme.getLexemeText() );

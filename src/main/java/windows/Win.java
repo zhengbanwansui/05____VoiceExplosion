@@ -32,6 +32,8 @@ public class Win extends JFrame implements ActionListener {
     private SimpleAttributeSet voiceTextStyle;  // 文字3
     private BGJPanel loading;
     private BGJPanel loadFinish;
+    // 语音模型下拉列表
+    public JComboBox pullDownList;
     // 拖拽区域
     private JPanel pptTargetPlace;
     // 配准算法开关
@@ -119,6 +121,26 @@ public class Win extends JFrame implements ActionListener {
         JScrollPane voiceTextScroll = new JScrollPane(voiceText);
         voiceTextScroll.setBounds(34,160,353,140);
         voiceTextScroll.setBorder(BorderFactory.createLineBorder(new Color(0,246,255), 2));
+        // B 语音模型下拉列表
+        pullDownList = new JComboBox();
+        pullDownList.addItem("通用普通话");
+        pullDownList.addItem("演讲领域");
+        pullDownList.addItem("医疗领域");
+        pullDownList.addItem("出行领域");
+        pullDownList.addItem("政法庭审");
+        pullDownList.addItem("金融领域");
+        pullDownList.addItem("新零售领域");
+        pullDownList.addItem("四川方言");
+        pullDownList.addItem("湖北方言");
+        pullDownList.addItem("粤语");
+        pullDownList.addItem("其他方言");
+        pullDownList.setForeground(new Color(0, 246, 255));
+        pullDownList.setBackground(new Color(0,60,88));
+        pullDownList.setBorder(BorderFactory.createLineBorder(new Color(0,246,255), 1));
+        pullDownList.setFocusable(false);// 不可集中 所以没有集中的效果颜色了hhh
+        pullDownList.setFont(new Font("黑体", Font.BOLD, 16));
+        pullDownList.setBounds(18,400,120,30);
+        pullDownList.setVisible(true);
         // B 拖拽区提示图
         loading = new BGJPanel("loading.png");
         loading.setBounds( 150,400,185,115);
@@ -207,6 +229,7 @@ public class Win extends JFrame implements ActionListener {
 
         // 添加组件
         getContentPane().add(rootPanel);
+        rootPanel.add(pullDownList);
         rootPanel.add(pptTargetPlace);
         rootPanel.add(dragArea);
         rootPanel.add(voiceTextScroll);

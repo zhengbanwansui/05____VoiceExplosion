@@ -4,23 +4,22 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
 
-public class IKAnalyzerUtil
-{
-    //阈值
+public class IKAnalyzerUtil {
+
     public static double yuZhi = 0.2 ;
 
     public static double getSimilarity(Vector<String> T1, Vector<String> T2) throws Exception {
         int size = 0 , size2 = 0 ;
         if ( T1 != null && ( size = T1.size() ) > 0 && T2 != null && ( size2 = T2.size() ) > 0 ) {
 
-            Map<String, double[]> T = new HashMap<String, double[]>();
+            Map<String, double[]> T = new HashMap<>();
 
             //T1和T2的并集T
-            String index = null ;
+            String index;
             for ( int i = 0 ; i < size ; i++ ) {
                 index = T1.get(i) ;
                 if( index != null){
-                    double[] c = T.get(index);
+                    double[] c;
                     c = new double[2];
                     c[0] = 1;    //T1的语义分数Ci
                     c[1] = yuZhi;//T2的语义分数Ci

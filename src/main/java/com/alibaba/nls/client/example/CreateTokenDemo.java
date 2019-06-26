@@ -6,11 +6,11 @@ import com.alibaba.nls.client.AccessToken;
  * 阿里云: 创建token
  */
 public class CreateTokenDemo {
-    public static String getTokenFromCloud(){
-        String akId = "LTAIQTaHAkBNH2yt";
-        String akSecrete = "sXF07GtGOZlVLMKLs5wh7EH9T4m5mA";
+    public static String getTokenFromCloud(String akId, String akSecret){
+        akId = "LTAIQTaHAkBNH2yt";
+        akSecret = "sXF07GtGOZlVLMKLs5wh7EH9T4m5mA";
         try {
-            AccessToken accessToken = AccessToken.apply(akId, akSecrete);
+            AccessToken accessToken = AccessToken.apply(akId, akSecret);
             return accessToken.getToken();
         } catch (Exception e) {
             e.printStackTrace();

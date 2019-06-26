@@ -8,7 +8,6 @@ import windows.Win;
 import com.alibaba.nls.client.example.CreateTokenDemo;
 import com.alibaba.nls.client.example.SpeechTranscriberWithMicrophoneDemo;
 import org.apache.poi.openxml4j.util.ZipSecureFile;
-
 import javax.swing.*;
 import java.util.ArrayList;
 
@@ -78,11 +77,56 @@ public class JavaTest {
             System.out.println("第" + ++i + "页的末端词语是 : " + ArrayListString);
         }
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼测试输出完毕▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
-        String appKey = "wpkf6dIwcNpFWhqh";
-        String token  = CreateTokenDemo.getTokenFromCloud();
-        SpeechTranscriberWithMicrophoneDemo saber = new SpeechTranscriberWithMicrophoneDemo(appKey, token, PS);
-        // 开始运行主循环
-        saber.process(win);
-        saber.shutdown();
+        // 生成Token
+        String akId = "LTAIQTaHAkBNH2yt";
+        String akSecret = "sXF07GtGOZlVLMKLs5wh7EH9T4m5mA";
+        String token  = CreateTokenDemo.getTokenFromCloud(akId, akSecret);
+        // 选择appKey
+        String 通用普通话 = "wpkf6dIwcNpFWhqh";
+        String 演讲领域   = "r9hblBRwX3wKR7KY";
+        String 出行领域   = "tY8erI0KqWBhmyW7";
+        String 医疗领域   = "35r32kJyBqzq6e0S";
+        String 四川方言   = "0KFh18PbuTbyXSWX";
+        String 湖北方言   = "aDLpVjxKIWY7oX40";
+        String 新零售领域 = "bOitytpWGObws7AT";
+        String 政法庭审   = "u2brGdPHVCy0I8E3";
+
+        String 金融领域   = "0VbQuGQu32b1dNtd";
+        String 粤语       = "JiI6AJwyyCmdRtQy";
+        String 其他方言   = "4sqleDkRpKmyyw0S";
+        String appKey;
+        String pullDownListString = win.pullDownList.getSelectedItem().toString();
+        float sampleRate = 16000.0F;
+        if (pullDownListString == "通用普通话") {
+            appKey = 通用普通话;
+        } else if (pullDownListString == "演讲领域") {
+            appKey = 演讲领域;
+        } else if (pullDownListString == "出行领域") {
+            appKey = 出行领域;
+        } else if (pullDownListString == "医疗领域") {
+            appKey = 医疗领域;
+        } else if (pullDownListString == "四川方言") {
+            appKey = 四川方言;
+        } else if (pullDownListString == "湖北方言") {
+            appKey = 湖北方言;
+        } else if (pullDownListString == "新零售领域") {
+            appKey = 新零售领域;
+        } else if (pullDownListString == "政法庭审") {
+            appKey = 政法庭审;
+        } else if (pullDownListString == "金融领域") {
+            appKey = 金融领域;
+            sampleRate = 8000.0F;
+        } else if (pullDownListString == "粤语") {
+            appKey = 粤语;
+            sampleRate = 8000.0F;
+        } else if (pullDownListString == "其他方言") {
+            appKey = 其他方言;
+            sampleRate = 8000.0F;
+        } else {
+            appKey = " ";
+        }
+        SpeechTranscriberWithMicrophoneDemo moChiZou = new SpeechTranscriberWithMicrophoneDemo(appKey, token, PS, sampleRate);
+        moChiZou.process(win);
+        moChiZou.shutdown();
     }
 }
