@@ -3,7 +3,7 @@ package music;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-import windows.FilePath;
+import fileOperate.FilePath;
 import sun.audio.AudioPlayer;
 
 /**

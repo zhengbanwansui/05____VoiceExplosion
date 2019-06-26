@@ -1,4 +1,4 @@
-package windows;
+package fileOperate;
 
 /**
  * 文件目录读取类: 输入带拓展名的文件名，返回文件的完整目录

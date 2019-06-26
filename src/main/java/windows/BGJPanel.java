@@ -1,5 +1,7 @@
 package windows;
 
+import fileOperate.FilePath;
+
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;

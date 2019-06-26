@@ -1,5 +1,8 @@
 package windows;
 
+import fileOperate.FilePath;
+import fileOperate.SaveAsTxt;
+
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.dnd.DnDConstants;
@@ -8,6 +11,7 @@ import java.awt.dnd.DropTargetAdapter;
 import java.awt.dnd.DropTargetDropEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.*;
@@ -32,6 +36,7 @@ public class Win extends JFrame implements ActionListener {
     private SimpleAttributeSet voiceTextStyle;  // 文字3
     private BGJPanel loading;
     private BGJPanel loadFinish;
+    private JButton saveTxtBtn;
     // 语音模型下拉列表
     public JComboBox pullDownList;
     // 拖拽区域
@@ -121,6 +126,13 @@ public class Win extends JFrame implements ActionListener {
         JScrollPane voiceTextScroll = new JScrollPane(voiceText);
         voiceTextScroll.setBounds(34,160,353,140);
         voiceTextScroll.setBorder(BorderFactory.createLineBorder(new Color(0,246,255), 2));
+        // A 保存为txt按钮
+        saveTxtBtn = new JButton();
+        saveTxtBtn.setBounds(270,310,115,25);
+        saveTxtBtn.setFocusable(false);
+        saveTxtBtn.addActionListener(this);
+        saveTxtBtn.setIcon(new ImageIcon(new FilePath().filePath("txt.png")));
+        saveTxtBtn.setPressedIcon(new ImageIcon(new FilePath().filePath("txtPressed.png")));
         // B 语音模型下拉列表
         pullDownList = new JComboBox();
         pullDownList.addItem("通用普通话");
@@ -238,6 +250,7 @@ public class Win extends JFrame implements ActionListener {
         rootPanel.add(loading);
         rootPanel.add(loadFinish);
         rootPanel.add(awakeSentenceEditPanel);
+        rootPanel.add(saveTxtBtn);
         awakeSentenceEditPanel.add(awakeTextScroll);
         awakeSentenceEditPanel.add(addOption);
         awakeSentenceEditPanel.add(delOption);
@@ -263,6 +276,13 @@ public class Win extends JFrame implements ActionListener {
             voiceText.setCaretPosition(voiceText.getText().length());
         }
         this.getRootPane().updateUI();
+    }
+
+    /**
+     * 保存语音识别文本为TXT
+     */
+    public void saveTxt() throws FileNotFoundException {
+        SaveAsTxt.saveAsTxt(voiceText.getText());
     }
 
     /**
@@ -365,6 +385,15 @@ public class Win extends JFrame implements ActionListener {
         if (e.getSource() == out  ){
             System.exit(0);
             return;
+        }
+        if (e.getSource() == saveTxtBtn) {
+            try {
+                saveTxt();
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            }
+            // 弹出保存文件成功的提示框
+            JOptionPane.showMessageDialog(null, "文件已保存到  " + new FilePath().filePath("演讲记录.txt"));
         }
         for (int i = 0; i < 4; i++) {
             if (e.getSource() == compareBtn[i]) {
