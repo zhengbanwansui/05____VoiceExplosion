@@ -17,6 +17,7 @@ public class JavaTest {
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼创建可视窗口▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         Win win = new Win();
         try {
+            // 设置UI风格
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
         } catch (Exception e) {
             e.printStackTrace();
@@ -76,7 +77,9 @@ public class JavaTest {
         for (ArrayList<String> ArrayListString : PS.last) {
             System.out.println("第" + ++i + "页的末端词语是 : " + ArrayListString);
         }
+        System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼测试输出完毕▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
+        System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         // 生成Token
         String akId = "LTAIQTaHAkBNH2yt";
         String akSecret = "sXF07GtGOZlVLMKLs5wh7EH9T4m5mA";
@@ -95,38 +98,46 @@ public class JavaTest {
         String 粤语       = "JiI6AJwyyCmdRtQy";
         String 其他方言   = "4sqleDkRpKmyyw0S";
         String appKey;
-        String pullDownListString = win.pullDownList.getSelectedItem().toString();
+        String pullListString = win.pullListLanguage.getSelectedItem().toString();
         float sampleRate = 16000.0F;
-        if (pullDownListString == "通用普通话") {
+        if (pullListString == "通用普通话") {
             appKey = 通用普通话;
-        } else if (pullDownListString == "演讲领域") {
+        } else if (pullListString == "演讲领域") {
             appKey = 演讲领域;
-        } else if (pullDownListString == "出行领域") {
+        } else if (pullListString == "出行领域") {
             appKey = 出行领域;
-        } else if (pullDownListString == "医疗领域") {
+        } else if (pullListString == "医疗领域") {
             appKey = 医疗领域;
-        } else if (pullDownListString == "四川方言") {
+        } else if (pullListString == "四川方言") {
             appKey = 四川方言;
-        } else if (pullDownListString == "湖北方言") {
+        } else if (pullListString == "湖北方言") {
             appKey = 湖北方言;
-        } else if (pullDownListString == "新零售领域") {
+        } else if (pullListString == "新零售领域") {
             appKey = 新零售领域;
-        } else if (pullDownListString == "政法庭审") {
+        } else if (pullListString == "政法庭审") {
             appKey = 政法庭审;
-        } else if (pullDownListString == "金融领域") {
+        } else if (pullListString == "金融领域") {
             appKey = 金融领域;
             sampleRate = 8000.0F;
-        } else if (pullDownListString == "粤语") {
+        } else if (pullListString == "粤语") {
             appKey = 粤语;
             sampleRate = 8000.0F;
-        } else if (pullDownListString == "其他方言") {
+        } else if (pullListString == "其他方言") {
             appKey = 其他方言;
             sampleRate = 8000.0F;
         } else {
             appKey = " ";
         }
-        SpeechTranscriberWithMicrophoneDemo moChiZou = new SpeechTranscriberWithMicrophoneDemo(appKey, token, PS, sampleRate);
-        moChiZou.process(win);
-        moChiZou.shutdown();
+        // 判断是语音识别还是语音合成
+        String pullListPlayType = win.pullListPlayType.getSelectedItem().toString();
+        if (pullListPlayType.equals("您来演讲")) {
+            SpeechTranscriberWithMicrophoneDemo moChiZou = new SpeechTranscriberWithMicrophoneDemo(appKey, token, PS, sampleRate);
+            moChiZou.process(win);
+            moChiZou.shutdown();
+        } else if (pullListPlayType.equals("小音帮您讲")) {
+            win.changeDragArea(3);
+            System.out.println("这块还没写");
+        }
+
     }
 }

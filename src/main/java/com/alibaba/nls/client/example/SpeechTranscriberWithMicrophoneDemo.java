@@ -137,7 +137,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
                     win.appendVoiceRecognizeRecord(responseString);
                     oldIndex++;
                     boolean rExactMat = false, rKeyMat = false, rLastMat = false, rAwake = false, rResCut = false;
-                    // 指令唤醒算法+
+                    // 指令唤醒算法
                     if (win.compareInt[0] == 1) {
                         rAwake = ruleAwake(win);
                     }

@@ -36,9 +36,11 @@ public class Win extends JFrame implements ActionListener {
     private SimpleAttributeSet voiceTextStyle;  // 文字3
     private BGJPanel loading;
     private BGJPanel loadFinish;
+    private BGJPanel loadFinishRead;
     private JButton saveTxtBtn;
     // 语音模型下拉列表
-    public JComboBox pullDownList;
+    public JComboBox<String> pullListLanguage;
+    public JComboBox<String> pullListPlayType;
     // 拖拽区域
     private JPanel pptTargetPlace;
     // 配准算法开关
@@ -116,7 +118,6 @@ public class Win extends JFrame implements ActionListener {
         voiceText.setBounds(0,0,353,140);
         voiceText.setEditable(false);
         voiceText.setBackground(new Color(0,60,88));
-        voiceText.setBorder(BorderFactory.createLineBorder(new Color(0,246,255), 0));
         voiceTextDoc = voiceText.getStyledDocument();
         voiceTextStyle = new SimpleAttributeSet();
         StyleConstants.setForeground(voiceTextStyle,new Color(0,246,255));
@@ -133,26 +134,37 @@ public class Win extends JFrame implements ActionListener {
         saveTxtBtn.addActionListener(this);
         saveTxtBtn.setIcon(new ImageIcon(new FilePath().filePath("txt.png")));
         saveTxtBtn.setPressedIcon(new ImageIcon(new FilePath().filePath("txtPressed.png")));
-        // B 语音模型下拉列表
-        pullDownList = new JComboBox();
-        pullDownList.addItem("通用普通话");
-        pullDownList.addItem("演讲领域");
-        pullDownList.addItem("医疗领域");
-        pullDownList.addItem("出行领域");
-        pullDownList.addItem("政法庭审");
-        pullDownList.addItem("金融领域");
-        pullDownList.addItem("新零售领域");
-        pullDownList.addItem("四川方言");
-        pullDownList.addItem("湖北方言");
-        pullDownList.addItem("粤语");
-        pullDownList.addItem("其他方言");
-        pullDownList.setForeground(new Color(0, 246, 255));
-        pullDownList.setBackground(new Color(0,60,88));
-        pullDownList.setBorder(BorderFactory.createLineBorder(new Color(0,246,255), 1));
-        pullDownList.setFocusable(false);// 不可集中 所以没有集中的效果颜色了hhh
-        pullDownList.setFont(new Font("黑体", Font.BOLD, 16));
-        pullDownList.setBounds(18,400,120,30);
-        pullDownList.setVisible(true);
+        // B 语音模型下拉列表 谁来演讲下拉列表
+        pullListLanguage = new JComboBox<>();
+        pullListLanguage.addItem("通用普通话");
+        pullListLanguage.addItem("演讲领域");
+        pullListLanguage.addItem("医疗领域");
+        pullListLanguage.addItem("出行领域");
+        pullListLanguage.addItem("政法庭审");
+        pullListLanguage.addItem("金融领域");
+        pullListLanguage.addItem("新零售领域");
+        pullListLanguage.addItem("四川方言");
+        pullListLanguage.addItem("湖北方言");
+        pullListLanguage.addItem("粤语");
+        pullListLanguage.addItem("其他方言");
+        pullListLanguage.setForeground(new Color(0, 246, 255));
+        pullListLanguage.setBackground(new Color(0,60,88));
+        pullListLanguage.setBorder(BorderFactory.createLineBorder(new Color(0,246,255), 1));
+        pullListLanguage.setFocusable(false);// 不可集中 所以没有集中的效果颜色了hhh
+        pullListLanguage.setFont(new Font("黑体", Font.BOLD, 16));
+        pullListLanguage.setBounds(18,400,120,30);
+        pullListLanguage.setVisible(true);
+
+        pullListPlayType = new JComboBox<>();
+        pullListPlayType.addItem("您来演讲");
+        pullListPlayType.addItem("小音帮您讲");
+        pullListPlayType.setForeground(new Color(0, 246, 254));
+        pullListPlayType.setBackground(new Color(0,60,88));
+        pullListPlayType.setBorder(BorderFactory.createLineBorder(new Color(0,246,255), 1));
+        pullListPlayType.setFocusable(false);
+        pullListPlayType.setFont(new Font("黑体", Font.BOLD, 16));
+        pullListPlayType.setBounds(18,480,120,30);
+        pullListLanguage.setVisible(true);
         // B 拖拽区提示图
         loading = new BGJPanel("loading.png");
         loading.setBounds( 150,400,185,115);
@@ -160,6 +172,9 @@ public class Win extends JFrame implements ActionListener {
         loadFinish = new BGJPanel("loadFinish.png");
         loadFinish.setBounds( 150,400,185,115);
         loadFinish.setVisible(false);
+        loadFinishRead = new BGJPanel("loadFinishRead.png");
+        loadFinishRead.setBounds( 150,400,185,115);
+        loadFinishRead.setVisible(false);
         // C 配准算法开关
         compareBtn[0] = new JButton(new ImageIcon(new FilePath().filePath("compBtn/1n.png")));
         compareBtn[0].setBounds(60, 656, 130, 42);
@@ -241,7 +256,8 @@ public class Win extends JFrame implements ActionListener {
 
         // 添加组件
         getContentPane().add(rootPanel);
-        rootPanel.add(pullDownList);
+        rootPanel.add(pullListLanguage);
+        rootPanel.add(pullListPlayType);
         rootPanel.add(pptTargetPlace);
         rootPanel.add(dragArea);
         rootPanel.add(voiceTextScroll);
@@ -249,6 +265,7 @@ public class Win extends JFrame implements ActionListener {
         rootPanel.add(compareJLabel);
         rootPanel.add(loading);
         rootPanel.add(loadFinish);
+        rootPanel.add(loadFinishRead);
         rootPanel.add(awakeSentenceEditPanel);
         rootPanel.add(saveTxtBtn);
         awakeSentenceEditPanel.add(awakeTextScroll);
@@ -310,25 +327,22 @@ public class Win extends JFrame implements ActionListener {
     }
 
     /**
-     * 初始化指令唤醒算法的下一页的指令词和上一页的指令词
+     * 预设翻页退回指令
      */
     public void initOrderNextAndLastOfAwake() {
+
         orderNextString = new ArrayList<>();
         orderLastString = new ArrayList<>();
 
-        orderNextString.add("下一页");
-        orderNextString.add("下页");
-        orderNextString.add("翻页");
-        orderNextString.add("翻页儿");
-        orderNextString.add("翻篇");
-        orderNextString.add("翻篇儿");
-        orderNextString.add("翻到下一页");
+        orderNextString.add("我们来看下一个内容");
+        orderNextString.add("下一话题");
+        orderNextString.add("请看后面的解释");
 
-        orderLastString.add("上一页");
-        orderLastString.add("上页");
-        orderLastString.add("返回上一页");
-        orderLastString.add("翻回上一页");
-        orderLastString.add("翻到上一页");
+        orderLastString.add("回顾一下前面的内容");
+        orderLastString.add("回顾上文");
+        orderLastString.add("前文有提到");
+
+
 
     }
 
@@ -365,9 +379,12 @@ public class Win extends JFrame implements ActionListener {
         if (oneOrTwo == 1) {
             loading.setVisible(true);
             loadFinish.setVisible(false);
-        } else {
+        } else if (oneOrTwo == 2){
             loading.setVisible(false);
             loadFinish.setVisible(true);
+        } else if (oneOrTwo == 3){
+            loading.setVisible(false);
+            loadFinishRead.setVisible(true);
         }
         this.getRootPane().updateUI();
     }
@@ -412,21 +429,21 @@ public class Win extends JFrame implements ActionListener {
         }
         if (e.getSource() == commitAwakeBtn) {
             String fieldStr = awakeSentenceTextField.getText();
-            fieldStr = fieldStr.replaceAll("[。，！？：；,./?!`~{}1234567890]","");
-            if (addOption.isSelected() && nextOption.isSelected()) {
+            fieldStr = fieldStr.replaceAll("[ 。，！？：；,./?!`~{}1234567890]","");
+            if (addOption.isSelected() && nextOption.isSelected() && !fieldStr.equals("")) {
                 System.out.println("增加翻页词");
                 orderNextString.add(fieldStr);
-            } else if (addOption.isSelected() && lastOption.isSelected()) {
+            } else if (addOption.isSelected() && lastOption.isSelected() && !fieldStr.equals("")) {
                 System.out.println("增加回页词");
                 orderLastString.add(fieldStr);
-            } else if (delOption.isSelected() && nextOption.isSelected()) {
+            } else if (delOption.isSelected() && nextOption.isSelected() && !fieldStr.equals("")) {
                 System.out.println("删除翻页词");
                 for (int i = 0; i < orderNextString.size(); i++) {
                     if (orderNextString.get(i).equals(fieldStr)) {
                         orderNextString.remove(i);
                     }
                 }
-            } else if (delOption.isSelected() && lastOption.isSelected()) {
+            } else if (delOption.isSelected() && lastOption.isSelected() && !fieldStr.equals("")) {
                 System.out.println("删除回页词");
                 for (int i = 0; i < orderLastString.size(); i++) {
                     if (orderLastString.get(i).equals(fieldStr)) {
