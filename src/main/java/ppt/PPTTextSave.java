@@ -1,13 +1,17 @@
 package ppt;
 
+import org.apache.poi.hslf.usermodel.HSLFTextParagraph;
+
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**此类存储一个PPT文所有文本信息*/
 public class PPTTextSave {
 
     private ArrayList<ArrayList<PPTString>> PPTStr = new ArrayList<>();
     public ArrayList<ArrayList<String>> last = new ArrayList<>();
+    public ArrayList<ArrayList<String>> notes = new ArrayList<>();
 
     /**
      * 向PPTStr加入一空页

@@ -12,7 +12,11 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class JavaTest {
-
+    // 老师 演讲者 学生 把感兴趣的和新功能做好
+    // 核心功能做好 控制指令拿掉 说到第五页
+    // 注释优先度最高 注释没有 再去判别内容
+    // 语义理解的包塞进去
+    // 把它试明白
     public static void main(String[] args) {
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼创建可视窗口▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         Win win = new Win();
@@ -34,6 +38,15 @@ public class JavaTest {
         ZipSecureFile.setMinInflateRatio(-1);
         // 获取PPT文字
         PPTTextSave PS = new PPTgetText().getPPTandPPTX(FilePath);
+        System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼获取注释文字▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
+        ArrayList<ArrayList<String>> notes = PS.notes;
+        int i = 0;
+        for(ArrayList<String> note : notes){
+            System.out.println("【 第" + ++i + "页注释 】");
+            for(String temp_str : note){
+                System.out.println("["+temp_str +"]");
+            }
+        }
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼PPT文字处理▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         // PPT文字处理, 去杂项文本(大于等于两个字的保留)
         PS.removeNoUsingText();
@@ -45,7 +58,6 @@ public class JavaTest {
         PS.saveLast();
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼文字测试输出▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         ArrayList<ArrayList<PPTString>> PPTstr = PS.getArrayListArrayListPPTString();
-        int i = 0;
         for(ArrayList<PPTString> strList : PPTstr){
             System.out.println("【 第" + ++i + "页 】");
             for(PPTString temp_str : strList){

@@ -164,7 +164,7 @@ public class Win extends JFrame implements ActionListener {
         pullListPlayType.setFocusable(false);
         pullListPlayType.setFont(new Font("黑体", Font.BOLD, 16));
         pullListPlayType.setBounds(18,480,120,30);
-        pullListLanguage.setVisible(true);
+        pullListPlayType.setVisible(false);
         // B 拖拽区提示图
         loading = new BGJPanel("loading.png");
         loading.setBounds( 150,400,185,115);

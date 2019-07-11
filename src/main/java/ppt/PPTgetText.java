@@ -2,19 +2,24 @@ package ppt;
 
 import java.io.FileInputStream;
 import java.lang.String;
+import java.util.ArrayList;
 
 import org.apache.poi.hslf.usermodel.HSLFAutoShape;
+import org.apache.poi.hslf.usermodel.HSLFNotes;
 import org.apache.poi.hslf.usermodel.HSLFPictureShape;
 import org.apache.poi.hslf.usermodel.HSLFShape;
 import org.apache.poi.hslf.usermodel.HSLFSlide;
 import org.apache.poi.hslf.usermodel.HSLFSlideShow;
 import org.apache.poi.hslf.usermodel.HSLFSlideShowImpl;
 import org.apache.poi.hslf.usermodel.HSLFTextBox;
+import org.apache.poi.hslf.usermodel.HSLFTextParagraph;
 import org.apache.poi.xslf.usermodel.XMLSlideShow;
 import org.apache.poi.xslf.usermodel.XSLFConnectorShape;
+import org.apache.poi.xslf.usermodel.XSLFNotes;
 import org.apache.poi.xslf.usermodel.XSLFPictureShape;
 import org.apache.poi.xslf.usermodel.XSLFShape;
 import org.apache.poi.xslf.usermodel.XSLFSlide;
+import org.apache.poi.xslf.usermodel.XSLFTextParagraph;
 import org.apache.poi.xslf.usermodel.XSLFTextShape;
 import org.apache.poi.sl.usermodel.Line;
 import org.apache.poi.sl.usermodel.PlaceableShape;
@@ -34,6 +39,14 @@ public class PPTgetText {
             for (HSLFSlide slide : ppt.getSlides()) {
                 PS.addPage();
                 page_i++;
+                // 提取注释
+                HSLFNotes note = slide.getNotes();
+                ArrayList<String> newNote = new ArrayList<>();
+                for (HSLFTextParagraph para : note.getTextParagraphs().get(0)) {
+                    newNote.add(para.toString());
+                }
+                PS.notes.add(newNote);
+                // 提取文本
                 for (HSLFShape sh : slide.getShapes()) {
                     // 后添加的文本框能识别
                     if (sh instanceof HSLFTextBox) {
@@ -77,6 +90,14 @@ public class PPTgetText {
             for (XSLFSlide slide : ppt.getSlides()) {
                 PS.addPage();
                 page_i++;
+                // 提取注释
+                XSLFNotes note = slide.getNotes();
+                ArrayList<String> newNote = new ArrayList<>();
+                for (XSLFTextParagraph para : note.getTextParagraphs().get(0)) {
+                    newNote.add(para.toString());
+                }
+                PS.notes.add(newNote);
+                // 提取文本
                 for (XSLFShape sh : slide.getShapes()) {
                     if (sh instanceof XSLFTextShape) {
                         java.awt.geom.Rectangle2D anchor = ((PlaceableShape)sh).getAnchor();

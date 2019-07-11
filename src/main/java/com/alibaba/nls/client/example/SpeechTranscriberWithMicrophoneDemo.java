@@ -1,6 +1,7 @@
 package com.alibaba.nls.client.example;
 
 import checkSame.IKAnalyzerUtil;
+import checkSame.MySimHash;
 import music.MusicPlay;
 import ppt.*;
 import windows.Win;
@@ -137,7 +138,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
                     win.appendVoiceRecognizeRecord(responseString);
                     oldIndex++;
                     boolean rExactMat = false, rKeyMat = false, rLastMat = false, rAwake = false, rResCut = false;
-                    // 指令唤醒算法
+                    // 指令翻页算法
                     if (win.compareInt[0] == 1) {
                         rAwake = ruleAwake(win);
                     }
@@ -310,20 +311,58 @@ public class SpeechTranscriberWithMicrophoneDemo {
 
     }
 
-    /**精准匹配算法*/
-    private boolean ruleExactMatch() {
+    /**精准匹配算法old*/
+//    private boolean ruleExactMatch() {
+//        boolean rule1Worked = false;
+//        ArrayList<ArrayList<PPTString>> strList = PS.getArrayListArrayListPPTString();
+//        Vector<String> str1 = participle(answerString);
+//        double same = 0;
+//        try{
+//            // 循环匹配此页每段文本把匹配上的文本赋值为true
+//            for(int i=0; i<strList.get(page-1).size(); i++) {
+//                Vector<String> str2 = participle( strList.get(page-1).get(i).textStr);
+//                same = IKAnalyzerUtil.getSimilarity( str1 , str2 );
+//                System.out.println( "相似度：" + same );
+//                // 相似度高，句子赋值为已匹配状态
+//                if(same > 0.98){
+//                    strList.get(page-1).get(i).bool = true;
+//                }
+//            }
+//            // 遍历此页，得到整页的匹配是否全部完成，step记录已经匹配了多少段文本
+//            int step = 0;
+//            for(PPTString str : strList.get(page-1)){
+//                if(str.bool){
+//                    System.out.println("@@@str内容为@@@"+str.textStr+"的文字已精准匹配");
+//                    step++;
+//                }
+//            }
+//            System.out.println("@@@step is "+ step+"/"+strList.get(page-1).size() + "@@@ in page "+page);
+//            if(step == strList.get(page-1).size()){
+//                nextPage();
+//                rule1Worked = true;
+//            }
+//        }catch(Exception e){
+//            System.out.println(e);
+//        }
+//        return rule1Worked;
+//    }
+    /**精准匹配算法new*/
+        private boolean ruleExactMatch() {
         boolean rule1Worked = false;
         ArrayList<ArrayList<PPTString>> strList = PS.getArrayListArrayListPPTString();
-        Vector<String> str1 = participle(answerString);
-        double same = 0;
-        try{
+        // Vector<String> str1 = participle(answerString);
+        MySimHash hash1 = new MySimHash(answerString, 64);
+        double samePercent;
+        try {
             // 循环匹配此页每段文本把匹配上的文本赋值为true
-            for(int i=0; i<strList.get(page-1).size(); i++) {
-                Vector<String> str2 = participle( strList.get(page-1).get(i).textStr);
-                same = IKAnalyzerUtil.getSimilarity( str1 , str2 );
-                System.out.println( "相似度：" + same );
+            for (int i = 0; i < strList.get(page - 1).size(); i++) {
+                // Vector<String> str2 = participle( strList.get(page-1).get(i).textStr);
+                MySimHash hash2 = new MySimHash(strList.get(page-1).get(i).textStr, 64);
+                // samePercent = IKAnalyzerUtil.getSimilarity( str1 , str2 );
+                samePercent = hash1.getSemblance(hash2);
+                System.out.println( "相似度：" + samePercent);
                 // 相似度高，句子赋值为已匹配状态
-                if(same > 0.98){
+                if (samePercent > 0.70) {
                     strList.get(page-1).get(i).bool = true;
                 }
             }
