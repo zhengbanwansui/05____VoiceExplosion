@@ -42,8 +42,9 @@ public class PPTgetText {
                 // 提取注释
                 HSLFNotes note = slide.getNotes();
                 ArrayList<String> newNote = new ArrayList<>();
+                System.out.println("note.getpara:   " + note.getTextParagraphs());
                 for (HSLFTextParagraph para : note.getTextParagraphs().get(0)) {
-                    newNote.add(para.toString());
+                    newNote.add(para.toString().replaceAll("[\n]", ""));
                 }
                 PS.notes.add(newNote);
                 // 提取文本
@@ -74,7 +75,7 @@ public class PPTgetText {
                 }
             }
         } catch(Exception e) {
-            System.out.println("zjx：NewGetText异常" + e);
+            System.out.println("zjx：GPPT异常" + e);
         }
         return PS;
     }
@@ -93,8 +94,10 @@ public class PPTgetText {
                 // 提取注释
                 XSLFNotes note = slide.getNotes();
                 ArrayList<String> newNote = new ArrayList<>();
-                for (XSLFTextParagraph para : note.getTextParagraphs().get(0)) {
-                    newNote.add(para.toString());
+                if (note != null) {
+                    for (XSLFTextParagraph para : note.getTextParagraphs().get(1)) {
+                        newNote.add(para.getText());
+                    }
                 }
                 PS.notes.add(newNote);
                 // 提取文本
@@ -113,7 +116,7 @@ public class PPTgetText {
                     }
                 }
             }
-        }catch(Exception e){ System.out.println("zjx：NewGetText异常" + e); }
+        } catch(Exception e) { System.out.println("zjx：GPPTX异常" + e); }
         return PS;
     }
 

@@ -2,6 +2,7 @@ package ppt;
 
 import org.apache.poi.hslf.usermodel.HSLFTextParagraph;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,12 +13,42 @@ public class PPTTextSave {
     private ArrayList<ArrayList<PPTString>> PPTStr = new ArrayList<>();
     public ArrayList<ArrayList<String>> last = new ArrayList<>();
     public ArrayList<ArrayList<String>> notes = new ArrayList<>();
+    public String[][] notesArr;
+
+    public void setNotesArr() {
+        notesArr = new String[notes.size() + 1][5];
+        for (int i = 0; i < notes.size() + 1; i++) {
+            for (int j = 0; j < 5; j++) {
+                notesArr[i][j] = "";
+            }
+        }
+        int temp_page = 0;
+        for (ArrayList<String> note : notes) {
+            temp_page++;
+            for (String str : note) {
+                if (str.length() != 0) {
+                    if (str.charAt(0) == 'a' || str.charAt(0) == 'A') {
+                        notesArr[temp_page][1] = str.replaceAll("[Aa]", "");
+                    }
+                    if (str.charAt(0) == 'b' || str.charAt(0) == 'B') {
+                        notesArr[temp_page][2] = str.replaceAll("[Bb]", "");
+                    }
+                    if (str.charAt(0) == 'c' || str.charAt(0) == 'C') {
+                        notesArr[temp_page][3] = str.replaceAll("[Cc]", "");
+                    }
+                    if (str.charAt(0) == 'd' || str.charAt(0) == 'D') {
+                        notesArr[temp_page-1][4] = str.replaceAll("[Dd]", "");
+                    }
+                }
+            }
+        }
+    }
 
     /**
      * 向PPTStr加入一空页
      */
     public void addPage(){
-        PPTStr.add( new ArrayList<PPTString>() );
+        PPTStr.add( new ArrayList<PPTString>());
         System.out.println("向PPTStr加入一空页,现在页数：" + PPTStr.size());
     }
 
@@ -96,7 +127,7 @@ public class PPTTextSave {
                 // 找出最后一个文本框
                 // 960 x 540 是画布大小
                 long distance = (960 - textBox.vert1) * (960 - textBox.vert1)
-                        + (640 - textBox.vert2) * (640 - textBox.vert2);
+                        + (540 - textBox.vert2) * (540 - textBox.vert2);
                 if (distance < lowest) {
                     ans_j = j;
                     lowest = distance;

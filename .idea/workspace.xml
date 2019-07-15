@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.java" line="81" mnemonic="9" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="e8a2f7bd-0c9d-4585-b509-cf3f9c454a96" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/checkSame/MySimHash.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/GPPTXText.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ppt/test/getNote.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/qwe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/JavaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/JavaTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/music/AutoRead.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/music/AutoRead.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ppt/ClickEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ppt/ClickEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ppt/PPTTextSave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ppt/PPTTextSave.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ppt/PPTgetText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ppt/PPTgetText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/windows/Win.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/windows/Win.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/compBtn/2f.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/compBtn/2f.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/compBtn/2n.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/compBtn/2n.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/GPPTXText.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ppt/test/PPTgetTextTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ppt/test/PPTgetTextTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,10 +29,42 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="351">
+              <caret line="32" column="43" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
+              <folding>
+                <element signature="e#1918#3746#0" />
+                <element signature="e#3752#3827#0" />
+                <element signature="e#3833#9938#0" />
+                <element signature="e#9944#10469#0" />
+                <element signature="e#10475#10989#0" />
+                <element signature="e#10995#11543#0" />
+                <element signature="e#11549#12277#0" />
+                <element signature="e#12278#12289#0" />
+                <element signature="e#13733#15365#0" />
+                <element signature="e#15371#16720#0" />
+                <element signature="e#16726#18005#0" />
+                <element signature="e#18011#18613#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ppt/ClickEvent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="567">
+              <caret line="22" column="34" lean-forward="true" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/main/JavaTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38">
-              <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+            <state relative-caret-position="662">
+              <caret line="157" column="24" selection-start-line="157" selection-start-column="24" selection-end-line="157" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -80,16 +112,20 @@
         <option value="$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/CreateTokenDemo.java" />
         <option value="$PROJECT_DIR$/src/main/java/fileOperate/SaveAsTxt.java" />
         <option value="$PROJECT_DIR$/src/test/java/fileOperate/test/SaveAsTxtTest.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/checkSame/MySimHash.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ppt/ClickEvent.java" />
         <option value="$PROJECT_DIR$/src/main/java/windows/Win.java" />
         <option value="$PROJECT_DIR$/src/main/java/music/AutoRead.java" />
         <option value="$PROJECT_DIR$/src/test/java/GPPTXText.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ppt/PPTTextSave.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ppt/PPTgetText.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ppt/test/PPTgetTextTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/main/JavaTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ppt/PPTgetText.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ppt/test/get备注.java" />
+        <option value="$PROJECT_DIR$/src/test/java/ppt/test/getNote.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/qwe.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ppt/PPTTextSave.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ppt/ClickEvent.java" />
       </list>
     </option>
   </component>
@@ -116,7 +152,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="527" />
@@ -129,7 +165,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -215,30 +251,20 @@
               <item name="PPTctrl" type="b2602c69:ProjectViewProjectNode" />
               <item name="05____voice__Explosion" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="PPTctrl" type="b2602c69:ProjectViewProjectNode" />
               <item name="05____voice__Explosion" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="compBtn" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PPTctrl" type="b2602c69:ProjectViewProjectNode" />
-              <item name="05____voice__Explosion" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="wav" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -299,13 +325,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MusicPlay" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="music.MusicPlay" />
-      <module name="05____voice__Explosion" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="PPTgetTextTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ppt.test.PPTgetTextTest" />
       <module name="05____voice__Explosion" />
@@ -319,12 +338,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SaveAsTxtTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="fileOperate.test.SaveAsTxtTest" />
+    <configuration name="getNote" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ppt.test.getNote" />
       <module name="05____voice__Explosion" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="fileOperate.test.*" />
+          <option name="PATTERN" value="ppt.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -332,13 +351,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="qwe" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="qwe" />
+      <module name="05____voice__Explosion" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.JavaTest" />
-        <item itemvalue="Application.GPPTXText" />
-        <item itemvalue="Application.SaveAsTxtTest" />
+        <item itemvalue="Application.qwe" />
+        <item itemvalue="Application.getNote" />
         <item itemvalue="Application.PPTgetTextTest" />
-        <item itemvalue="Application.MusicPlay" />
+        <item itemvalue="Application.GPPTXText" />
       </list>
     </recent_temporary>
   </component>
@@ -421,16 +447,23 @@
       <workItem from="1561726393790" duration="1957000" />
       <workItem from="1561953537312" duration="7925000" />
       <workItem from="1562832088427" duration="33000" />
+      <workItem from="1562832189342" duration="141000" />
+      <workItem from="1563007849487" duration="5556000" />
+      <workItem from="1563027841021" duration="3398000" />
+      <workItem from="1563070260777" duration="7835000" />
+      <workItem from="1563099826599" duration="922000" />
+      <workItem from="1563103424089" duration="11932000" />
+      <workItem from="1563169022870" duration="21669000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="256901000" />
+    <option name="totallyTimeSpent" value="308354000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23229614" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2553648" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -440,8 +473,8 @@
       <window_info anchor="bottom" id="Statistic" order="0" weight="0.32996634" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3288889" />
-      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49946696" weight="0.80777776" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49946696" weight="0.82555556" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.5322222" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
@@ -449,7 +482,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.329718" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50053304" side_tool="true" weight="0.20932755" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50053304" side_tool="true" weight="0.20888889" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.3288889" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -457,42 +490,54 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Database" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="Maven" order="6" visible="true" weight="0.17489271" />
+      <window_info anchor="right" id="Maven" order="6" weight="0.17489271" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25160944" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Statistic" order="0" weight="0.32996634" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.3288889" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49946696" weight="0.89555556" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.31111112" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.329718" />
+      <window_info anchor="bottom" id="Database Changes" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50053304" side_tool="true" weight="0.20888889" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.3288889" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Maven" order="6" weight="0.17489271" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="this" />
+      </configuration>
+    </watches-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/outPressed.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/small.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/smallPressed.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="uml://JAVA/PPT.PPTTextSave">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>PPT.PPTTextSave</OriginalElement>
-          <nodes>
-            <node x="" y="">PPT.PPTTextSave</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.0" x="88.0" y="19.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi-scratchpad/4.0.0/poi-scratchpad-4.0.0-sources.jar!/org/apache/poi/hslf/usermodel/HSLFShape.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-918">
@@ -511,16 +556,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/windows/test/WinTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/ppt/test/PPTgetTextTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ppt/KeyString.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
@@ -690,45 +725,10 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/loadFinishRead.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ppt/ClickEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" lean-forward="true" selection-start-column="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/windows/Win.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="166" column="41" selection-start-line="166" selection-start-column="41" selection-end-line="166" selection-end-column="41" />
-          <folding>
-            <element signature="method#Win#0;class#Win#0" />
-            <element signature="method#appendVoiceRecognizeRecord#0;class#Win#0" />
-            <element signature="method#saveTxt#0;class#Win#0" />
-            <element signature="method#changeAwakeRecord#0;class#Win#0" />
-            <element signature="method#initOrderNextAndLastOfAwake#0;class#Win#0" />
-            <element signature="method#changePageAndCom#0;class#Win#0" />
-            <element signature="method#changeDragArea#0;class#Win#0" />
-            <element signature="method#actionPerformed#0;class#Win#0" />
-            <element signature="method#drag#0;class#Win#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/music/AutoRead.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="81">
           <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/GPPTXText.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="30" column="88" lean-forward="true" selection-start-line="30" selection-start-column="88" selection-end-line="30" selection-end-column="88" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -740,26 +740,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/compBtn/1n.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="364" column="37" selection-start-line="364" selection-start-column="37" selection-end-line="364" selection-end-column="37" />
-          <folding>
-            <element signature="e#1880#3613#0" />
-            <element signature="e#3619#3694#0" />
-            <element signature="e#3700#8764#0" />
-            <element signature="e#8770#9295#0" />
-            <element signature="e#9301#9815#0" />
-            <element signature="e#9821#10369#0" />
-            <element signature="e#10375#11747#0" />
-            <element signature="e#11768#11808#0" />
-            <element signature="e#14853#16202#0" />
-            <element signature="e#16208#17487#0" />
-            <element signature="e#17493#18090#0" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/checkSame/MySimHash.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -774,17 +754,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
-          <folding>
-            <element signature="n#properties#0;n#project#0;n#!!top" />
-            <element signature="n#dependency#0;n#dependencies#0;n#project#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi-scratchpad/4.0.0/poi-scratchpad-4.0.0-sources.jar!/org/apache/poi/hslf/usermodel/HSLFSlide.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -793,20 +762,6 @@
             <element signature="e#4667#4668#0" expanded="true" />
             <element signature="e#4696#4697#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi-ooxml/4.0.0/poi-ooxml-4.0.0-sources.jar!/org/apache/poi/xslf/usermodel/XSLFNotes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="34" column="28" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi-ooxml/4.0.0/poi-ooxml-4.0.0-sources.jar!/org/apache/poi/xslf/usermodel/XSLFSlide.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="58" column="17" selection-start-line="58" selection-start-column="17" selection-end-line="58" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -828,35 +783,144 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ppt/PPTTextSave.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/GPPTXText.java" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/ppt/test/PPTgetTextTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="13" column="66" lean-forward="true" selection-start-line="13" selection-start-column="66" selection-end-line="13" selection-end-column="66" />
+        <state relative-caret-position="329">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/windows/Win.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="47" column="27" lean-forward="true" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="39" />
           <folding>
-            <element signature="method#add#0;class#PPTTextSave#0" />
-            <element signature="method#removeNoUsingText#0;class#PPTTextSave#0" />
-            <element signature="method#cutText#0;class#PPTTextSave#0" />
-            <element signature="method#textSortByLast#0;class#PPTTextSave#0" />
-            <element signature="method#saveLast#0;class#PPTTextSave#0" />
+            <element signature="method#Win#0;class#Win#0" />
+            <element signature="method#appendVoiceRecognizeRecord#0;class#Win#0" />
+            <element signature="method#saveTxt#0;class#Win#0" />
+            <element signature="method#changeAwakeRecord#0;class#Win#0" />
+            <element signature="method#initOrderNextAndLastOfAwake#0;class#Win#0" />
+            <element signature="method#changePageAndCom#0;class#Win#0" />
+            <element signature="method#changeDragArea#0;class#Win#0" />
+            <element signature="method#actionPerformed#0;class#Win#0" />
+            <element signature="method#drag#0;class#Win#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="657" column="18" selection-start-line="657" selection-start-column="18" selection-end-line="657" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi-ooxml/4.0.0/poi-ooxml-4.0.0-sources.jar!/org/apache/poi/xslf/usermodel/XSLFTextParagraph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="49" column="13" selection-start-line="49" selection-start-column="13" selection-end-line="49" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/ppt/test/getNote.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="20" column="58" lean-forward="true" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi-ooxml/4.0.0/poi-ooxml-4.0.0-sources.jar!/org/apache/poi/xslf/usermodel/XSLFSlide.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="58" column="29" lean-forward="true" selection-start-line="58" selection-start-column="29" selection-end-line="58" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/poi/poi-ooxml/4.0.0/poi-ooxml-4.0.0-sources.jar!/org/apache/poi/xslf/usermodel/XSLFNotes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="100" column="37" selection-start-line="100" selection-start-column="8" selection-end-line="100" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="55" column="39" selection-start-line="55" selection-start-column="39" selection-end-line="55" selection-end-column="39" />
+          <folding>
+            <element signature="n#properties#0;n#project#0;n#!!top" />
+            <element signature="n#dependency#0;n#dependencies#0;n#project#0;n#!!top" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ppt/PPTgetText.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="581">
-          <caret line="95" column="39" selection-start-line="95" selection-start-column="39" selection-end-line="95" selection-end-column="39" />
+        <state relative-caret-position="594">
+          <caret line="95" column="62" lean-forward="true" selection-start-line="95" selection-start-column="62" selection-end-line="95" selection-end-column="62" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getPPTandPPTX#0;class#PPTgetText#0" />
+            <element signature="method#GPPT#0;class#PPTgetText#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/qwe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="4" column="30" lean-forward="true" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ppt/PPTTextSave.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="950">
+          <caret line="129" column="52" selection-start-line="129" selection-start-column="52" selection-end-line="129" selection-end-column="52" />
+          <folding>
+            <element signature="method#addPage#0;class#PPTTextSave#0" />
+            <element signature="method#add#0;class#PPTTextSave#0" />
+            <element signature="method#removeNoUsingText#0;class#PPTTextSave#0" />
+            <element signature="method#cutText#0;class#PPTTextSave#0" />
+            <element signature="method#saveLast#0;class#PPTTextSave#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/main/JavaTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+        <state relative-caret-position="662">
+          <caret line="157" column="24" selection-start-line="157" selection-start-column="24" selection-end-line="157" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ppt/ClickEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="22" column="34" lean-forward="true" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alibaba/nls/client/example/SpeechTranscriberWithMicrophoneDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="32" column="43" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
+          <folding>
+            <element signature="e#1918#3746#0" />
+            <element signature="e#3752#3827#0" />
+            <element signature="e#3833#9938#0" />
+            <element signature="e#9944#10469#0" />
+            <element signature="e#10475#10989#0" />
+            <element signature="e#10995#11543#0" />
+            <element signature="e#11549#12277#0" />
+            <element signature="e#12278#12289#0" />
+            <element signature="e#13733#15365#0" />
+            <element signature="e#15371#16720#0" />
+            <element signature="e#16726#18005#0" />
+            <element signature="e#18011#18613#0" />
+          </folding>
         </state>
       </provider>
     </entry>

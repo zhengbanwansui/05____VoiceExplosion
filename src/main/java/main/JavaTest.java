@@ -38,15 +38,8 @@ public class JavaTest {
         ZipSecureFile.setMinInflateRatio(-1);
         // 获取PPT文字
         PPTTextSave PS = new PPTgetText().getPPTandPPTX(FilePath);
-        System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼获取注释文字▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
-        ArrayList<ArrayList<String>> notes = PS.notes;
-        int i = 0;
-        for(ArrayList<String> note : notes){
-            System.out.println("【 第" + ++i + "页注释 】");
-            for(String temp_str : note){
-                System.out.println("["+temp_str +"]");
-            }
-        }
+        // 处理注释
+        PS.setNotesArr();
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼PPT文字处理▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         // PPT文字处理, 去杂项文本(大于等于两个字的保留)
         PS.removeNoUsingText();
@@ -57,6 +50,7 @@ public class JavaTest {
         // PPT文字处理, 末端词语集合, 处理完保存到PS的last中
         PS.saveLast();
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼文字测试输出▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
+        int i = 0;
         ArrayList<ArrayList<PPTString>> PPTstr = PS.getArrayListArrayListPPTString();
         for(ArrayList<PPTString> strList : PPTstr){
             System.out.println("【 第" + ++i + "页 】");
@@ -71,6 +65,23 @@ public class JavaTest {
             for(PPTString temp_str : strList){
                 System.out.println("["+temp_str.cutedStr+"]");
                 System.out.println("["+temp_str.cutedArr+"]");
+            }
+        }
+        System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼测试注释原文▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
+        i = 0;
+        for(ArrayList<String> note : PS.notes){
+            System.out.println("【 第" + ++i + "页注释 】");
+            for(String line : note){
+                System.out.println("▼" + line + "▼");
+            }
+        }
+        System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼测试注释数组▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
+        String[][] notesArr = PS.notesArr;
+        i = 0;
+        for(String[] strs : notesArr){
+            System.out.println("【 第" + ++i + "页注释 】");
+            for(String str : strs){
+                System.out.println("▼" + str + "▼");
             }
         }
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼关键词测试输出▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
@@ -114,27 +125,27 @@ public class JavaTest {
         float sampleRate = 16000.0F;
         if (pullListString == "通用普通话") {
             appKey = 通用普通话;
-        } else if (pullListString == "演讲领域") {
+        } else if (pullListString.equals("演讲领域")) {
             appKey = 演讲领域;
-        } else if (pullListString == "出行领域") {
+        } else if (pullListString.equals("出行领域")) {
             appKey = 出行领域;
-        } else if (pullListString == "医疗领域") {
+        } else if (pullListString.equals("医疗领域")) {
             appKey = 医疗领域;
-        } else if (pullListString == "四川方言") {
+        } else if (pullListString.equals("四川方言")) {
             appKey = 四川方言;
-        } else if (pullListString == "湖北方言") {
+        } else if (pullListString.equals("湖北方言")) {
             appKey = 湖北方言;
-        } else if (pullListString == "新零售领域") {
+        } else if (pullListString.equals("新零售领域")) {
             appKey = 新零售领域;
-        } else if (pullListString == "政法庭审") {
+        } else if (pullListString.equals("政法庭审")) {
             appKey = 政法庭审;
-        } else if (pullListString == "金融领域") {
+        } else if (pullListString.equals("金融领域")) {
             appKey = 金融领域;
             sampleRate = 8000.0F;
-        } else if (pullListString == "粤语") {
+        } else if (pullListString.equals("粤语")) {
             appKey = 粤语;
             sampleRate = 8000.0F;
-        } else if (pullListString == "其他方言") {
+        } else if (pullListString.equals("其他方言")) {
             appKey = 其他方言;
             sampleRate = 8000.0F;
         } else {
