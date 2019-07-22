@@ -432,6 +432,17 @@ public class SpeechTranscriberWithMicrophoneDemo {
     private boolean ruleLastMatch() {
         // PS.last是每页匹配用的词语库
         // 看answerString里面有多少个匹配上PS.last里的词语
+
+        // 如果有C注释 更改本页末端词语集合
+        if (PS.notesArr[page][3].length() != 0) {
+            ArrayList<String> tempStrs = new ArrayList<>();
+            String [] strArr = PS.notesArr[page][3].split("\\s+");
+            for (String s : strArr) {
+                tempStrs.add(s);
+            }
+            PS.last.set(page-1, tempStrs);
+        }
+
         int maxMatchNum = PS.last.get(page-1).size();
         int matchedNum = 0;
         for (int i = 0; i < maxMatchNum; i++) {
