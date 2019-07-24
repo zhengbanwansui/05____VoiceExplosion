@@ -15,7 +15,7 @@ public class PPTgetTextTest {
     public static void main(String[] args) {
         PPTgetText PG = new PPTgetText();
         // PPTTextSave PS = PG.GPPTX("C:\\Users\\14419\\Desktop\\测试.pptx");
-        PPTTextSave PS = PG.GPPT("C:\\Users\\14419\\Desktop\\测试.ppt");
+        PPTTextSave PS = PG.getPPTandPPTX("C:\\Users\\14419\\Desktop\\测试.ppt");
         System.out.println("▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼文字测试输出▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼");
         ArrayList<ArrayList<PPTString>> PPTstr = PS.getArrayListArrayListPPTString();
         int i = 0;

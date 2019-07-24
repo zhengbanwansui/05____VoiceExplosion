@@ -1,11 +1,7 @@
 package ppt;
 
-import org.apache.poi.hslf.usermodel.HSLFTextParagraph;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 /**此类存储一个PPT文所有文本信息*/
 public class PPTTextSave {
@@ -68,7 +64,6 @@ public class PPTTextSave {
 
     /**
      * 返回ArrayList<ArrayList<>>对象
-     * @return
      */
     public ArrayList<ArrayList<PPTString>> getArrayListArrayListPPTString(){
         return PPTStr;
@@ -84,8 +79,8 @@ public class PPTTextSave {
             Iterator<PPTString> it = PPTStr.get(i).iterator();
             while(it.hasNext()){
                 PPTString x = it.next();
-                // 筛选出中文和标点   "\\s*" "[a-zA-Z]" "[0-9]" "\\pS*$|\\pP*$" "\\pS|\\pP"
-                x.textStr = x.textStr.replaceAll("[^\\u4e00-\\u9fa5：；，。！？]", "");
+                // 筛选出中文和标点 "[^\u4e00-\u9fa5：；，。！？]"
+                x.textStr = x.textStr.replaceAll("[^\\u4e00-\\u9fa5\uff1a\uff1b\uff0c\u3002\uff01\uff1f]", "");
                 // 去掉太短的文本
                 if(x.textStr.length() < 2){
                     it.remove();
@@ -106,7 +101,7 @@ public class PPTTextSave {
         }
     }
 
-    /** 【已修改】
+    /**
      * 末端排序，末端文本的value = 999 无文本框的页不处理
      */
     public void textSortByLast() {
@@ -144,7 +139,7 @@ public class PPTTextSave {
 
     }
 
-    /** 【需要修改】
+    /**
      * PPT末端词语集合, 保存到 ArrayList<ArrayList<String>> last 中
      */
     public void saveLast() {
