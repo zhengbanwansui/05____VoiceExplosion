@@ -17,9 +17,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.TargetDataLine;
 import java.util.ArrayList;
-import java.util.Vector;
 
-import static checkSame.CheckTheSame.participle;
 
 /**
  * 阿里云: 使用麦克风音频流的实时音频流识别
