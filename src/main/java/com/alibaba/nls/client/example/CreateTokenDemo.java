@@ -7,8 +7,9 @@ import com.alibaba.nls.client.AccessToken;
  */
 public class CreateTokenDemo {
     public static String getTokenFromCloud(String akId, String akSecret){
-        akId = "LTAIQTaHAkBNH2yt";
-        akSecret = "sXF07GtGOZlVLMKLs5wh7EH9T4m5mA";
+        // 这两个值是阿里云服务的id和secret，需要自己申请
+        akId = ""
+        akSecret = ""
         try {
             AccessToken accessToken = AccessToken.apply(akId, akSecret);
             return accessToken.getToken();
