@@ -2,7 +2,6 @@ package com.alibaba.nls.client.example;
 
 import checkSame.IKAnalyzerUtil;
 import checkSame.MySimHash;
-import music.MusicPlay;
 import ppt.*;
 import windows.Win;
 import com.alibaba.nls.client.protocol.InputFormatEnum;
@@ -242,7 +241,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
 
     /**翻页函数 如果在1-n页内, 此页全部设置为已读, page+1, 调用翻页函数 末页将不会继续翻页*/
     private void nextPage() {
-        MusicPlay.tipNext();
+        //MusicPlay.tipNext();
         if(page <= PS.getArrayListArrayListPPTString().size()){
             ArrayList<PPTString> AP = PS.getArrayListArrayListPPTString().get(page-1);
             for(PPTString str : AP){
@@ -258,7 +257,7 @@ public class SpeechTranscriberWithMicrophoneDemo {
 
     /**回页函数 此页设为全部未读, 退回上页, 上页设为全部未读*/
     private void lastPage() {
-        MusicPlay.tipLast();
+        //MusicPlay.tipLast();
         ArrayList<ArrayList<PPTString>> strList = PS.getArrayListArrayListPPTString();
         PC.PPTControl(2);
         if(page <= PS.getArrayListArrayListPPTString().size()){
